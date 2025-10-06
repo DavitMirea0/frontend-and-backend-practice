@@ -8,8 +8,10 @@
     </head>
     <body>
         <div class="page-container">
-            <div class="header">КР1 </div>
-            <div class="nav">
+            <header class="header">
+                <h1>КР1</h1>
+            </header>
+            <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="../pages/news.html">Новости</a></li>
@@ -17,22 +19,25 @@
                     <li class="nav-item"><a class="nav-link" href="../pages/goods.html">Товары</a></li>
                     <li class="nav-item"><a class="nav-link" href="../pages/contacts.html">Контакты</a></li>
                 </ul>
-            </div>
-            <div class="content">
-                <div class="profile-header">
+            </nav>
+            <main class="content">
+                <article class="profile-header">
                     <h1 class="profile-title">Контакты</h1>
                     <img class="profile-photo" src="../images/photo.png" alt="Фото автора">
                     <h2 class="profile-name">Хачатрян Давид Каренович</h2>
                     <p class="profile-group">ЭФБО-18-24</p>
-                </div>
+                </article>
 
-                <div class="skills-container">
-                    <div class="skill-tag">г.Москва пр.Вернадского 82А</div>
-                    <div class="skill-tag">+7(499)-321-32-11</div>x 
+                <section class="skills-container">
+                    <h2 class="skill-tag">г.Москва пр.Вернадского 82А</h2>
+                    <h2 class="skill-tag">+7(499)-321-32-11</h2>
+                </section>
                 </div>
-                </div>
-            </div>
-            <div class="footer">Футер</div>    
-        </div>
-    </body>
+            </section>
+        </main>
+            <footer class="footer"> <!-- Было: <div class="footer"> -->
+            <p>Футер</p> <!-- Добавили параграф для семантики -->
+        </footer>
+    </div>
+</body>
 </html>

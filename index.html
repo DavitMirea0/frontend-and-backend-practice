@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Семестровая работа</title>
-        <link rel="stylesheet" href="style/styles.css">
-    </head>
-    <body>
-        <div class="page-container">
-            <div class="header">КР1</div>
-            <div class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/practices.html">Практики</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
-                </ul>
-            </div>
-            <div class="content">
-                <div class="profile-header">
-                    <h1 class="profile-title">Информация об авторе</h1>
-                    <img class="profile-photo" src="images/photo.png" alt="Фото автора">
-                    <h2 class="profile-name">Хачатрян Давид Каренович</h2>
-                    <p class="profile-group">ЭФБО-18-24</p>
-                </div>
-                
-                <div class="about-me">
-                    <p>Обо мне: Я родился в Эчмиадзина в 2005 году. Поздно пошел в школу.</p>
-                </div>
 
-                <div class="skills-container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Семестровая работа</title>
+    <link rel="stylesheet" href="style/styles.css">
+</head>
+
+<body>
+    <!-- Изменение: Заменили div на семантические теги -->
+    <div class="page-container">
+        <header class="header"> <!-- Было: <div class="header"> -->
+            <h1>КР1</h1> <!-- Добавили заголовок для семантики -->
+        </header>
+        
+        <nav class="nav"> <!-- Было: <div class="nav"> -->
+            <ul class="nav-list">
+                <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/practices.html">Практики</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        
+        <main class="content"> <!-- Было: <div class="content"> -->
+            <article class="profile-header"> <!-- Было: <div class="profile-header"> -->
+                <h1 class="profile-title">Информация об авторе</h1>
+                <img class="profile-photo" src="images/photo.png" alt="Фото автора">
+                <h2 class="profile-name">Хачатрян Давид Каренович</h2>
+                <p class="profile-group">ЭФБО-18-24</p>
+            </article>
+
+            <section class="about-me"> <!-- Было: <div class="about-me"> -->
+                <h2>Обо мне</h2> <!-- Добавили заголовок для семантики -->
+                <p>Обо мне: Я родился в Эчмиадзина в 2005 году. Поздно пошел в школу.</p>
+            </section>
+
+            <section class="skills-container"> <!-- Было: <div class="skills-container"> -->
+                <h2>Мои навыки</h2> <!-- Добавили заголовок для семантики -->
+                <div class="skills-grid"> <!-- Обертка для Grid -->
                     <div class="skill-tag">Дата и место рождения</div>
                     <div class="skill-tag">Особенности</div>
                     <div class="skill-tag">Место учебы</div>
                     <div class="skill-tag">Работа</div>
                 </div>
-                
-                <div class="experience-section">
-                    <h2 class="section-title">Мой опыт работы</h2>
-                    <div class="experience-card">
+            </section>
+
+            <section class="experience-section"> <!-- Было: <div class="experience-section"> -->
+                <h2 class="section-title">Мой опыт работы</h2>
+                <div class="experience-grid"> <!-- Обертка для Grid -->
+                    <article class="experience-card"> <!-- Было: <div class="experience-card"> -->
                         <h3 class="experience-title">Опыт 1</h3>
                         <p class="experience-desc">Работал в стройке. Сочинял и праздновал.</p>
-                    </div>
-                    <div class="experience-card">
+                    </article>
+                    <article class="experience-card">
                         <h3 class="experience-title">Опыт 2</h3>
                         <p class="experience-desc">OZON Fresh.</p>
-                    </div>
+                    </article>
                 </div>
-            </div>
-            <div class="footer">Футер</div>    
-        </div>
-    </body>
+            </section>
+        </main>
+        
+        <footer class="footer"> <!-- Было: <div class="footer"> -->
+            <p>Футер</p> <!-- Добавили параграф для семантики -->
+        </footer>
+    </div>
+</body>
+
 </html>

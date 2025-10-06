@@ -8,8 +8,10 @@
     </head>
     <body>
         <div class="page-container">
-            <div class="header">КР1</div>
-            <div class="nav">
+            <header class="header">
+                <h1>КР1</h1>
+            </header>
+            <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
                     <li class="nav-item"><a class="nav-link" href="../pages/news.html">Новости</a></li>
@@ -17,36 +19,39 @@
                     <li class="nav-item"><a class="nav-link" href="../pages/goods.html">Товары</a></li>
                     <li class="nav-item"><a class="nav-link" href="../pages/contacts.html">Контакты</a></li>
                 </ul>
-            </div>
-            <div class="content">
-                <div class="profile-header">
+            </nav>
+            <main class="content">
+                <article class="profile-header">
                     <h1 class="profile-title">Товары</h1>
                     <img class="profile-photo" src="../images/goods3.png" alt="Фото автора">
-                </div>
+                </article>
 
-                <div class="skills-container">
-                    <div class="skill-tag">Подписки на ИИ-помощники</div>
-                    <div class="skill-tag">Ключи для Windows и др.продуктов Microsoft</div>
-                    <div class="skill-tag">Spotify, Deezer, SoundCloud</div>
-                </div>
+                <section class="skills-container">
+                    <h2 class="skill-tag">Подписки на ИИ-помощники</h2>
+                    <h2 class="skill-tag">Ключи для Windows и др.продуктов Microsoft</h2>
+                    <h2 class="skill-tag">Spotify, Deezer, SoundCloud</h2>
+                </section>
                 
-                <div class="experience-section">
+                <section class="experience-section">
                     <h2 class="section-title">Особенности для каждого из разделов</h2>
-                    <div class="experience-card">
+                    <section class="experience-card">
                         <h3 class="experience-title">Раздел 1</h3>
-                        <p class="experience-desc">Подписка оформляется с помощью зарубежных карт, так что для того, чтобы продлить подписку, надо занову покупать данный товар.</p>
-                    </div>
-                    <div class="experience-card">
+                        <h3 class="experience-desc">Подписка оформляется с помощью зарубежных карт, так что для того, чтобы продлить подписку, надо занову покупать данный товар.</h3>
+                    </section>
+                    <section class="experience-card">
                         <h3 class="experience-title">Раздел 2</h3>
-                        <p class="experience-desc">OEM-ключ, который в рознице официально не продается и поставляется только вместе с оборудованием.</p>
-                    </div>
-                    <div class="experience-card">
+                        <h3 class="experience-desc">OEM-ключ, который в рознице официально не продается и поставляется только вместе с оборудованием.</h3>
+                    </section>
+                    <section class="experience-card">
                         <h3 class="experience-title">Опыт 3</h3>
                         <p class="experience-desc">Оформляется аккаунт на другой регион, например в Турцию, поэтому стоят включить VPN, раз в неделю хотя-бы.</p>
-                    </div>
+                    </section>
                 </div>
-            </div>
-            <div class="footer">Футер</div>    
-        </div>
-    </body>
+            </selection>
+        </main>
+          <footer class="footer"> <!-- Было: <div class="footer"> -->
+            <p>Футер</p> <!-- Добавили параграф для семантики -->
+        </footer>
+    </div>
+</body>
 </html>
