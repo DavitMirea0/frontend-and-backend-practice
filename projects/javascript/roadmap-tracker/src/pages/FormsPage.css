@@ -1,0 +1,48 @@
+.forms-page {
+  padding: 20px;
+}
+
+.forms-page h1 {
+  margin: 0 0 10px 0;
+  color: #1a1a2e;
+}
+
+.page-description {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
+.tabs button {
+  padding: 12px 24px;
+  border: 2px solid #667eea;
+  background: white;
+  color: #667eea;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tabs button:hover {
+  background: #f0f4ff;
+}
+
+.tabs button.active {
+  background: #667eea;
+  color: white;
+}
+
+.tab-content {
+  background: white;
+  border-radius: 12px;
+  min-height: 400px;
+}

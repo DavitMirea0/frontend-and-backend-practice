@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430">
+<rect width="1000" height="430" fill="#f5f8fc"/><g font-family="Arial" font-size="18" fill="#173454">
+<text x="40" y="40" font-size="25" font-weight="bold">Заявки на выдачу IT-оборудования</text>
+<rect x="40" y="80" width="330" height="240" rx="10" fill="white" stroke="#173454"/>
+<text x="60" y="115" font-weight="bold">users — сотрудники</text><path d="M40 130H370" stroke="#173454"/>
+<text x="60" y="165">PK  id : BIGINT</text><text x="60" y="200">full_name : VARCHAR(120)</text><text x="60" y="235">UK  email : VARCHAR(160)</text><text x="60" y="270">department : VARCHAR(100)</text>
+<rect x="540" y="80" width="420" height="300" rx="10" fill="white" stroke="#173454"/>
+<text x="560" y="115" font-weight="bold">equipment_requests — заявки</text><path d="M540 130H960" stroke="#173454"/>
+<text x="560" y="165">PK  id : BIGINT</text><text x="560" y="195">FK  user_id : BIGINT → users.id</text><text x="560" y="225">equipment_type : VARCHAR(20)</text><text x="560" y="255">quantity : INTEGER [1..10]</text><text x="560" y="285">reason : VARCHAR(500)</text><text x="560" y="315">status : VARCHAR(20)</text><text x="560" y="345">created_at : TIMESTAMP</text>
+<path d="M370 185H540 M385 175V195 M525 185L540 175 M525 185L540 195" fill="none" stroke="#173454" stroke-width="2"/><text x="406" y="168">1 : 0..N</text>
+<text x="40" y="410" font-size="16">Все поля NOT NULL. Удаление сотрудника с заявками запрещено (ON DELETE RESTRICT).</text></g></svg>

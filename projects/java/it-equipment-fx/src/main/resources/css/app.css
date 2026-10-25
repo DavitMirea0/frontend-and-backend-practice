@@ -1,0 +1,51 @@
+ 
+.root { -fx-font-family: "Segoe UI", sans-serif; -fx-font-size: 13px; -fx-base: #ffffff; -fx-background: #f5f7fb; -fx-text-background-color: #1e293b; -fx-focus-color: #2563eb; -fx-faint-focus-color: #2563eb25; }
+.app-root { -fx-background-color: #f5f7fb; }
+.app-header { -fx-background-color: #142a46; -fx-padding: 24 28 24 28; }
+.app-header .label { -fx-text-fill: white; }
+.app-header .eyebrow { -fx-text-fill: #a9c7f2; -fx-font-size: 11px; -fx-font-weight: bold; }
+.app-title { -fx-font-size: 28px; -fx-font-weight: bold; }
+.app-header .subtitle { -fx-text-fill: #d0ddee; -fx-font-size: 13px; }
+.section-title { -fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #142a46; }
+.muted { -fx-text-fill: #526175; }
+.page { -fx-padding: 24 28 20 28; -fx-background-color: #f5f7fb; }
+.form { -fx-padding: 26; -fx-background-color: #ffffff; }
+.button { -fx-background-color: white; -fx-text-fill: #253750; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #bbc7d6; -fx-padding: 9 14 9 14; -fx-cursor: hand; }
+.button:hover { -fx-background-color: #eaf0f8; }
+.button:focused { -fx-border-color: #2563eb; -fx-border-width: 2; -fx-padding: 8 13 8 13; }
+.button:disabled { -fx-opacity: 0.48; }
+.button.primary { -fx-background-color: #245fca; -fx-text-fill: white; -fx-border-color: #245fca; -fx-font-weight: bold; }
+.button.primary:hover { -fx-background-color: #174cae; }
+.button.danger { -fx-text-fill: #b42332; -fx-border-color: #d8a4ac; }
+.button.danger:hover { -fx-background-color: #fff0f1; }
+.button.header-button { -fx-background-color: #223f62; -fx-text-fill: white; -fx-border-color: #6c88aa; }
+.button.header-button:hover { -fx-background-color: #2d527e; }
+.filter-bar { -fx-background-color: #eaf0f8; -fx-background-radius: 8; -fx-padding: 14; }
+.text-field, .combo-box, .text-area { -fx-background-color: white; -fx-border-color: #a8b7ca; -fx-border-radius: 5; -fx-background-radius: 5; }
+.text-field { -fx-padding: 9 10; }
+.combo-box { -fx-padding: 3 4; }
+.text-area .content { -fx-background-color: white; }
+.text-field:focused, .combo-box:focused, .text-area:focused { -fx-border-color: #2563eb; }
+.error-text { -fx-text-fill: #a51f32; -fx-font-weight: bold; }
+.main-tabs > .tab-header-area { -fx-padding: 10 28 0 28; }
+.main-tabs > .tab-header-area > .tab-header-background { -fx-background-color: white; }
+.tab { -fx-background-color: #edf1f7; -fx-padding: 10 22; -fx-background-radius: 6 6 0 0; }
+.tab:selected { -fx-background-color: #e0eafb; -fx-border-color: transparent transparent #245fca transparent; -fx-border-width: 0 0 3 0; }
+.tab .tab-label { -fx-text-fill: #1e3554; -fx-font-weight: bold; }
+.table-view { -fx-background-color: white; -fx-border-color: #d1dbe7; -fx-border-radius: 6; -fx-background-radius: 6; -fx-padding: 0; }
+.table-view .column-header-background, .table-view .column-header, .table-view .filler { -fx-background-color: #e8eef7; }
+.table-view .column-header { -fx-size: 42; -fx-border-color: transparent #d7e0ec transparent transparent; }
+.table-view .column-header .label { -fx-alignment: CENTER_LEFT; -fx-padding: 0 10; -fx-text-fill: #2a4260; }
+.table-cell { -fx-padding: 11 10; -fx-border-color: transparent transparent #edf1f7 transparent; }
+.table-row-cell { -fx-cell-size: 44; -fx-background-color: white; }
+.table-row-cell:odd { -fx-background-color: #f8fafd; }
+.table-row-cell:selected { -fx-background-color: #dce9ff; -fx-text-background-color: #102f60; }
+.table-row-cell:filled:hover { -fx-background-color: #edf3fe; }
+.table-row-cell:selected:filled:hover { -fx-background-color: #d3e3fc; }
+.status-bar { -fx-padding: 12 28; -fx-background-color: white; -fx-border-color: #dce3ee transparent transparent transparent; }
+.stats-scroll, .stats-scroll > .viewport { -fx-background-color: #f5f7fb; }
+.metric { -fx-background-color: white; -fx-border-color: #d8e1ed; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 16 20; -fx-pref-width: 220; }
+.metric-number { -fx-font-size: 29px; -fx-font-weight: bold; -fx-text-fill: #174f98; }
+.chart { -fx-background-color: white; -fx-padding: 14; }
+.chart-plot-background { -fx-background-color: #f8fafd; }
+.default-color0.chart-bar { -fx-bar-fill: #3477ca; }

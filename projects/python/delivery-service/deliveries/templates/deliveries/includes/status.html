@@ -1,0 +1,1 @@
+{% if delivery.status == 'принят' %}<span class="badge accepted">Ожидает курьера</span>{% elif delivery.status == 'в пути' %}<span class="badge transit">Курьер в пути</span>{% elif delivery.status == 'доставлен' %}<span class="badge done">Вручено получателю</span>{% else %}<span class="badge">{{ delivery.status|default:'Не указан' }}</span>{% endif %}

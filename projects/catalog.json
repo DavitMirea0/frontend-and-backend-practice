@@ -1,0 +1,719 @@
+[
+  {
+    "language": "Go",
+    "slug": "taskapi",
+    "title": "Task API",
+    "description": "REST API личного списка задач: регистрация, JWT-аутентификация и CRUD с проверкой владельца. Слои handler, service и repository, graceful shutdown и тесты бизнес-логики.",
+    "stack": [
+      "Go",
+      "chi",
+      "pgx",
+      "PostgreSQL",
+      "JWT",
+      "Docker Compose"
+    ],
+    "repo": "taskapi-golang",
+    "path": "projects/go/taskapi",
+    "files": 35
+  },
+  {
+    "language": "Java",
+    "slug": "student-hub",
+    "title": "Student Hub",
+    "description": "Система управления данными студентов с веб-интерфейсом и JavaFX-клиентом. REST backend, аутентификация и миграции базы данных.",
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "Spring Data JPA",
+      "PostgreSQL",
+      "JavaFX"
+    ],
+    "repo": null,
+    "path": "projects/java/student-hub",
+    "files": 202
+  },
+  {
+    "language": "Java",
+    "slug": "it-equipment-console",
+    "title": "IT-оборудование — консоль",
+    "description": "Учёт заявок на выдачу оборудования: сотрудники, статусы и бизнес-правила. Сохранение в PostgreSQL через JDBC и экспорт в Excel.",
+    "stack": [
+      "Java",
+      "JDBC",
+      "PostgreSQL",
+      "Maven",
+      "Apache POI",
+      "Docker"
+    ],
+    "repo": null,
+    "path": "projects/java/it-equipment-console",
+    "files": 36
+  },
+  {
+    "language": "Java",
+    "slug": "it-equipment-fx",
+    "title": "IT-оборудование — JavaFX",
+    "description": "Настольное приложение для заявок и сотрудников: поиск, фильтры, статистика, проверка переходов статусов и экспорт показанных данных в Excel.",
+    "stack": [
+      "Java",
+      "JavaFX",
+      "JDBC",
+      "PostgreSQL",
+      "Apache POI"
+    ],
+    "repo": null,
+    "path": "projects/java/it-equipment-fx",
+    "files": 68
+  },
+  {
+    "language": "Python",
+    "slug": "order-processing",
+    "title": "Order Processing Service",
+    "description": "Сервис обработки заказов с transactional outbox. Идемпотентность API и consumer, очереди повторных попыток с задержкой и DLQ.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "RabbitMQ",
+      "Redis",
+      "Docker"
+    ],
+    "repo": null,
+    "path": "projects/python/order-processing",
+    "files": 30
+  },
+  {
+    "language": "Python",
+    "slug": "community-manager",
+    "title": "Community Manager",
+    "description": "Telegram-бот и admin API для сообществ, публикаций и событий. Роли участников, RSVP, FSM в Redis и миграции Alembic.",
+    "stack": [
+      "Python",
+      "aiogram",
+      "FastAPI",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "Redis"
+    ],
+    "repo": "community-manager",
+    "path": "projects/python/community-manager",
+    "files": 36
+  },
+  {
+    "language": "Python",
+    "slug": "parking",
+    "title": "Парковка университета",
+    "description": "Веб-приложение с ролями пользователя, охраны и администратора. Регистрация автомобилей, въезд и выезд, бронирование и прогноз загрузки по часам.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "HTML",
+      "JavaScript",
+      "Docker"
+    ],
+    "repo": null,
+    "path": "projects/python/parking",
+    "files": 25
+  },
+  {
+    "language": "Python",
+    "slug": "delivery-service",
+    "title": "Служба доставки",
+    "description": "Учебное приложение для зон и доставок: фильтрация, сортировка, статистика SQL и изменение статуса заказа через POST с CSRF-защитой.",
+    "stack": [
+      "Python",
+      "Django",
+      "SQLite",
+      "SQL",
+      "HTML",
+      "CSS"
+    ],
+    "repo": null,
+    "path": "projects/python/delivery-service",
+    "files": 48
+  },
+  {
+    "language": "Python",
+    "slug": "selectel-vacancies",
+    "title": "API вакансий Selectel",
+    "description": "Доработка тестового проекта: парсинг публичных вакансий, хранение в PostgreSQL и CRUD API. Периодический запуск парсинга через APScheduler.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "APScheduler",
+      "Docker"
+    ],
+    "repo": "selectest-api-fix",
+    "path": "projects/python/selectel-vacancies",
+    "files": 34
+  },
+  {
+    "language": "Python",
+    "slug": "fastapi-kr1",
+    "title": "FastAPI — КР 1",
+    "description": "Первые HTTP-маршруты FastAPI и шаблон HTML. Учебная работа по разработке серверных приложений.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "HTML"
+    ],
+    "repo": null,
+    "path": "projects/python/fastapi-kr1",
+    "files": 4
+  },
+  {
+    "language": "Python",
+    "slug": "fastapi-kr2",
+    "title": "FastAPI — КР 2",
+    "description": "Модели запросов и валидация пользовательских данных с Pydantic.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "Pydantic"
+    ],
+    "repo": "--2-TRSP",
+    "path": "projects/python/fastapi-kr2",
+    "files": 3
+  },
+  {
+    "language": "Python",
+    "slug": "fastapi-kr3",
+    "title": "FastAPI — КР 3",
+    "description": "Аутентификация, авторизация и RBAC с хранением данных в SQLite.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "RBAC"
+    ],
+    "repo": "KR3-TRSP",
+    "path": "projects/python/fastapi-kr3",
+    "files": 7
+  },
+  {
+    "language": "Python",
+    "slug": "fastapi-kr4",
+    "title": "FastAPI — КР 4",
+    "description": "Миграции Alembic, обработка исключений, валидация и синхронные и асинхронные тесты API.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "Alembic",
+      "pytest"
+    ],
+    "repo": "-R4_TRSP",
+    "path": "projects/python/fastapi-kr4",
+    "files": 32
+  },
+  {
+    "language": "Python",
+    "slug": "fastapi-kr5",
+    "title": "FastAPI — КР 5",
+    "description": "API задач, фильтрация, интеграционные тесты и упражнения с WebSockets.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "Pydantic",
+      "pytest",
+      "WebSockets",
+      "Docker"
+    ],
+    "repo": "KR5-trsp",
+    "path": "projects/python/fastapi-kr5",
+    "files": 20
+  },
+  {
+    "language": "Python",
+    "slug": "algorithms",
+    "title": "Алгоритмы и анализ данных",
+    "description": "Учебные ноутбуки Jupyter по алгоритмам и анализу данных. Выводы ячеек и метаданные очищены в опубликованной копии.",
+    "stack": [
+      "Python",
+      "Jupyter",
+      "Алгоритмы"
+    ],
+    "repo": null,
+    "path": "projects/python/algorithms",
+    "files": 15
+  },
+  {
+    "language": "JavaScript",
+    "slug": "warehouse-66",
+    "title": "Warehouse-66",
+    "description": "Складская система: поступления, перемещение между складами, инвентаризация и аналитика поставщиков. JWT и три роли; бизнес-логика на PL/pgSQL.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "repo": "warehouse-66",
+    "path": "projects/javascript/warehouse-66",
+    "files": 42
+  },
+  {
+    "language": "JavaScript",
+    "slug": "evervess",
+    "title": "Evervess",
+    "description": "Учебное банковское приложение: карты, переводы, накопительные счета, оплата услуг и панель администратора.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Express",
+      "PostgreSQL",
+      "JWT",
+      "Docker"
+    ],
+    "repo": "evervess",
+    "path": "projects/javascript/evervess",
+    "files": 53
+  },
+  {
+    "language": "JavaScript",
+    "slug": "everessbank",
+    "title": "Everessbank — прототип",
+    "description": "Ранний учебный прототип банковского веб-приложения: сервер Express, HTML-шаблоны и SQL-схема базы.",
+    "stack": [
+      "JavaScript",
+      "Express",
+      "HTML",
+      "SQL"
+    ],
+    "repo": null,
+    "path": "projects/javascript/everessbank",
+    "files": 24
+  },
+  {
+    "language": "JavaScript",
+    "slug": "roadmap-tracker",
+    "title": "Roadmap Tracker",
+    "description": "Трекер изучения технологий: статусы тем, общий прогресс, поиск, редактирование дорожной карты, импорт и экспорт данных.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Material UI"
+    ],
+    "repo": "roadmap-tracker0",
+    "path": "projects/javascript/roadmap-tracker",
+    "files": 66
+  },
+  {
+    "language": "JavaScript",
+    "slug": "web-portfolio",
+    "title": "Учебное веб-портфолио",
+    "description": "Многостраничное портфолио с семантической HTML-разметкой и адаптивными стилями.",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "repo": "Project-1",
+    "path": "projects/javascript/web-portfolio",
+    "files": 19
+  },
+  {
+    "language": "JavaScript",
+    "slug": "react-rest",
+    "title": "React + REST API",
+    "description": "Учебная серия: карточка товара, CRUD на Express, REST API, React-клиент и авторизация.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Express",
+      "REST API"
+    ],
+    "repo": "kr1_2sem",
+    "path": "projects/javascript/react-rest",
+    "files": 96
+  },
+  {
+    "language": "JavaScript",
+    "slug": "web-practice-2",
+    "title": "Клиент и сервер — практикум",
+    "description": "Сборник исходников практик клиент-серверной веб-разработки за второй семестр.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "HTML",
+      "CSS"
+    ],
+    "repo": null,
+    "path": "projects/javascript/web-practice-2",
+    "files": 109
+  },
+  {
+    "language": "JavaScript",
+    "slug": "softshop-notes",
+    "title": "SoftShop — заметки PWA",
+    "description": "Офлайн-приложение заметок: Service Worker, манифест PWA, напоминания, Socket.IO и Web Push.",
+    "stack": [
+      "JavaScript",
+      "PWA",
+      "Service Worker",
+      "Express",
+      "Socket.IO"
+    ],
+    "repo": "kr3_2sem",
+    "path": "projects/javascript/softshop-notes",
+    "files": 19
+  },
+  {
+    "language": "JavaScript",
+    "slug": "database-infra",
+    "title": "Базы данных и инфраструктура",
+    "description": "CRUD с PostgreSQL и MongoDB, кеширование Redis, балансировка нагрузки и контейнеризация.",
+    "stack": [
+      "JavaScript",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Docker"
+    ],
+    "repo": "kr4_2sem",
+    "path": "projects/javascript/database-infra",
+    "files": 20
+  },
+  {
+    "language": "JavaScript",
+    "slug": "graphql-queues",
+    "title": "GraphQL и очереди задач",
+    "description": "React-клиент и GraphQL API для книг и задач; RabbitMQ consumer с повторными попытками и DLQ.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "GraphQL",
+      "RabbitMQ",
+      "Docker"
+    ],
+    "repo": "kr5_2sem",
+    "path": "projects/javascript/graphql-queues",
+    "files": 21
+  },
+  {
+    "language": "JavaScript",
+    "slug": "web-practices",
+    "title": "Практики веб-разработки",
+    "description": "Подборка учебных приложений по frontend и backend: React-клиенты и серверная часть.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Node.js"
+    ],
+    "repo": null,
+    "path": "projects/javascript/web-practices",
+    "files": 71
+  },
+  {
+    "language": "JavaScript",
+    "slug": "frontend-backend-demo",
+    "title": "React + Express — демо",
+    "description": "Учебный пример с раздельными frontend и backend для практики HTTP API.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Express"
+    ],
+    "repo": null,
+    "path": "projects/javascript/frontend-backend-demo",
+    "files": 17
+  },
+  {
+    "language": "JavaScript",
+    "slug": "physics-quiz",
+    "title": "Формула / Матрица",
+    "description": "Квиз по физике с анализом ошибок по темам через матрицу принадлежности вопросов. Рекомендации по повторению и демонстрационный сценарий.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Матрицы"
+    ],
+    "repo": null,
+    "path": "projects/javascript/physics-quiz",
+    "files": 12
+  },
+  {
+    "language": "JavaScript",
+    "slug": "monte-carlo",
+    "title": "Лаборатория Монте-Карло",
+    "description": "Симуляция задачи случайной встречи. Настройка времени ожидания, сравнение эмпирической вероятности с теорией и воспроизводимые опыты с seed.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Вероятность"
+    ],
+    "repo": null,
+    "path": "projects/javascript/monte-carlo",
+    "files": 11
+  },
+  {
+    "language": "JavaScript",
+    "slug": "billiard",
+    "title": "Бильярд: математика движения",
+    "description": "Интерактивное исследование движения и отражений в прямоугольном бильярде: траектории, период и метод развёртки.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Математика"
+    ],
+    "repo": null,
+    "path": "projects/javascript/billiard",
+    "files": 11
+  },
+  {
+    "language": "JavaScript",
+    "slug": "julia-sets",
+    "title": "Множества Жюлиа",
+    "description": "Визуализация комплексных итераций на Canvas. Изменение параметров, палитры и лимита итераций; исследование орбиты точки.",
+    "stack": [
+      "JavaScript",
+      "Node.js",
+      "Canvas",
+      "Комплексные числа"
+    ],
+    "repo": null,
+    "path": "projects/javascript/julia-sets",
+    "files": 10
+  },
+  {
+    "language": "JavaScript",
+    "slug": "weather-app",
+    "title": "Погодное приложение",
+    "description": "React-интерфейс выбора города и отображения погоды с состояниями загрузки, ошибки и демонстрационными данными.",
+    "stack": [
+      "JavaScript",
+      "React",
+      "Vite",
+      "CSS"
+    ],
+    "repo": null,
+    "path": "projects/javascript/weather-app",
+    "files": 15
+  },
+  {
+    "language": "TypeScript",
+    "slug": "calendar-experiment",
+    "title": "Экспериментальный календарь",
+    "description": "Эксперимент с интерфейсом календаря: сетка месяца, список встреч, локальное хранение и панель метрик взаимодействия.",
+    "stack": [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "CSS"
+    ],
+    "repo": null,
+    "path": "projects/typescript/calendar-experiment",
+    "files": 63
+  },
+  {
+    "language": "C#",
+    "slug": "calendar",
+    "title": "Вечный календарь",
+    "description": "Настольный календарь с событиями, категориями, недельным представлением, поиском, напоминаниями и статистикой.",
+    "stack": [
+      "C#",
+      ".NET",
+      "Windows Forms"
+    ],
+    "repo": null,
+    "path": "projects/csharp/calendar",
+    "files": 10
+  },
+  {
+    "language": "C#",
+    "slug": "library-manager",
+    "title": "Library Manager",
+    "description": "Управление книгами, авторами и жанрами: CRUD, поиск, фильтрация и связи сущностей.",
+    "stack": [
+      "C#",
+      "WPF",
+      "Entity Framework Core"
+    ],
+    "repo": "LibraryManager",
+    "path": "projects/csharp/library-manager",
+    "files": 18
+  },
+  {
+    "language": "C#",
+    "slug": "http-monitor",
+    "title": "HTTP Monitor",
+    "description": "Встроенные HTTP-сервер и клиент, журнал запросов, фильтрация, статистика и график нагрузки по минутам.",
+    "stack": [
+      "C#",
+      "WPF",
+      "HttpListener",
+      "HttpClient"
+    ],
+    "repo": "HttpMonitor",
+    "path": "projects/csharp/http-monitor",
+    "files": 13
+  },
+  {
+    "language": "C#",
+    "slug": "network-analyzer",
+    "title": "Network Analyzer",
+    "description": "Учебное WPF-приложение для анализа сети. Исходники разделены на модели и сервисы.",
+    "stack": [
+      "C#",
+      "WPF",
+      ".NET"
+    ],
+    "repo": "NetworkAnalyzer",
+    "path": "projects/csharp/network-analyzer",
+    "files": 9
+  },
+  {
+    "language": "C#",
+    "slug": "tourist-production",
+    "title": "Путеводитель и производство",
+    "description": "Два учебных приложения: города и достопримечательности; материалы, производственные линии и расчёт времени изготовления.",
+    "stack": [
+      "C#",
+      "ASP.NET Core",
+      "MVC",
+      "Entity Framework Core",
+      "SQLite"
+    ],
+    "repo": "kr4-pcs",
+    "path": "projects/csharp/tourist-production",
+    "files": 23
+  },
+  {
+    "language": "C#",
+    "slug": "blazor-shop",
+    "title": "Blazor Shop",
+    "description": "Управление товарами магазина: API, браузерный клиент на C#, поиск, фильтры и формы с валидацией.",
+    "stack": [
+      "C#",
+      "Blazor WebAssembly",
+      "ASP.NET Core",
+      "SQLite"
+    ],
+    "repo": null,
+    "path": "projects/csharp/blazor-shop",
+    "files": 15
+  },
+  {
+    "language": "C#",
+    "slug": "restaurant-orders",
+    "title": "Заказы ресторана",
+    "description": "Консольная система заказов ресторана: блюда, категории и работа с коллекциями объектов.",
+    "stack": [
+      "C#",
+      ".NET",
+      "ООП"
+    ],
+    "repo": "Programming-Corporation-System",
+    "path": "projects/csharp/restaurant-orders",
+    "files": 3
+  },
+  {
+    "language": "C / C++",
+    "slug": "stm32-led",
+    "title": "STM32 — управление светодиодами",
+    "description": "Учебные прошивки STM32 для работы с GPIO и последовательностями светодиодов.",
+    "stack": [
+      "C",
+      "STM32",
+      "GPIO",
+      "CMSIS"
+    ],
+    "repo": null,
+    "path": "projects/cpp/stm32-led",
+    "files": 58
+  },
+  {
+    "language": "C / C++",
+    "slug": "stm32-display",
+    "title": "STM32 — семисегментный индикатор",
+    "description": "Управление четырёхразрядным индикатором через CMSIS: статическая и динамическая индикация, кнопка и счётчик секунд.",
+    "stack": [
+      "C",
+      "STM32",
+      "CMSIS",
+      "PlatformIO"
+    ],
+    "repo": null,
+    "path": "projects/cpp/stm32-display",
+    "files": 5
+  },
+  {
+    "language": "C / C++",
+    "slug": "cpp-practice",
+    "title": "Практикум C++",
+    "description": "Подборка исходников учебных программ на C++ по технологиям индустриального программирования.",
+    "stack": [
+      "C++",
+      "Стандартная библиотека"
+    ],
+    "repo": null,
+    "path": "projects/cpp/cpp-practice",
+    "files": 4
+  },
+  {
+    "language": "C / C++",
+    "slug": "qt-project",
+    "title": "Qt — учебная заготовка",
+    "description": "Заготовка настольного приложения: главное окно Qt, UI-файл и конфигурация CMake. Сохранена как учебный исходник.",
+    "stack": [
+      "C++",
+      "Qt",
+      "CMake"
+    ],
+    "repo": null,
+    "path": "projects/cpp/qt-project",
+    "files": 6
+  },
+  {
+    "language": "SQL",
+    "slug": "sql-practice",
+    "title": "SQL-практикум",
+    "description": "SQL-исходники учебной работы по базам данных для индустриальных задач.",
+    "stack": [
+      "SQL",
+      "Базы данных"
+    ],
+    "repo": null,
+    "path": "projects/sql/sql-practice",
+    "files": 12
+  },
+  {
+    "language": "Shell / DevOps",
+    "slug": "devops-course",
+    "title": "DevOps — учебный репозиторий",
+    "description": "Учебные скрипты, документация и статический сайт для практики инструментов DevOps.",
+    "stack": [
+      "Shell",
+      "Git",
+      "HTML",
+      "DevOps"
+    ],
+    "repo": "devops-course-2026",
+    "path": "projects/devops/devops-course",
+    "files": 8
+  },
+  {
+    "language": "Python",
+    "slug": "flask-redis",
+    "title": "Счётчик Flask + Redis",
+    "description": "Учебный сервис-счётчик на Flask с Redis и конфигурацией Docker Compose.",
+    "stack": [
+      "Python",
+      "Flask",
+      "Redis",
+      "Docker Compose"
+    ],
+    "repo": "devops-kr2",
+    "path": "projects/python/flask-redis",
+    "files": 8
+  }
+]

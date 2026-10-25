@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evervess — Админ-панель</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f0f0f0; --sidebar-bg: #1a1a2e; --sidebar-text: #b0b0c0;
+    --accent: #3a8; --text-primary: #111; --text-secondary: #666;
+    --white: #fff; --border: #d0d0d0; --card-bg: #fff;
+  }
+  body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; display: flex; }
+  .sidebar { width: 200px; min-height: 100vh; background: var(--sidebar-bg); padding: 24px 0; flex-shrink: 0; }
+  .sidebar-logo { padding: 0 20px 20px; }
+  .sidebar-logo h1 { font-size: 18px; font-weight: 800; color: var(--white); }
+  .sidebar-logo span { font-size: 11px; color: var(--sidebar-text); display: block; margin-top: 2px; }
+  .sidebar-nav { list-style: none; margin-top: 8px; }
+  .sidebar-nav li a { display: block; padding: 10px 20px; color: var(--sidebar-text); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+  .sidebar-nav li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+  .sidebar-nav li a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(58,170,136,0.08); }
+  .main { flex: 1; padding: 28px 32px; }
+
+  .admin-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px;
+  }
+  .admin-header h2 { font-size: 24px; font-weight: 700; }
+  .admin-header .right { display: flex; gap: 12px; align-items: center; }
+  .search-input {
+    padding: 10px 16px; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 14px; font-family: inherit; outline: none; width: 200px;
+    background: var(--white);
+  }
+  .search-input:focus { border-color: var(--accent); }
+  .btn-add {
+    padding: 10px 20px; background: var(--accent); color: var(--white);
+    border: none; border-radius: 8px; font-size: 14px; font-weight: 700;
+    font-family: inherit; cursor: pointer;
+  }
+  .btn-add:hover { opacity: 0.9; }
+  .sub-text { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; }
+
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--card-bg); border-radius: 12px; padding: 18px 20px;
+    border: 1px solid #e8e8e8;
+  }
+  .stat-card .stat-label { font-size: 12px; color: var(--text-secondary); font-weight: 600; }
+  .stat-card .stat-value { font-size: 26px; font-weight: 800; margin-top: 4px; }
+  .stat-card .stat-change { font-size: 12px; margin-top: 4px; }
+  .stat-card .stat-change.up { color: var(--accent); }
+  .stat-card .stat-change.neutral { color: var(--text-secondary); }
+
+  .clients-table {
+    background: var(--card-bg); border-radius: 14px; overflow: hidden;
+  }
+  .table-header {
+    display: grid; grid-template-columns: 2fr 2fr 1.5fr 1fr 1fr;
+    padding: 14px 24px; font-size: 11px; font-weight: 700;
+    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;
+    border-bottom: 1px solid #eee;
+  }
+  .table-row {
+    display: grid; grid-template-columns: 2fr 2fr 1.5fr 1fr 1fr;
+    padding: 16px 24px; border-bottom: 1px solid #f0f0f0;
+    align-items: center; font-size: 14px;
+    transition: background 0.1s;
+  }
+  .table-row:hover { background: #fafafa; }
+  .table-row:last-child { border-bottom: none; }
+
+  .client-cell {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: var(--white);
+  }
+  .avatar.orange { background: #e67e22; }
+  .avatar.blue { background: #3498db; }
+  .avatar.purple { background: #9b59b6; }
+  .avatar.pink { background: #e84393; }
+  .client-name { font-weight: 600; }
+  .client-id { font-size: 11px; color: var(--text-secondary); }
+
+  .email-cell { color: var(--text-secondary); }
+  .balance-cell { font-weight: 600; }
+
+  .status-badge {
+    display: inline-block; padding: 4px 12px; border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+  }
+  .status-badge.active { background: #e0f7ec; color: #1a7a4a; }
+  .status-badge.blocked { background: #fde0e0; color: #c0392b; }
+
+  .action-link { color: var(--accent); font-weight: 600; cursor: pointer; font-size: 13px; }
+  .action-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h1>evervess</h1><span>Админ-панель</span></div>
+    <ul class="sidebar-nav">
+      <li><a href="#" class="active">Клиенты</a></li>
+      <li><a href="cards.html">Карты</a></li>
+      <li><a href="#">Транзакции</a></li>
+      <li><a href="#">Тарифы</a></li>
+      <li><a href="#">Настройки</a></li>
+    </ul>
+  </aside>
+  <main class="main">
+    <div class="admin-header">
+      <h2>Управление клиентами</h2>
+      <div class="right">
+        <input class="search-input" placeholder="Поиск...">
+        <button class="btn-add">Добавить клиента</button>
+      </div>
+    </div>
+    <div class="sub-text">Всего клиентов: 1,247</div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Активных клиентов</div>
+        <div class="stat-value">1,142</div>
+        <div class="stat-change up">+5.2% за месяц</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Новых за месяц</div>
+        <div class="stat-value">87</div>
+        <div class="stat-change up">+12.3% к прошлому</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Заблокировано</div>
+        <div class="stat-value">18</div>
+        <div class="stat-change neutral">1.4% от общего</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Общий баланс</div>
+        <div class="stat-value">₽2.4M</div>
+        <div class="stat-change up">+8.1% за месяц</div>
+      </div>
+    </div>
+
+    <div class="clients-table">
+      <div class="table-header">
+        <div>Клиент</div>
+        <div>Email</div>
+        <div>Баланс</div>
+        <div>Статус</div>
+        <div>Действия</div>
+      </div>
+      <div class="table-row">
+        <div class="client-cell">
+          <div class="avatar orange">И</div>
+          <div><div class="client-name">Иван Иванов</div><div class="client-id">ID: 12345</div></div>
+        </div>
+        <div class="email-cell">ivan@email.com</div>
+        <div class="balance-cell">245 678,90 ₽</div>
+        <div><span class="status-badge active">Активен</span></div>
+        <div><span class="action-link">Управление</span></div>
+      </div>
+      <div class="table-row">
+        <div class="client-cell">
+          <div class="avatar blue">М</div>
+          <div><div class="client-name">Мария Петрова</div><div class="client-id">ID: 12346</div></div>
+        </div>
+        <div class="email-cell">maria@email.com</div>
+        <div class="balance-cell">156 432,10 ₽</div>
+        <div><span class="status-badge active">Активен</span></div>
+        <div><span class="action-link">Управление</span></div>
+      </div>
+      <div class="table-row">
+        <div class="client-cell">
+          <div class="avatar purple">А</div>
+          <div><div class="client-name">Алексей Смирнов</div><div class="client-id">ID: 12347</div></div>
+        </div>
+        <div class="email-cell">alex@email.com</div>
+        <div class="balance-cell">89 543,50 ₽</div>
+        <div><span class="status-badge blocked">Заблокирован</span></div>
+        <div><span class="action-link">Управление</span></div>
+      </div>
+      <div class="table-row">
+        <div class="client-cell">
+          <div class="avatar pink">Е</div>
+          <div><div class="client-name">Елена Сидорова</div><div class="client-id">ID: 12348</div></div>
+        </div>
+        <div class="email-cell">elena@email.com</div>
+        <div class="balance-cell">342 890,75 ₽</div>
+        <div><span class="status-badge active">Активен</span></div>
+        <div><span class="action-link">Управление</span></div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

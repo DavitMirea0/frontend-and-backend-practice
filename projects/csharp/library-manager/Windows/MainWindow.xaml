@@ -1,0 +1,205 @@
+<Window x:Class="LibraryManager.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление библиотекой книг" 
+        Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F4F6">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" 
+                   Text="📚 Библиотека книг" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Foreground="#1F2937"
+                   Margin="0,0,0,15"/>
+
+        <!-- Панель фильтрации -->
+        <Border Grid.Row="1" 
+                Background="White" 
+                CornerRadius="8" 
+                Padding="15" 
+                Margin="0,0,0,15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.1" ShadowDepth="2"/>
+            </Border.Effect>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Поиск по названию -->
+                <Grid Grid.Column="0" Margin="0,0,15,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" 
+                               Text="🔍 Поиск:" 
+                               VerticalAlignment="Center" 
+                               Margin="0,0,10,0"
+                               Foreground="#6B7280"/>
+                    <TextBox Grid.Column="1" 
+                             x:Name="SearchTextBox" 
+                             TextChanged="SearchTextBox_TextChanged"
+                             VerticalContentAlignment="Center"/>
+                </Grid>
+
+                <!-- Фильтр по автору -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,15,0">
+                    <TextBlock Text="Автор:" 
+                               VerticalAlignment="Center" 
+                               Margin="0,0,10,0"
+                               Foreground="#6B7280"/>
+                    <ComboBox x:Name="AuthorFilterComboBox" 
+                              Width="180"
+                              SelectionChanged="FilterComboBox_SelectionChanged"
+                              DisplayMemberPath="FullName"/>
+                </StackPanel>
+
+                <!-- Фильтр по жанру -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,15,0">
+                    <TextBlock Text="Жанр:" 
+                               VerticalAlignment="Center" 
+                               Margin="0,0,10,0"
+                               Foreground="#6B7280"/>
+                    <ComboBox x:Name="GenreFilterComboBox" 
+                              Width="150"
+                              SelectionChanged="FilterComboBox_SelectionChanged"
+                              DisplayMemberPath="Name"/>
+                </StackPanel>
+
+                <!-- Кнопка сброса фильтров -->
+                <Button Grid.Column="3" 
+                        Content="Сбросить" 
+                        Click="ResetFilters_Click"
+                        Style="{StaticResource PrimaryButton}"
+                        Background="#6B7280"/>
+            </Grid>
+        </Border>
+
+        <!-- Таблица книг -->
+        <Border Grid.Row="2" 
+                Background="White" 
+                CornerRadius="8"
+                Margin="0,0,0,15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.1" ShadowDepth="2"/>
+            </Border.Effect>
+            
+            <DataGrid x:Name="BooksDataGrid"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      HeadersVisibility="Column"
+                      BorderThickness="0"
+                      Background="White">
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Title}" Width="*"/>
+                    <DataGridTextColumn Header="Автор" Binding="{Binding Author.FullName}" Width="150"/>
+                    <DataGridTextColumn Header="Жанр" Binding="{Binding Genre.Name}" Width="120"/>
+                    <DataGridTextColumn Header="Год" Binding="{Binding PublishYear}" Width="70"/>
+                    <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}" Width="150"/>
+                    <DataGridTextColumn Header="В наличии" Binding="{Binding QuantityInStock}" Width="80">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding QuantityInStock}" Value="0">
+                                        <Setter Property="Foreground" Value="#DC2626"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- Панель кнопок -->
+        <Border Grid.Row="3" 
+                Background="White" 
+                CornerRadius="8" 
+                Padding="15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.1" ShadowDepth="2"/>
+            </Border.Effect>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Кнопки управления книгами -->
+                <Button Grid.Column="0" 
+                        Content="➕ Добавить книгу" 
+                        Click="AddBook_Click"
+                        Style="{StaticResource PrimaryButton}"
+                        Margin="0,0,10,0"/>
+                
+                <Button Grid.Column="1" 
+                        Content="✏️ Редактировать" 
+                        Click="EditBook_Click"
+                        Style="{StaticResource PrimaryButton}"
+                        Background="#059669"
+                        Margin="0,0,10,0"/>
+                
+                <Button Grid.Column="2" 
+                        Content="🗑️ Удалить" 
+                        Click="DeleteBook_Click"
+                        Style="{StaticResource DangerButton}"/>
+
+                <!-- Статистика -->
+                <TextBlock Grid.Column="3" 
+                           x:Name="StatsTextBlock"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="#6B7280"/>
+
+                <!-- Кнопки управления справочниками -->
+                <Button Grid.Column="4" 
+                        Content="👤 Авторы" 
+                        Click="ManageAuthors_Click"
+                        Style="{StaticResource PrimaryButton}"
+                        Background="#7C3AED"
+                        Margin="0,0,10,0"/>
+                
+                <Button Grid.Column="5" 
+                        Content="📂 Жанры" 
+                        Click="ManageGenres_Click"
+                        Style="{StaticResource PrimaryButton}"
+                        Background="#DB2777"
+                        Margin="0,0,10,0"/>
+                
+                <Button Grid.Column="6" 
+                        Content="🔄 Обновить" 
+                        Click="Refresh_Click"
+                        Style="{StaticResource PrimaryButton}"
+                        Background="#0891B2"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

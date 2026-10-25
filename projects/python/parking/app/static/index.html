@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Парковка университета</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f2f4f8; color: #222; }
+    header { background: #1f3a68; color: white; padding: 16px 24px; }
+    header h1 { margin: 0; font-size: 22px; }
+    header p { margin: 4px 0 0; font-size: 13px; opacity: 0.8; }
+    main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    .card { background: white; border-radius: 8px; padding: 16px; margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+    .card h2 { margin: 0 0 12px; font-size: 17px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 800px) { .grid2 { grid-template-columns: 1fr; } }
+
+    /* сводка */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .stat { border-radius: 8px; padding: 12px; text-align: center; color: white; }
+    .stat b { display: block; font-size: 28px; }
+    .stat.total { background: #607d8b; } .stat.free { background: #2e9e5b; }
+    .stat.occupied { background: #d64545; } .stat.reserved { background: #e0a020; }
+    .zone-row { margin-top: 12px; font-size: 14px; }
+    .bar { height: 10px; background: #e3e6ec; border-radius: 5px; overflow: hidden; margin-top: 4px; display: flex; }
+    .bar div { height: 100%; }
+
+    /* карта мест */
+    .zone-title { margin: 12px 0 6px; font-weight: bold; font-size: 14px; }
+    .spots { display: flex; flex-wrap: wrap; gap: 6px; }
+    .spot { width: 44px; height: 40px; border-radius: 5px; color: white; font-size: 12px;
+            display: flex; align-items: center; justify-content: center; cursor: default; }
+    .spot.free { background: #2e9e5b; } .spot.occupied { background: #d64545; }
+    .spot.reserved { background: #e0a020; } .spot.closed { background: #9e9e9e; }
+    .spot.disabled { outline: 2px solid #1f3a68; }
+    .legend { font-size: 12px; margin-top: 10px; color: #555; }
+    .legend span { display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+                   margin: 0 4px 0 12px; vertical-align: middle; }
+
+    /* формы */
+    label { display: block; font-size: 13px; margin: 8px 0 3px; color: #444; }
+    input, select { width: 100%; padding: 8px; border: 1px solid #c5cbd6; border-radius: 5px; font-size: 14px; }
+    button { padding: 8px 14px; border: none; border-radius: 5px; background: #1f3a68;
+             color: white; font-size: 14px; cursor: pointer; margin-top: 10px; }
+    button:hover { background: #2c5195; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    #login-form { max-width: 440px; }
+    button.green { background: #2e9e5b; } button.red { background: #d64545; }
+    button.small { padding: 4px 8px; font-size: 12px; margin: 0; }
+    .row { display: flex; gap: 8px; }
+    .row > * { flex: 1; }
+
+    #message { position: fixed; top: 12px; right: 12px; max-width: 360px; padding: 12px 16px;
+               border-radius: 6px; color: white; font-size: 14px; display: none; z-index: 10; }
+    #message.ok { background: #2e9e5b; } #message.error { background: #d64545; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 6px; border-bottom: 1px solid #e3e6ec; }
+    th { background: #f2f4f8; }
+
+    /* график прогноза */
+    .chart { display: flex; align-items: flex-end; gap: 6px; height: 180px; margin-top: 12px; }
+    .col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+    .col .value { font-size: 11px; margin-bottom: 2px; }
+    .col .column { width: 100%; border-radius: 4px 4px 0 0; min-height: 2px; }
+    .col .hour { font-size: 11px; margin-top: 4px; color: #555; }
+    .low { background: #2e9e5b; } .medium { background: #e0a020; } .high { background: #d64545; }
+    .col.best .hour { font-weight: bold; color: #1f3a68; }
+    .recommend { background: #e8f1ff; border-left: 4px solid #1f3a68; padding: 10px; margin-top: 12px; font-size: 14px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Система парковки университета</h1>
+  <p>РТУ МИРЭА · Создание программного обеспечения</p>
+</header>
+
+<div id="message"></div>
+
+<main>
+<section aria-label="Учётная запись" style="background:white;padding:20px;margin-bottom:16px">
+<h2>Учётная запись</h2>
+<form id="login-form">
+<label for="login-email">Почта</label><input id="login-email" type="email" autocomplete="username" required>
+<label for="login-password">Пароль</label><input id="login-password" type="password" autocomplete="current-password" required>
+<button id="login-submit" type="submit">Войти</button>
+<button id="logout" type="button" hidden>Выйти</button>
+</form>
+<p id="account-status" role="status">Для регистрации автомобиля и бронирования войдите в систему.</p>
+</section>
+  <!-- 1. Сводка -->
+  <div class="card">
+    <h2>Загрузка парковки сейчас</h2>
+    <div class="stats" id="stats"></div>
+    <div id="zone-stats"></div>
+  </div>
+
+  <!-- 2. Карта мест -->
+  <div class="card">
+    <h2>Карта мест</h2>
+    <div id="spot-map"></div>
+    <div class="legend">
+      <span style="background:#2e9e5b"></span>свободно
+      <span style="background:#d64545"></span>занято
+      <span style="background:#e0a020"></span>забронировано
+      <span style="background:#9e9e9e"></span>закрыто
+      <span style="background:white; border:2px solid #1f3a68"></span>для маломобильных
+    </div>
+  </div>
+
+  <!-- 3. Прогноз -->
+  <div class="card">
+    <h2>Прогноз загрузки и лучшее время приезда</h2>
+    <label for="forecast-date">Дата</label>
+    <input type="date" id="forecast-date" style="max-width: 200px">
+    <div class="chart" id="chart"></div>
+    <div class="recommend" id="recommend"></div>
+  </div>
+
+  <div class="grid2">
+    <!-- 4. Въезд / выезд -->
+    <div class="card">
+      <h2>Въезд и выезд</h2>
+      <label for="gate-plate">Госномер</label>
+      <input id="gate-plate" placeholder="например, А123ВС777">
+      <label for="gate-zone">Зона (необязательно)</label>
+      <select id="gate-zone"><option value="">любая</option></select>
+      <div class="row">
+        <button class="green" id="btn-enter">Въезд</button>
+        <button class="red" id="btn-exit">Выезд</button>
+      </div>
+    </div>
+
+    <!-- 5. Регистрация -->
+    <div class="card">
+      <h2>Регистрация автомобиля</h2>
+      <label for="reg-name">ФИО</label>
+      <input id="reg-name" placeholder="Иванов Иван">
+      <div class="row">
+        <div><label for="reg-email">Почта</label><input id="reg-email" placeholder="ivanov@mail.ru"></div>
+        <div><label for="reg-role">Роль</label>
+          <label for="reg-password">Пароль для регистрации</label><input id="reg-password" type="password" autocomplete="new-password" minlength="10" aria-label="Пароль новой учётной записи">
+          <small>Пароль новой учётной записи — от 10 символов. После входа автомобиль добавляется к вашей учётной записи.</small>
+          <select id="reg-role">
+            <option value="student">студент</option><option value="teacher">преподаватель</option>
+            <option value="staff">сотрудник</option><option value="guest">гость</option>
+          </select></div>
+      </div>
+      <div class="row">
+        <div><label for="reg-plate">Госномер</label><input id="reg-plate" placeholder="А123ВС777"></div>
+        <div><label for="reg-model">Марка</label><input id="reg-model" placeholder="Kia Rio"></div>
+      </div>
+      <button id="btn-register">Зарегистрировать</button>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <!-- 6. Бронирование -->
+    <div class="card">
+      <h2>Бронирование места</h2>
+      <label for="res-plate">Госномер</label>
+      <input id="res-plate" placeholder="А123ВС777">
+      <div class="row">
+        <div><label for="res-zone">Зона</label><select id="res-zone"></select></div>
+        <div><label for="res-spot">Место</label><select id="res-spot"></select></div>
+      </div>
+      <div class="row">
+        <div><label for="res-start">Начало</label><input type="datetime-local" id="res-start"></div>
+        <div><label for="res-end">Конец</label><input type="datetime-local" id="res-end"></div>
+      </div>
+      <button id="btn-reserve">Забронировать</button>
+    </div>
+
+    <!-- 7. Список броней -->
+    <div class="card">
+      <h2>Активные брони</h2>
+      <table>
+        <thead><tr><th>Номер</th><th>Место</th><th>Время</th><th></th></tr></thead>
+        <tbody id="reservations"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8. Машины на парковке -->
+  <div class="card">
+    <h2>Сейчас на парковке</h2>
+    <table>
+      <thead><tr><th>Номер</th><th>Зона</th><th>Место</th><th>Въезд</th><th>Стоит, мин</th></tr></thead>
+      <tbody id="sessions"></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+// ---------- вспомогательные функции ----------
+const $ = (id) => document.getElementById(id);
+let authToken = sessionStorage.getItem("parking-token");
+let currentUser = null;
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function loadAccount() {
+  currentUser = authToken ? await api("/api/auth/me") : null;
+  $("account-status").textContent = currentUser ? `${currentUser.full_name} (${currentUser.access_role})` : "Войдите или создайте учётную запись в форме регистрации ниже.";
+  $("logout").hidden = !currentUser;
+  $("btn-enter").disabled = $("btn-exit").disabled = !currentUser || currentUser.access_role === "user";
+}
+$("login-form").onsubmit = async (event) => {
+  event.preventDefault();
+  $("login-submit").disabled = true;
+  try {
+    const result = await api("/api/auth/login", "POST", {email: $("login-email").value, password: $("login-password").value});
+    authToken = result.access_token;
+    sessionStorage.setItem("parking-token", authToken);
+    $("login-password").value = "";
+    await loadAccount(); await refreshAll();
+  } catch (e) { $("account-status").textContent = e.message; }
+  finally { $("login-submit").disabled = false; }
+};
+$("logout").onclick = async () => {
+  try { await api("/api/auth/logout", "POST"); }
+  finally { authToken = null; sessionStorage.removeItem("parking-token"); await loadAccount(); await refreshAll(); }
+};
+
+// запрос к API; при ошибке выбрасываем исключение с текстом от сервера
+async function api(url, method = "GET", body = null) {
+  const options = { method: method, headers: { "Content-Type": "application/json" } };
+  if (authToken) options.headers.Authorization = "Bearer " + authToken;
+  if (body) options.body = JSON.stringify(body);
+  const response = await fetch(url, options);
+  const data = await response.json().catch(() => ({}));
+  if (response.status === 401) { authToken = null; sessionStorage.removeItem("parking-token"); currentUser = null; }
+  if (!response.ok) {
+    let text = data.detail;
+    if (Array.isArray(text)) text = "Проверьте правильность заполнения полей";
+    throw new Error(text || "Ошибка сервера");
+  }
+  return data;
+}
+
+let messageTimer = null;
+function showMessage(text, type) {
+  const box = $("message");
+  box.textContent = text;
+  box.className = type;
+  box.style.display = "block";
+  clearTimeout(messageTimer);
+  messageTimer = setTimeout(() => { box.style.display = "none"; }, 4000);
+}
+
+// показать сообщение об ошибке, если запрос не удался
+async function run(action, successText) {
+  try {
+    const result = await action();
+    if (successText) showMessage(typeof successText === "function" ? successText(result) : successText, "ok");
+    await refreshAll();
+    return result;
+  } catch (e) {
+    showMessage(e.message, "error");
+  }
+}
+
+function formatTime(iso) {
+  // "2026-09-30T09:00:00" -> "30.09 09:00"
+  const [date, time] = iso.split("T");
+  const [y, m, d] = date.split("-");
+  return d + "." + m + " " + time.slice(0, 5);
+}
+
+function toInputValue(date) {
+  // Date -> строка для datetime-local (в местном времени)
+  const pad = (n) => String(n).padStart(2, "0");
+  return date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate())
+       + "T" + pad(date.getHours()) + ":" + pad(date.getMinutes());
+}
+
+// ---------- сводка и карта мест ----------
+async function loadStats() {
+  const s = await api("/api/stats");
+  $("stats").innerHTML =
+    `<div class="stat total"><b>${s.total}</b>всего мест</div>` +
+    `<div class="stat free"><b>${s.free}</b>свободно</div>` +
+    `<div class="stat occupied"><b>${s.occupied}</b>занято</div>` +
+    `<div class="stat reserved"><b>${s.reserved}</b>забронировано</div>`;
+
+  $("zone-stats").innerHTML = s.zones.map((z) => {
+    const o = z.total ? (z.occupied / z.total) * 100 : 0;
+    const r = z.total ? (z.reserved / z.total) * 100 : 0;
+    return `<div class="zone-row">${escapeHtml(z.zone_name)}: свободно ${z.free} из ${z.total}
+      <div class="bar"><div style="width:${o}%;background:#d64545"></div>
+      <div style="width:${r}%;background:#e0a020"></div></div></div>`;
+  }).join("");
+}
+
+async function loadSpots() {
+  const spots = await api("/api/spots");
+  const zones = {};
+  spots.forEach((sp) => {
+    if (!zones[sp.zone_name]) zones[sp.zone_name] = [];
+    zones[sp.zone_name].push(sp);
+  });
+  let html = "";
+  for (const name in zones) {
+    html += `<div class="zone-title">${escapeHtml(name)}</div><div class="spots">`;
+    zones[name].forEach((sp) => {
+      const title = sp.plate ? "Занято: " + sp.plate : sp.status;
+      const cls = sp.status + (sp.kind === "disabled" ? " disabled" : "");
+      html += `<div class="spot ${cls}" title="${escapeHtml(title)}">${sp.number}</div>`;
+    });
+    html += "</div>";
+  }
+  $("spot-map").innerHTML = html;
+}
+
+// ---------- прогноз ----------
+async function loadForecast() {
+  const day = $("forecast-date").value;
+  const f = await api("/api/forecast" + (day ? "?day=" + day : ""));
+  $("chart").innerHTML = f.hours.map((h) => {
+    const best = h.hour === f.best_hour ? " best" : "";
+    return `<div class="col${best}"><div class="value">${h.load_percent}%</div>
+      <div class="column ${h.level}" style="height:${h.load_percent * 1.3}px"></div>
+      <div class="hour">${h.hour}</div></div>`;
+  }).join("");
+  $("recommend").textContent = f.message + (f.days_used ? ` (по данным за ${f.days_used} нед.)` : "");
+}
+
+// ---------- зоны и места для формы брони ----------
+let zonesLoaded = false;
+async function loadZones() {
+  if (zonesLoaded) return;
+  const zones = await api("/api/zones");
+  $("gate-zone").innerHTML = '<option value="">любая</option>' +
+    zones.map((z) => `<option value="${z.id}">${escapeHtml(z.name)}</option>`).join("");
+  $("res-zone").innerHTML = zones.map((z) => `<option value="${z.id}">${escapeHtml(z.name)}</option>`).join("");
+  zonesLoaded = true;
+  await loadSpotOptions();
+}
+
+async function loadSpotOptions() {
+  const zoneId = $("res-zone").value;
+  if (!zoneId) return;
+  const spots = await api("/api/spots?zone_id=" + zoneId);
+  $("res-spot").innerHTML = spots
+    .filter((s) => s.status !== "closed")
+    .map((s) => `<option value="${s.id}">№ ${s.number}${s.kind === "disabled" ? " (для маломобильных)" : ""}</option>`)
+    .join("");
+}
+
+// ---------- брони и стоянки ----------
+async function loadReservations() {
+  const items = currentUser ? await api("/api/reservations?status=active") : [];
+  const now = new Date();
+  const actual = items.filter((r) => new Date(r.end_time) > now).reverse();
+  $("reservations").innerHTML = actual.length ? actual.map((r) =>
+    `<tr><td>${escapeHtml(r.plate)}</td><td>${escapeHtml(r.zone_name.slice(0, 6))}, №${r.spot_number}</td>
+     <td>${formatTime(r.start_time)} - ${formatTime(r.end_time).slice(6)}</td>
+     <td><button class="small red" onclick="cancelReservation(${r.id})">Отмена</button></td></tr>`
+  ).join("") : '<tr><td colspan="4">Активных броней нет</td></tr>';
+}
+
+async function loadSessions() {
+  const items = currentUser ? await api("/api/sessions?active=true") : [];
+  $("sessions").innerHTML = items.length ? items.map((s) =>
+    `<tr><td>${escapeHtml(s.plate)}</td><td>${escapeHtml(s.zone_name)}</td><td>${s.spot_number}</td>
+     <td>${formatTime(s.entry_time)}</td><td>${s.minutes}</td></tr>`
+  ).join("") : '<tr><td colspan="5">Парковка пуста</td></tr>';
+}
+
+async function refreshAll() {
+  await Promise.all([loadStats(), loadSpots(), loadReservations(), loadSessions(), loadForecast()]);
+  await loadSpotOptions();
+}
+
+// ---------- действия пользователя ----------
+$("btn-enter").onclick = () => run(
+  () => api("/api/entries", "POST", {
+    plate: $("gate-plate").value,
+    zone_id: $("gate-zone").value ? Number($("gate-zone").value) : null,
+  }),
+  (r) => `Въезд разрешён: ${r.zone_name}, место №${r.spot_number}`
+);
+
+$("btn-exit").onclick = () => run(
+  () => api("/api/exits", "POST", { plate: $("gate-plate").value }),
+  (r) => `Выезд оформлен. Время на парковке: ${r.minutes} мин.`
+);
+
+$("btn-register").onclick = () => run(async () => {
+  let user = currentUser;
+  if (!user) {
+    await api("/api/auth/register", "POST", {
+      full_name: $("reg-name").value, email: $("reg-email").value, role: $("reg-role").value, password: $("reg-password").value,
+    });
+    const result = await api("/api/auth/login", "POST", {email: $("reg-email").value, password: $("reg-password").value});
+    authToken = result.access_token; sessionStorage.setItem("parking-token", authToken);
+    $("reg-password").value = "";
+    await loadAccount(); user = currentUser;
+  }
+  return api("/api/cars", "POST", {
+    plate: $("reg-plate").value, model: $("reg-model").value || null, owner_id: user.id,
+  });
+}, (c) => `Автомобиль ${c.plate} зарегистрирован (владелец: ${c.owner_name})`);
+
+$("btn-reserve").onclick = () => run(
+  () => api("/api/reservations", "POST", {
+    plate: $("res-plate").value,
+    spot_id: Number($("res-spot").value),
+    start_time: $("res-start").value,
+    end_time: $("res-end").value,
+  }),
+  "Место забронировано"
+);
+
+function cancelReservation(id) {
+  run(() => api("/api/reservations/" + id + "/cancel", "POST"), "Бронь отменена");
+}
+
+$("res-zone").onchange = loadSpotOptions;
+$("forecast-date").onchange = loadForecast;
+
+// ---------- запуск ----------
+(function start() {
+  // значения по умолчанию: бронь со следующего часа на 2 часа
+  const start = new Date();
+  start.setHours(start.getHours() + 1, 0, 0, 0);
+  const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+  $("res-start").value = toInputValue(start);
+  $("res-end").value = toInputValue(end);
+  $("forecast-date").value = toInputValue(new Date()).slice(0, 10);
+
+  loadAccount().catch(() => loadAccount()).then(loadZones).then(refreshAll).catch((e) => showMessage(e.message, "error"));
+  setInterval(() => refreshAll().catch(() => {}), 15000);  // автообновление
+})();
+</script>
+</body>
+</html>

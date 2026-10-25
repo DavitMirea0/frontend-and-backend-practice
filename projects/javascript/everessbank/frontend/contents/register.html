@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evervess — Регистрация</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0e0e1a;
+    --card-bg: #1a1a2e;
+    --accent: #3a8;
+    --text: #e0e0e8;
+    --text-muted: #7a7a90;
+    --input-bg: #12121f;
+    --input-border: #2a2a40;
+    --white: #fff;
+  }
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .register-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 36px 36px;
+    width: 380px;
+    max-width: 95vw;
+  }
+  .logo {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .logo span {
+    display: inline-block;
+    background: var(--white);
+    color: #111;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 8px 18px;
+    border-radius: 8px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  .field {
+    margin-bottom: 14px;
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+  }
+  .field input {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field input:focus { border-color: var(--accent); }
+  .field input::placeholder { color: #555568; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 18px 0 22px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .checkbox-row input { accent-color: var(--accent); margin-top: 2px; }
+  .checkbox-row a { color: var(--accent); text-decoration: none; }
+  .checkbox-row a:hover { text-decoration: underline; }
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    margin-bottom: 18px;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .footer-link {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .footer-link a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .footer-link a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="register-card">
+    <div class="logo"><span>evervess</span></div>
+    <h2>Регистрация</h2>
+    <div class="row">
+      <div class="field">
+        <label>Имя</label>
+        <input type="text" placeholder="Иван">
+      </div>
+      <div class="field">
+        <label>Фамилия</label>
+        <input type="text" placeholder="Иванов">
+      </div>
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" placeholder="your@email.com">
+    </div>
+    <div class="field">
+      <label>Телефон</label>
+      <input type="tel" placeholder="+7 (999) 123-45-67">
+    </div>
+    <div class="field">
+      <label>Пароль</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+    <div class="field">
+      <label>Подтвердите пароль</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+    <div class="checkbox-row">
+      <input type="checkbox">
+      <span>Я принимаю условия <a href="#">пользовательского соглашения</a></span>
+    </div>
+    <button class="btn-primary">Создать аккаунт</button>
+    <div class="footer-link">Уже есть аккаунт? <a href="login.html">Войти</a></div>
+  </div>
+</body>
+</html>

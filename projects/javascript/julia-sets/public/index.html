@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Множества Жюлиа</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header>
+  <h1>Множества Жюлиа</h1>
+  <p>Комплексные числа в программировании: каждый пиксель это число z, к нему многократно применяют формулу.</p>
+</header>
+<main>
+  <section class="view">
+    <canvas id="cv" width="500" height="500" aria-label="Множество Жюлиа"></canvas>
+    <p id="status" class="muted">Загрузка...</p>
+  </section>
+  <aside>
+    <h2>Функция</h2>
+    <div id="presets" class="presets">
+      <button data-fn="quad" data-cr="-0.1" data-ci="0.65">z² + c, c = −0,1 + 0,65i</button>
+      <button data-fn="quad" data-cr="0.28" data-ci="0.009">z² + c, c = 0,28 + 0,009i</button>
+      <button data-fn="r1">(i·z⁵ − 1) / (z⁵ − i)</button>
+      <button data-fn="r2">(z² + i) / (1 − z²)</button>
+    </div>
+    <p class="formula">f(z) = <span id="formula"></span></p>
+
+    <h2>Параметры</h2>
+    <label id="rowCr">Re c <output id="oCr"></output><input id="cr" type="range" min="-1.5" max="1.5" step="0.001"></label>
+    <label id="rowCi">Im c <output id="oCi"></output><input id="ci" type="range" min="-1.5" max="1.5" step="0.001"></label>
+    <label>Лимит итераций <output id="oNmax"></output><input id="nmax" type="range" min="10" max="1000" step="10"></label>
+    <label>Порог |z| <output id="oZmax"></output><input id="zmax" type="range" min="2" max="50" step="1"></label>
+    <label>Окно: от −a до a, a = <output id="oWin"></output><input id="win" type="range" min="0.3" max="3" step="0.05"></label>
+    <label>Цвета
+      <select id="pal">
+        <option value="fire">Огонь</option>
+        <option value="ice">Лёд</option>
+        <option value="bands">Полосы</option>
+      </select>
+    </label>
+
+    <h2>Орбита точки</h2>
+    <p class="muted">Нажмите на картинку: покажем первые 10 шагов z → f(z) для этой точки.</p>
+    <div id="orbit"></div>
+  </aside>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

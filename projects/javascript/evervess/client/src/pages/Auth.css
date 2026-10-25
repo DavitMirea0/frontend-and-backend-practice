@@ -1,0 +1,18 @@
+.auth-page { min-height: 100vh; background: #0e0e1a; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.auth-card { background: #1a1a2e; border-radius: 16px; padding: 40px 36px; width: 400px; max-width: 95vw; }
+.auth-logo { text-align: center; margin-bottom: 8px; }
+.auth-logo span { display: inline-block; background: #fff; color: #111; font-weight: 800; font-size: 16px; padding: 8px 18px; border-radius: 8px; }
+.auth-subtitle { text-align: center; color: #7a7a90; font-size: 13px; margin-bottom: 20px; }
+.auth-card h2 { font-size: 22px; font-weight: 700; color: #e0e0e8; margin-bottom: 22px; }
+.auth-error { background: rgba(220,60,60,0.15); color: #ff6b6b; padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; }
+.auth-card .field { margin-bottom: 16px; }
+.auth-card .field label { display: block; font-size: 13px; font-weight: 600; color: #7a7a90; margin-bottom: 6px; }
+.auth-card .field input { width: 100%; padding: 12px 14px; background: #12121f; border: 1px solid #2a2a40; border-radius: 8px; color: #e0e0e8; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+.auth-card .field input:focus { border-color: #33aa88; }
+.auth-card .field input::placeholder { color: #555568; }
+.auth-card .btn-primary { width: 100%; padding: 14px; background: #33aa88; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; margin-top: 6px; transition: opacity 0.2s; }
+.auth-card .btn-primary:hover { opacity: 0.9; }
+.auth-card .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.auth-footer { text-align: center; font-size: 13px; color: #7a7a90; margin-top: 20px; }
+.auth-footer a { color: #33aa88; text-decoration: none; font-weight: 600; }
+.auth-footer a:hover { text-decoration: underline; }

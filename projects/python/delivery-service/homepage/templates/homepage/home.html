@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Заказы на доставку</h1>
+<p>Приложение для просмотра доставок, зон обслуживания и статистики по типам груза.</p>
+<section class="summary">
+    <h2>Общая информация</h2>
+    <p>Всего доставок: <strong>{{ total }}</strong></p>
+    <a class="button" href="{% url 'deliveries:list' %}">Список доставок</a>
+    <a class="secondary" href="{% url 'zones:list' %}">Зоны обслуживания</a>
+</section>
+<section class="intro">
+    <h2>Возможности приложения</h2>
+    <ul>
+        <li>Фильтрация по минимальному количеству посылок.</li>
+        <li>Сортировка и ограничение количества заказов.</li>
+        <li>Просмотр информации о доставке и её зоне.</li>
+        <li>Статистика по типам груза.</li>
+    </ul>
+    <a href="{% url 'deliveries:statistics' %}">Открыть статистику</a>
+</section>
+{% endblock %}

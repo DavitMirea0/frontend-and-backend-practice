@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="root" fx:controller="ru.mirea.project.controller.EmployeeFormController" spacing="14" prefWidth="540" styleClass="form">
+ <Label fx:id="title" text="Сотрудник" styleClass="section-title"/><Label text="Все поля обязательны. Email должен быть уникальным." styleClass="muted"/>
+ <VBox spacing="6"><Label text="ФИО (до 120 символов)"/><TextField fx:id="fullName"/></VBox>
+ <VBox spacing="6"><Label text="Email (до 160 символов)"/><TextField fx:id="email" promptText="name@example.org"/></VBox>
+ <VBox spacing="6"><Label text="Отдел (до 100 символов)"/><TextField fx:id="department"/></VBox>
+ <Label fx:id="error" minHeight="38" wrapText="true" maxWidth="Infinity" styleClass="error-text"/>
+ <HBox alignment="CENTER_RIGHT" spacing="10"><Button text="Отмена" onAction="#cancel" cancelButton="true"/><Button text="Сохранить" onAction="#save" defaultButton="true" styleClass="primary"/></HBox>
+</VBox>

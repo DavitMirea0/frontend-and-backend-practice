@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>КР1</title>
+        <title>Контакты — Портфолио Давида Хачатряна</title>
         <link rel="stylesheet" href="../style/styles.css">
         <style>
             /* Стили для модального окна */
@@ -186,11 +186,11 @@
             }
 
             @keyframes slideIn {
-                from { 
+                from {
                     opacity: 0;
                     transform: translateY(-50px) scale(0.9);
                 }
-                to { 
+                to {
                     opacity: 1;
                     transform: translateY(0) scale(1);
                 }
@@ -202,11 +202,11 @@
                     margin: 1rem;
                     width: calc(100vw - 2rem);
                 }
-                
+
                 .modal-actions {
                     flex-direction: column;
                 }
-                
+
                 .btn {
                     width: 100%;
                 }
@@ -224,13 +224,14 @@
     <body>
         <div class="page-container">
             <header class="header">
-                <h1>КР1</h1>
+                <h1>Портфолио</h1>
             </header>
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                    <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="../pages/projects.html">Проекты</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
+                    <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
                     <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
                 </ul>
@@ -239,7 +240,7 @@
             <main class="content">
                 <section class="contacts-container">
                     <h2 class="section-title">Мои контакты</h2>
-                    
+
                     <article class="contact-info">
                         <h3>Контактная информация</h3>
                         <p><strong>Имя:</strong> Хачатрян Давид Каренович</p>
@@ -264,7 +265,7 @@
                             <p>Instagran, Telegram</p>
                         </div>
                     </div>
-                    
+
                     <!-- Кнопка для открытия модального окна -->
                     <div style="text-align: center;">
                         <button class="contact-button" onclick="contactModal.showModal()">Связаться со мной</button>
@@ -281,7 +282,7 @@
                 <div class="modal-header">
                     <h2>Форма обратной связи</h2>
                 </div>
-                
+
                 <div class="modal-content">
                     <form id="feedbackForm" method="dialog">
                         <div class="form-group">
@@ -331,7 +332,7 @@
                 function submitForm() {
                     const form = document.getElementById('feedbackForm');
                     const formData = new FormData(form);
-                    
+
                     // Простая валидация
                     if (!form.checkValidity()) {
                         form.reportValidity();
@@ -349,13 +350,13 @@
 
                     // В реальном приложении здесь был бы AJAX-запрос
                     console.log('Данные формы:', data);
-                    
+
                     // Показываем уведомление об успешной отправке
                     alert('Спасибо! Ваше обращение отправлено. Я свяжусь с вами в ближайшее время.');
-                    
+
                     // Закрываем модальное окно
                     contactModal.close();
-                    
+
                     // Очищаем форму
                     form.reset();
                 }

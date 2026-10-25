@@ -1,0 +1,13 @@
+.sidebar { width: 210px; min-height: 100vh; background: #1a1a2e; padding: 24px 0; display: flex; flex-direction: column; flex-shrink: 0; }
+.sidebar-logo { padding: 0 20px 20px; }
+.sidebar-logo h1 { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+.sidebar-logo span { font-size: 11px; color: #b0b0c0; display: block; margin-top: 2px; }
+.sidebar-nav { display: flex; flex-direction: column; margin-top: 8px; flex: 1; }
+.nav-link { display: flex; align-items: center; gap: 10px; padding: 11px 20px; color: #b0b0c0; text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+.nav-link:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.nav-link.active { color: #33aa88; border-left-color: #33aa88; background: rgba(58,170,136,0.08); }
+.nav-icon { font-size: 16px; width: 20px; text-align: center; }
+.sidebar-footer { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+.sidebar-user { font-size: 13px; color: #888; margin-bottom: 8px; }
+.logout-btn { width: 100%; padding: 10px; background: rgba(255,255,255,0.06); color: #b0b0c0; border: none; border-radius: 8px; font-size: 13px; font-family: inherit; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.logout-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }

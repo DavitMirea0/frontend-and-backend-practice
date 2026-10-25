@@ -1,0 +1,113 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+$primary-color: #2ecc71;
+$text-color: #333;
+$bg-color: #f9f9f9;
+$border-radius: 12px;
+$font-family: 'Segoe UI', Tahoma, sans-serif;
+
+@mixin button($bg, $color: white) {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: $bg;
+  color: $color;
+  border-radius: $border-radius;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($bg, 10%);
+  }
+}
+
+// === Базовые стили ===
+.app {
+  margin: 0;
+  padding: 40px;
+  background-color: #eee;
+  font-family: $font-family;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+// === Карточка товара (вложенная структура BEM) ===
+.product-card {
+  width: 300px;
+  background-color: $bg-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  // Вложенный элемент: изображение
+  &__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Вложенный элемент: контент
+  &__content {
+    padding: 16px;
+  }
+
+  // Вложенный элемент: название
+  &__title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    color: $text-color;
+  }
+
+  // Вложенный элемент: описание
+  &__description {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: lighten($text-color, 25%);
+    line-height: 1.5;
+  }
+
+  // Вложенный элемент: кнопка (используем миксин)
+  &__btn {
+    @include button($primary-color);
+  }
+}

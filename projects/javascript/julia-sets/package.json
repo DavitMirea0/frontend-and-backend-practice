@@ -1,0 +1,12 @@
+{
+  "name": "julia-site",
+  "version": "1.0.0",
+  "description": "Множества Жюлиа: демо к докладу по комплексным числам",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  }
+}

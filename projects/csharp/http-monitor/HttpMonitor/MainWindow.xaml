@@ -1,0 +1,332 @@
+<!--
+    ГЛАВНОЕ ОКНО — СИСТЕМА МОНИТОРИНГА HTTP-ЗАПРОСОВ
+    
+    Интерфейс разделён на 3 вкладки (TabControl):
+    1. Сервер — управление HTTP-сервером, логи входящих запросов
+    2. Клиент — отправка GET/POST запросов на внешние API
+    3. Мониторинг — статистика, графики нагрузки, фильтрация логов
+-->
+<Window x:Class="HttpMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HTTP Монитор — Практика №3" 
+        Height="750" Width="1050"
+        MinHeight="600" MinWidth="850"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+    
+    <Grid Margin="10">
+        <TabControl FontSize="13">
+            
+            <!--
+            ═══════════════════════════════════════════════
+            ВКЛАДКА 1: HTTP-СЕРВЕР
+            ═══════════════════════════════════════════════
+            -->
+            <TabItem Header="🖥 Сервер" Padding="8,4">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Панель управления сервером -->
+                    <GroupBox Header="Управление сервером" Grid.Row="0" Padding="10" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="Порт:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <TextBox x:Name="PortInput" Text="5000" Width="80" 
+                                     VerticalAlignment="Center" Margin="0,0,12,0"/>
+                            <Button x:Name="StartServerBtn" Content="▶ Запустить сервер" 
+                                    Click="StartServer_Click" Margin="0,0,8,0"/>
+                            <Button x:Name="StopServerBtn" Content="⏹ Остановить" 
+                                    Style="{StaticResource StopButton}"
+                                    Click="StopServer_Click" IsEnabled="False" Margin="0,0,8,0"/>
+                            <TextBlock x:Name="ServerStatusText" Text="⚫ Сервер остановлен" 
+                                       VerticalAlignment="Center" Margin="12,0,0,0" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Быстрая статистика -->
+                    <GroupBox Header="Статистика" Grid.Row="1" Padding="10" Margin="0,0,0,8">
+                        <WrapPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                <TextBlock Text="Всего запросов: " FontWeight="SemiBold"/>
+                                <TextBlock x:Name="TotalRequestsText" Text="0" Foreground="#0078D4"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                <TextBlock Text="GET: " FontWeight="SemiBold"/>
+                                <TextBlock x:Name="GetRequestsText" Text="0" Foreground="#4CAF50"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                <TextBlock Text="POST: " FontWeight="SemiBold"/>
+                                <TextBlock x:Name="PostRequestsText" Text="0" Foreground="#FF9800"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                <TextBlock Text="Среднее время: " FontWeight="SemiBold"/>
+                                <TextBlock x:Name="AvgTimeText" Text="0 мс" Foreground="#9C27B0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                                <TextBlock Text="Uptime: " FontWeight="SemiBold"/>
+                                <TextBlock x:Name="UptimeText" Text="—"/>
+                            </StackPanel>
+                        </WrapPanel>
+                    </GroupBox>
+
+                    <!-- Логи сервера -->
+                    <GroupBox Header="Логи входящих запросов" Grid.Row="2" Padding="5">
+                        <TextBox x:Name="ServerLogsTextBox" 
+                                 IsReadOnly="True" 
+                                 VerticalScrollBarVisibility="Auto"
+                                 HorizontalScrollBarVisibility="Auto"
+                                 FontFamily="Consolas" FontSize="12"
+                                 TextWrapping="NoWrap"
+                                 Background="#1E1E1E" Foreground="#D4D4D4"
+                                 Padding="8"/>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!--
+            ═══════════════════════════════════════════════
+            ВКЛАДКА 2: HTTP-КЛИЕНТ
+            ═══════════════════════════════════════════════
+            -->
+            <TabItem Header="📡 Клиент" Padding="8,4">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Настройки запроса -->
+                    <GroupBox Header="Настройки запроса" Grid.Row="0" Padding="10" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- URL -->
+                            <TextBlock Text="URL:" Grid.Row="0" Grid.Column="0" 
+                                       VerticalAlignment="Center" Margin="0,0,8,8"/>
+                            <TextBox x:Name="ClientUrlInput" Grid.Row="0" Grid.Column="1" 
+                                     Text="https://jsonplaceholder.typicode.com/posts" Margin="0,0,8,8"/>
+                            
+                            <!-- Метод -->
+                            <TextBlock Text="Метод:" Grid.Row="0" Grid.Column="2" 
+                                       VerticalAlignment="Center" Margin="0,0,8,8"/>
+                            <ComboBox x:Name="MethodComboBox" Grid.Row="0" Grid.Column="3" 
+                                      Width="100" Margin="0,0,0,8" SelectedIndex="0"
+                                      SelectionChanged="MethodComboBox_SelectionChanged">
+                                <ComboBoxItem Content="GET"/>
+                                <ComboBoxItem Content="POST"/>
+                            </ComboBox>
+
+                            <!-- Кнопка отправки -->
+                            <Button x:Name="SendRequestBtn" Content="🚀 Отправить запрос" 
+                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                                    Click="SendRequest_Click" HorizontalAlignment="Left" Margin="0,4,0,0"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Тело запроса (для POST) -->
+                    <GroupBox x:Name="RequestBodyGroup" Header="Тело запроса (JSON)" 
+                              Grid.Row="1" Padding="5" Margin="0,0,0,8"
+                              Visibility="Collapsed">
+                        <TextBox x:Name="RequestBodyInput" 
+                                 Height="100" 
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 AcceptsReturn="True"
+                                 FontFamily="Consolas" FontSize="12"
+                                 Text='{}{&quot;message&quot;: &quot;Привет от клиента!&quot;}'/>
+                    </GroupBox>
+
+                    <!-- Ответ -->
+                    <GroupBox Header="Ответ сервера" Grid.Row="2" Padding="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,5">
+                                <TextBlock Text="Статус: " FontWeight="SemiBold"/>
+                                <TextBlock x:Name="ResponseStatusText" Text="—"/>
+                                <TextBlock Text="  |  Время: " FontWeight="SemiBold" Margin="12,0,0,0"/>
+                                <TextBlock x:Name="ResponseTimeText" Text="—"/>
+                            </StackPanel>
+                            <TextBox x:Name="ResponseTextBox" Grid.Row="1"
+                                     IsReadOnly="True" 
+                                     VerticalScrollBarVisibility="Auto"
+                                     HorizontalScrollBarVisibility="Auto"
+                                     FontFamily="Consolas" FontSize="12"
+                                     TextWrapping="Wrap"
+                                     Background="#1E1E1E" Foreground="#D4D4D4"
+                                     Padding="8"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!--
+            ═══════════════════════════════════════════════
+            ВКЛАДКА 3: МОНИТОРИНГ И АНАЛИТИКА
+            ═══════════════════════════════════════════════
+            -->
+            <TabItem Header="📊 Мониторинг" Padding="8,4">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Сводная статистика -->
+                    <GroupBox Header="Сводная статистика" Grid.Row="0" Padding="10" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                                <TextBlock Text="Всего" HorizontalAlignment="Center" Foreground="Gray"/>
+                                <TextBlock x:Name="MonTotalText" Text="0" FontSize="24" 
+                                           FontWeight="Bold" HorizontalAlignment="Center" Foreground="#0078D4"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                <TextBlock Text="GET" HorizontalAlignment="Center" Foreground="Gray"/>
+                                <TextBlock x:Name="MonGetText" Text="0" FontSize="24" 
+                                           FontWeight="Bold" HorizontalAlignment="Center" Foreground="#4CAF50"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                                <TextBlock Text="POST" HorizontalAlignment="Center" Foreground="Gray"/>
+                                <TextBlock x:Name="MonPostText" Text="0" FontSize="24" 
+                                           FontWeight="Bold" HorizontalAlignment="Center" Foreground="#FF9800"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                                <TextBlock Text="Среднее (мс)" HorizontalAlignment="Center" Foreground="Gray"/>
+                                <TextBlock x:Name="MonAvgText" Text="0" FontSize="24" 
+                                           FontWeight="Bold" HorizontalAlignment="Center" Foreground="#9C27B0"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="4" HorizontalAlignment="Center">
+                                <TextBlock Text="Сообщений" HorizontalAlignment="Center" Foreground="Gray"/>
+                                <TextBlock x:Name="MonMsgText" Text="0" FontSize="24" 
+                                           FontWeight="Bold" HorizontalAlignment="Center" Foreground="#00BCD4"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="5" HorizontalAlignment="Center">
+                                <TextBlock Text="Uptime" HorizontalAlignment="Center" Foreground="Gray"/>
+                                <TextBlock x:Name="MonUptimeText" Text="—" FontSize="20" 
+                                           FontWeight="Bold" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- График нагрузки (простой текстовый) -->
+                    <GroupBox Header="Нагрузка по минутам (запросов/мин)" Grid.Row="1" Padding="5" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Content="🔄 Обновить график" Grid.Row="0" 
+                                    Click="RefreshChart_Click" HorizontalAlignment="Left"
+                                    Margin="0,0,0,5"/>
+                            <!-- Используем ItemsControl для отрисовки столбчатой диаграммы -->
+                            <ItemsControl x:Name="ChartItemsControl" Grid.Row="1">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" 
+                                                    VerticalAlignment="Bottom"
+                                                    HorizontalAlignment="Left"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="2,0" VerticalAlignment="Bottom" Width="50">
+                                            <TextBlock Text="{Binding Count}" 
+                                                       HorizontalAlignment="Center" FontSize="10"/>
+                                            <Border Background="#0078D4" 
+                                                    Height="{Binding BarHeight}" 
+                                                    CornerRadius="2,2,0,0"
+                                                    MinHeight="2"/>
+                                            <TextBlock Text="{Binding Minute}" 
+                                                       HorizontalAlignment="Center" FontSize="9"
+                                                       Foreground="Gray"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Фильтры -->
+                    <GroupBox Header="Фильтрация логов" Grid.Row="2" Padding="10" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Метод:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <ComboBox x:Name="FilterMethodComboBox" Width="100" Margin="0,0,16,0"
+                                      SelectionChanged="FilterChanged">
+                                <ComboBoxItem Content="Все" IsSelected="True"/>
+                                <ComboBoxItem Content="GET"/>
+                                <ComboBoxItem Content="POST"/>
+                            </ComboBox>
+
+                            <TextBlock Text="Направление:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <ComboBox x:Name="FilterDirectionComboBox" Width="120" Margin="0,0,16,0"
+                                      SelectionChanged="FilterChanged">
+                                <ComboBoxItem Content="Все" IsSelected="True"/>
+                                <ComboBoxItem Content="Входящий"/>
+                                <ComboBoxItem Content="Исходящий"/>
+                            </ComboBox>
+
+                            <TextBlock Text="Статус:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <ComboBox x:Name="FilterStatusComboBox" Width="120" Margin="0,0,16,0"
+                                      SelectionChanged="FilterChanged">
+                                <ComboBoxItem Content="Все" IsSelected="True"/>
+                                <ComboBoxItem Content="2xx (Успех)"/>
+                                <ComboBoxItem Content="4xx (Ошибка)"/>
+                                <ComboBoxItem Content="5xx (Сервер)"/>
+                            </ComboBox>
+
+                            <Button Content="📋 Сохранить логи в файл" Click="SaveLogs_Click"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- Таблица логов -->
+                    <GroupBox Header="Все логи" Grid.Row="3" Padding="5">
+                        <DataGrid x:Name="LogsDataGrid" 
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserSortColumns="True"
+                                  GridLinesVisibility="Horizontal"
+                                  AlternatingRowBackground="#F9F9F9"
+                                  FontSize="12">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Время" Binding="{Binding Timestamp, StringFormat=HH:mm:ss.fff}" Width="95"/>
+                                <DataGridTextColumn Header="Направл." Binding="{Binding Direction}" Width="85"/>
+                                <DataGridTextColumn Header="Метод" Binding="{Binding Method}" Width="60"/>
+                                <DataGridTextColumn Header="URL" Binding="{Binding Url}" Width="250"/>
+                                <DataGridTextColumn Header="Статус" Binding="{Binding StatusCode}" Width="60"/>
+                                <DataGridTextColumn Header="Время (мс)" Binding="{Binding ProcessingTimeMs}" Width="80"/>
+                                <DataGridTextColumn Header="Ответ" Binding="{Binding ResponseBody}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

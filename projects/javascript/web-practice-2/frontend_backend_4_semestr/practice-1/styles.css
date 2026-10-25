@@ -1,0 +1,22 @@
+.card {
+  background: black;
+  color: white;
+  font-size: 16px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: solid red 3px;
+}
+.card__title {
+  font-size: 32px;
+}
+.card__description {
+  color: grey;
+  font-size: 22px;
+}
+.card__photo {
+  border: solid green 5px;
+}
+
+/*# sourceMappingURL=styles.css.map */

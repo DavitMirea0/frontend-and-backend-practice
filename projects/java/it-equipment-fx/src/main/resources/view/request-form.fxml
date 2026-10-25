@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="root" fx:controller="ru.mirea.project.controller.RequestFormController" spacing="14" prefWidth="610" styleClass="form">
+ <Label fx:id="title" text="Заявка" styleClass="section-title"/>
+ <Label text="Все поля обязательны. Новая заявка получает статус «Новая»." wrapText="true" styleClass="muted"/>
+ <VBox spacing="6"><Label text="Сотрудник"/><ComboBox fx:id="employee" maxWidth="Infinity"/></VBox>
+ <VBox spacing="6"><Label text="Оборудование"/><ComboBox fx:id="equipment" maxWidth="Infinity"/></VBox>
+ <VBox spacing="6"><Label text="Количество, шт. (1–10)"/><TextField fx:id="quantity" promptText="1"/></VBox>
+ <VBox spacing="6"><Label text="Обоснование (до 500 символов)"/><TextArea fx:id="reason" wrapText="true" prefRowCount="4" promptText="Для какой задачи требуется оборудование"/></VBox>
+ <Label fx:id="error" minHeight="38" wrapText="true" maxWidth="Infinity" styleClass="error-text"/>
+ <HBox alignment="CENTER_RIGHT" spacing="10"><Button text="Отмена" onAction="#cancel" cancelButton="true"/><Button text="Сохранить" onAction="#save" defaultButton="true" styleClass="primary"/></HBox>
+</VBox>

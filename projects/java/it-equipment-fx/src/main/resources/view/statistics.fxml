@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.project.controller.StatisticsController" fitToWidth="true" styleClass="stats-scroll">
+ <content><VBox spacing="22" styleClass="page">
+  <VBox spacing="4"><Label text="Статистика выдачи" styleClass="section-title"/><Label text="Все заявки в базе. Показатели обновляются после сохранения и по кнопке «Обновить данные»." wrapText="true" styleClass="muted"/></VBox>
+  <FlowPane fx:id="metrics" hgap="14" vgap="14"/>
+  <Label text="Распределение по статусам" styleClass="section-title"/>
+  <BarChart fx:id="chart" legendVisible="false" animated="false" prefHeight="300" minHeight="260"><xAxis><CategoryAxis label="Статус заявки"/></xAxis><yAxis><NumberAxis label="Количество заявок" forceZeroInRange="true" minorTickVisible="false" tickUnit="1"/></yAxis></BarChart>
+ </VBox></content>
+</ScrollPane>

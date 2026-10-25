@@ -1,0 +1,45 @@
+.dashboard { max-width: 1100px; }
+.dash-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.dash-header h2 { font-size: 24px; font-weight: 700; }
+.dash-date { font-size: 13px; color: #33aa88; margin-top: 4px; }
+.user-badge { display: flex; align-items: center; gap: 10px; }
+.user-avatar { width: 40px; height: 40px; border-radius: 50%; background: #33aa88; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; }
+.user-name { font-weight: 600; font-size: 14px; }
+.user-email { font-size: 12px; color: #888; }
+.balance-row { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 20px; }
+.balance-card { background: linear-gradient(135deg, #1e1e3a, #2a2a50); border-radius: 14px; padding: 24px 28px; color: #fff; }
+.scores-balance { background: linear-gradient(135deg, #1a4a30, #2a5a3a); }
+.balance-label { font-size: 13px; color: #8888aa; margin-bottom: 6px; }
+.balance-amount { font-size: 30px; font-weight: 800; letter-spacing: -1px; }
+.quick-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; }
+.qa-btn { background: #ddd; border-radius: 10px; padding: 14px 12px; text-align: center; font-size: 13px; font-weight: 600; color: #111; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.qa-btn:hover { transform: translateY(-1px); opacity: 0.9; }
+.qa-accent { background: #33aa88; color: #fff; }
+.dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.section-head h3 { font-size: 16px; font-weight: 700; }
+.link-green { color: #33aa88; text-decoration: none; font-size: 13px; font-weight: 600; }
+.empty-text { color: #999; font-size: 14px; }
+.mini-card { border-radius: 12px; padding: 18px 20px; color: #fff; margin-bottom: 10px; position: relative; }
+.mini-card.debit { background: linear-gradient(135deg, #2a2a50, #1e1e3a); }
+.mini-card.credit { background: linear-gradient(135deg, #1a4a30, #2a5a3a); }
+.mini-card.blocked-card { opacity: 0.55; }
+.blocked-tag { position: absolute; top: 10px; right: 12px; background: #e74c3c; color: #fff; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+.mc-type { font-size: 11px; color: #999ab0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.mc-number { font-size: 16px; font-weight: 700; letter-spacing: 2px; margin-bottom: 12px; }
+.mc-balance-label { font-size: 11px; color: #999ab0; font-weight: 600; }
+.mc-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.mc-balance { font-size: 20px; font-weight: 800; }
+.mc-exp { font-size: 12px; color: #999ab0; }
+.mc-debt { margin-top: 8px; font-size: 12px; color: #ff7b7b; font-weight: 600; }
+.tx-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0; }
+.tx-row:last-child { border-bottom: none; }
+.tx-icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 15px; flex-shrink: 0; }
+.tx-icon.income { background: #e0f7ec; color: #33aa88; }
+.tx-icon.expense { background: #f0f0f0; color: #888; }
+.tx-info { flex: 1; }
+.tx-name { font-size: 13px; font-weight: 600; }
+.tx-meta { font-size: 11px; color: #888; margin-top: 1px; }
+.tx-amount { font-size: 14px; font-weight: 700; }
+.tx-amount.pos { color: #33aa88; }
+.tx-amount.neg { color: #111; }

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evervess — Вход</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0e0e1a;
+    --card-bg: #1a1a2e;
+    --accent: #3a8;
+    --text: #e0e0e8;
+    --text-muted: #7a7a90;
+    --input-bg: #12121f;
+    --input-border: #2a2a40;
+    --white: #fff;
+  }
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 380px;
+    max-width: 95vw;
+  }
+  .logo {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .logo span {
+    display: inline-block;
+    background: var(--white);
+    color: #111;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 8px 18px;
+    border-radius: 8px;
+  }
+  .logo p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .field {
+    margin-bottom: 18px;
+  }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .field input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field input:focus {
+    border-color: var(--accent);
+  }
+  .field input::placeholder {
+    color: #555568;
+  }
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+  .options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .options label input {
+    accent-color: var(--accent);
+  }
+  .options a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .options a:hover { text-decoration: underline; }
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-bottom: 12px;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 20px;
+  }
+  .btn-outline:hover { background: rgba(58,170,136,0.08); }
+  .footer-link {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .footer-link a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-link a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="logo">
+      <span>evervess</span>
+      <p>Современный банкинг</p>
+    </div>
+    <h2>Вход в систему</h2>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" placeholder="your@email.com">
+    </div>
+    <div class="field">
+      <label>Пароль</label>
+      <input type="password" placeholder="••••••••">
+    </div>
+    <div class="options">
+      <label><input type="checkbox"> Запомнить</label>
+      <a href="#">Забыли пароль?</a>
+    </div>
+    <button class="btn-primary">Войти</button>
+    <button class="btn-outline">Войти через Госуслуги</button>
+    <div class="footer-link">Нет аккаунта? <a href="register.html">Зарегистрироваться</a></div>
+  </div>
+</body>
+</html>

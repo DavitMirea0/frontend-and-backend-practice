@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block content %}<a href="{% url 'deliveries:list' %}">← К списку доставок</a><p class="eyebrow">КАРТОЧКА ЗАКАЗА</p><h1>{{ delivery.title }}</h1>{% include 'deliveries/includes/status.html' %}<section class="detail">
+<h2>Изменить статус доставки</h2>
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+<form method="post" action="{% url 'deliveries:detail' delivery.slug %}" class="filters">
+    {% csrf_token %}
+    <label for="delivery-status">Статус
+        <select id="delivery-status" name="status" required>
+            {% for status in statuses %}
+            <option value="{{ status }}" {% if delivery.status == status %}selected{% endif %}>{{ status|capfirst }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">Сохранить статус</button>
+</form>
+<dl><div><dt>Тип груза</dt><dd>{{ delivery.goods_type|upper }}</dd></div><div><dt>Дата и время</dt><dd>{{ delivery.delivery_date|date:'d.m.Y H:i' }}</dd></div><div><dt>Ожидаемое время в пути</dt><dd>{{ delivery.duration }} мин.</dd></div><div><dt>Количество посылок</dt><dd>{{ delivery.boxes }}</dd></div></dl><button type="button" data-toggle="zone-info" aria-expanded="true" aria-controls="zone-info">Скрыть информацию о зоне</button><div id="zone-info"><h2>{{ delivery.zone_name|default:'Зона не указана' }}</h2><p>Вместимость: {{ delivery.capacity|default:'—' }} заказов в день</p><p>Тип зоны: {{ delivery.zone_type|default:'—' }}</p></div></section>{% endblock %}

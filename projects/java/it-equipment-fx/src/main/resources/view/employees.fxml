@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.project.controller.EmployeesController" spacing="16" styleClass="page">
+ <HBox alignment="CENTER_LEFT" spacing="12"><VBox spacing="4"><Label text="Сотрудники" styleClass="section-title"/><Label text="Получатели оборудования и их контактные данные" styleClass="muted"/></VBox><Region HBox.hgrow="ALWAYS"/><Button text="Добавить сотрудника" onAction="#add" styleClass="primary"/></HBox>
+ <VBox spacing="6" styleClass="filter-bar"><Label text="Поиск по ФИО, email или отделу"/><TextField fx:id="search" promptText="Начните вводить имя, email или отдел"/></VBox>
+ <HBox spacing="8"><Button fx:id="editButton" text="Изменить" onAction="#edit"/><Button fx:id="deleteButton" text="Удалить" onAction="#delete" styleClass="danger"/></HBox>
+ <TableView fx:id="table" VBox.vgrow="ALWAYS" minHeight="90"><columns><TableColumn fx:id="nameColumn" text="ФИО" prefWidth="365"/><TableColumn fx:id="emailColumn" text="Email" prefWidth="365"/><TableColumn fx:id="departmentColumn" text="Отдел" prefWidth="365"/></columns></TableView>
+ <HBox><Label fx:id="count" text="Показано: 0"/><Region HBox.hgrow="ALWAYS"/><Label text="При удалении сотрудника удаляются все его заявки" styleClass="muted"/></HBox>
+</VBox>

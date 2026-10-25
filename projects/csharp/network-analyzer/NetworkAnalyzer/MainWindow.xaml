@@ -1,0 +1,228 @@
+<!-- 
+    ГЛАВНОЕ ОКНО ПРИЛОЖЕНИЯ — АНАЛИЗАТОР СЕТЕВЫХ ПОДКЛЮЧЕНИЙ
+    
+    ПОЯСНЕНИЕ ПО XAML:
+    XAML (eXtensible Application Markup Language) — язык разметки для WPF.
+    Каждый тег XAML соответствует объекту C# (например, <Grid> = new Grid()).
+    Атрибуты тегов — это свойства объектов (Width="800" = obj.Width = 800).
+    
+    СТРУКТУРА ОКНА:
+    Окно разделено на две колонки с помощью Grid:
+    - Левая панель: список сетевых интерфейсов + детальная информация
+    - Правая панель: анализ URL + Ping/DNS + история проверок
+-->
+<Window x:Class="NetworkAnalyzer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🌐 Анализатор сетевых подключений"
+        Width="1100" Height="750"
+        MinWidth="900" MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <!-- 
+        КОРНЕВОЙ GRID — основной контейнер компоновки.
+        Grid делит пространство на строки (Rows) и столбцы (Columns).
+        Здесь: 2 столбца — левая и правая панели.
+    -->
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <!-- 
+                Звёздочка (*) означает пропорциональное распределение.
+                1* и 1.2* — левая колонка чуть уже правой (соотношение 1:1.2).
+            -->
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ============================================================ -->
+        <!-- ЛЕВАЯ ПАНЕЛЬ: Сетевые интерфейсы                             -->
+        <!-- ============================================================ -->
+        <Border Grid.Column="0" 
+                Background="White" 
+                CornerRadius="10" 
+                Padding="16" 
+                Margin="0,0,8,0">
+            <!-- 
+                Border — контейнер с рамкой и скруглёнными углами.
+                CornerRadius="10" — скругление углов в пикселях.
+                Margin="0,0,8,0" — отступы: лево, верх, право, низ.
+            -->
+            
+            <!-- 
+                DockPanel — контейнер, прижимающий элементы к краям.
+                LastChildFill="True" — последний элемент занимает всё оставшееся место.
+            -->
+            <DockPanel LastChildFill="True">
+                
+                <!-- Заголовок секции (прижат к верху) -->
+                <TextBlock DockPanel.Dock="Top" 
+                           Text="📡 Сетевые интерфейсы" 
+                           FontSize="18" FontWeight="Bold" 
+                           Foreground="#333" 
+                           Margin="0,0,0,12"/>
+
+                <!-- Кнопка обновления списка (прижата к верху, под заголовком) -->
+                <Button DockPanel.Dock="Top" 
+                        Content="🔄 Обновить список интерфейсов"
+                        x:Name="BtnRefreshInterfaces"
+                        Click="BtnRefreshInterfaces_Click"
+                        Margin="0,0,0,12"/>
+                <!-- 
+                    x:Name — задаёт имя элемента для доступа из C#-кода.
+                    Click — подписка на событие нажатия кнопки.
+                    Метод BtnRefreshInterfaces_Click определён в MainWindow.xaml.cs.
+                -->
+
+                <!-- Разделитель "Информация об интерфейсе" (прижат к низу) -->
+                <TextBlock DockPanel.Dock="Bottom" 
+                           Text="📋 Информация о выбранном интерфейсе:" 
+                           FontSize="13" FontWeight="SemiBold" 
+                           Foreground="#555"
+                           Margin="0,12,0,4"
+                           x:Name="LblInterfaceDetails"/>
+
+                <!-- 
+                    TextBlock для детальной информации (прижат к низу).
+                    TextWrapping="Wrap" — перенос длинных строк.
+                -->
+                <TextBlock DockPanel.Dock="Bottom" 
+                           x:Name="TxtInterfaceDetails"
+                           Text="Выберите интерфейс из списка выше..."
+                           TextWrapping="Wrap"
+                           FontSize="12"
+                           FontFamily="Consolas"
+                           Foreground="#444"
+                           Padding="10"
+                           Background="#F8F9FA"
+                           MinHeight="200"/>
+                <!-- 
+                    FontFamily="Consolas" — моноширинный шрифт, удобен для
+                    отображения технической информации (IP-адреса выровнены).
+                -->
+
+                <!-- 
+                    ListBox — список интерфейсов (последний элемент — заполняет остаток).
+                    SelectionChanged — событие при выборе элемента из списка.
+                    ItemsSource — источник данных (привязывается из кода C#).
+                -->
+                <ListBox x:Name="LstInterfaces"
+                         SelectionChanged="LstInterfaces_SelectionChanged"
+                         FontSize="13"
+                         BorderBrush="#DDD"
+                         BorderThickness="1"/>
+            </DockPanel>
+        </Border>
+
+        <!-- ============================================================ -->
+        <!-- ПРАВАЯ ПАНЕЛЬ: Анализ URL, Ping, DNS, История                -->
+        <!-- ============================================================ -->
+        <Border Grid.Column="1" 
+                Background="White" 
+                CornerRadius="10" 
+                Padding="16" 
+                Margin="8,0,0,0">
+            
+            <!-- 
+                ScrollViewer — контейнер с вертикальной прокруткой.
+                Если содержимое не помещается, появляется скроллбар.
+            -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- 
+                        StackPanel — контейнер, располагающий элементы 
+                        последовательно (по умолчанию вертикально, сверху вниз).
+                    -->
+
+                    <!-- ===== СЕКЦИЯ 1: Ввод и анализ URL ===== -->
+                    <TextBlock Text="🔗 Анализ URL/URI" 
+                               FontSize="18" FontWeight="Bold" 
+                               Foreground="#333" 
+                               Margin="0,0,0,12"/>
+
+                    <!-- Поле ввода URL -->
+                    <TextBox x:Name="TxtUrl" 
+                             Text="https://example.com:8080/api/data?id=1&amp;name=test#section"
+                             FontFamily="Consolas"
+                             Margin="0,0,0,8"/>
+                    <!-- 
+                        &amp; — HTML-сущность для символа & в XAML.
+                        В XAML символ & является специальным, поэтому нужно экранирование.
+                    -->
+
+                    <!-- Панель кнопок (горизонтальная раскладка) -->
+                    <WrapPanel Margin="0,0,0,8">
+                        <!-- 
+                            WrapPanel — располагает элементы горизонтально 
+                            с автоматическим переносом на новую строку.
+                        -->
+                        <Button Content="🔍 Анализ URL" 
+                                x:Name="BtnParseUrl" 
+                                Click="BtnParseUrl_Click"
+                                Margin="0,0,8,4"/>
+                        <Button Content="📡 Ping" 
+                                x:Name="BtnPing" 
+                                Click="BtnPing_Click"
+                                Margin="0,0,8,4"/>
+                        <Button Content="🌐 DNS" 
+                                x:Name="BtnDns" 
+                                Click="BtnDns_Click"
+                                Margin="0,0,8,4"/>
+                        <Button Content="🗑️ Очистить" 
+                                x:Name="BtnClear" 
+                                Click="BtnClear_Click"
+                                Background="#DC3545"
+                                Margin="0,0,0,4"/>
+                    </WrapPanel>
+
+                    <!-- Разделительная линия -->
+                    <Separator Margin="0,8"/>
+
+                    <!-- ===== СЕКЦИЯ 2: Результаты анализа ===== -->
+                    <TextBlock Text="📊 Результаты:" 
+                               FontSize="15" FontWeight="SemiBold" 
+                               Foreground="#555" 
+                               Margin="0,4,0,8"/>
+
+                    <TextBlock x:Name="TxtResults"
+                               Text="Введите URL и нажмите кнопку анализа..."
+                               TextWrapping="Wrap"
+                               FontSize="12"
+                               FontFamily="Consolas"
+                               Foreground="#444"
+                               Padding="12"
+                               Background="#F8F9FA"
+                               MinHeight="180"/>
+
+                    <Separator Margin="0,12"/>
+
+                    <!-- ===== СЕКЦИЯ 3: История проверок ===== -->
+                    <TextBlock Text="📜 История проверок:" 
+                               FontSize="15" FontWeight="SemiBold" 
+                               Foreground="#555" 
+                               Margin="0,4,0,8"/>
+
+                    <ListBox x:Name="LstHistory"
+                             MaxHeight="180"
+                             FontSize="12"
+                             FontFamily="Consolas"
+                             BorderBrush="#DDD"
+                             BorderThickness="1"/>
+                    <!-- 
+                        MaxHeight="180" — ограничиваем высоту списка истории,
+                        чтобы он не занимал слишком много места. При переполнении
+                        автоматически появится скроллбар (встроенное поведение ListBox).
+                    -->
+
+                    <Button Content="🗑️ Очистить историю"
+                            x:Name="BtnClearHistory"
+                            Click="BtnClearHistory_Click"
+                            Background="#6C757D"
+                            HorizontalAlignment="Left"
+                            Margin="0,8,0,0"/>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,5 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #f0f0f0; color: #111; -webkit-font-smoothing: antialiased; }
+.app-layout { display: flex; min-height: 100vh; }
+.app-main { flex: 1; padding: 28px 32px; overflow-y: auto; }
+.loading { display: flex; align-items: center; justify-content: center; min-height: 100vh; font-size: 16px; color: #888; }

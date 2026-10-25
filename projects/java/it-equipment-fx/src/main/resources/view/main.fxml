@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" fx:controller="ru.mirea.project.controller.MainController" styleClass="app-root">
+ <top><HBox alignment="CENTER_LEFT" spacing="20" styleClass="app-header">
+  <VBox spacing="5"><Label text="IT / ОБОРУДОВАНИЕ" styleClass="eyebrow"/><Label text="Заявки на выдачу" styleClass="app-title"/><Label text="Сотрудники, оборудование и история выдачи" styleClass="subtitle"/></VBox>
+  <Region HBox.hgrow="ALWAYS"/><Button fx:id="refreshButton" text="Обновить данные" onAction="#refresh" styleClass="header-button"/>
+ </HBox></top>
+ <center><TabPane fx:id="tabs" tabClosingPolicy="UNAVAILABLE" styleClass="main-tabs">
+  <tabs>
+   <Tab text="Заявки"><content><fx:include fx:id="requestsView" source="requests.fxml"/></content></Tab>
+   <Tab text="Сотрудники"><content><fx:include fx:id="employeesView" source="employees.fxml"/></content></Tab>
+   <Tab text="Статистика"><content><fx:include fx:id="statisticsView" source="statistics.fxml"/></content></Tab>
+  </tabs>
+ </TabPane></center>
+ <bottom><HBox spacing="10" alignment="CENTER_LEFT" styleClass="status-bar"><ProgressIndicator fx:id="progress" prefWidth="18" prefHeight="18" visible="false" managed="false"/><Label fx:id="status" text="Подключение к базе…" wrapText="true"/></HBox></bottom>
+</BorderPane>

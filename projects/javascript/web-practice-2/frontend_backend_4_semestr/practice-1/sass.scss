@@ -1,0 +1,40 @@
+// sass sass.scss styles.css
+
+$dark-background: black;
+$white-background: white;
+$theme: dark;
+
+@mixin border($width, $color){
+    border: solid $color $width;
+}
+
+.card{
+    @if $theme == dark {
+        background: $dark-background;
+        color: $white-background;
+    } @else {
+        background: $white-background;
+        color: $dark-background;
+    }
+    
+    font-size: 16px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    
+    @include border(3px, red);
+
+    &__title{
+        font-size: 32px;
+    }
+
+    &__description{
+        color: grey;
+        font-size: 22px;
+    }
+
+    &__photo{
+        @include border(5px, green);
+    }
+}

@@ -1,0 +1,423 @@
+// Светлая цветовая схема
+$bg: #f8fafc;
+$surface: #ffffff;
+$border: #e2e8f0;
+$text: #0f172a;
+$text-light: #64748b;
+
+$primary: #3b82f6;
+$primary-light: #eff6ff;
+$primary-dark: #2563eb;
+
+$danger: #ef4444;
+$danger-light: #fef2f2;
+$danger-dark: #dc2626;
+
+$success: #22c55e;
+
+$shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+@mixin card($radius: 16px) {
+  border-radius: $radius;
+  background: $surface;
+  box-shadow: $shadow;
+  border: 1px solid $border;
+}
+
+@mixin container($w: 1200px) {
+  max-width: $w;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg;
+  color: $text;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.header {
+  background: $surface;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.9);
+
+  &__inner {
+    @include container();
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__right {
+    color: $text-light;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .brand {
+    font-weight: 700;
+    font-size: 20px;
+    background: linear-gradient(135deg, $primary, $primary-dark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.main {
+  flex: 1;
+  padding: 32px 0;
+}
+
+.container {
+  @include container();
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  .title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: $text;
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1px solid $border;
+  background: $surface;
+  color: $text;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background: $bg;
+    border-color: $text-light;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &--primary {
+    background: $primary;
+    border-color: $primary;
+    color: white;
+
+    &:hover {
+      background: $primary-dark;
+      border-color: $primary-dark;
+    }
+  }
+
+  &--danger {
+    background: $danger-light;
+    border-color: $danger;
+    color: $danger-dark;
+
+    &:hover {
+      background: $danger;
+      border-color: $danger-dark;
+      color: white;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.empty {
+  @include card();
+  padding: 48px 24px;
+  text-align: center;
+  color: $text-light;
+  font-size: 16px;
+}
+
+.productRow {
+  @include card();
+  padding: 20px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+.productMain {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+
+  .productId {
+    color: $text-light;
+    font-variant-numeric: tabular-nums;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+    font-size: 13px;
+    background: $bg;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid $border;
+  }
+
+  .productName {
+    font-weight: 600;
+    font-size: 18px;
+    color: $text;
+  }
+
+  .productCategory {
+    padding: 4px 12px;
+    background: $primary-light;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $primary-dark;
+  }
+
+  .productPrice {
+    font-weight: 700;
+    font-size: 18px;
+    color: $success;
+  }
+
+  .productQuantity {
+    font-size: 14px;
+    padding: 4px 12px;
+    background: $bg;
+    border-radius: 20px;
+    color: $text-light;
+    border: 1px solid $border;
+  }
+}
+
+.productDescription {
+  font-size: 15px;
+  line-height: 1.6;
+  color: $text-light;
+  padding: 16px 0;
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
+  margin: 12px 0;
+}
+
+.productActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+
+  .btn {
+    padding: 8px 16px;
+  }
+}
+
+.footer {
+  background: $surface;
+  border-top: 1px solid $border;
+  padding: 20px 0;
+  margin-top: auto;
+
+  &__inner {
+    @include container();
+    text-align: center;
+    color: $text-light;
+    font-size: 14px;
+  }
+}
+
+// Модальное окно
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  width: 100%;
+  max-width: 550px;
+  background: $surface;
+  border-radius: 24px;
+  box-shadow: $shadow-lg;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+
+  &__header {
+    padding: 20px 24px;
+    border-bottom: 1px solid $border;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $bg;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    color: $text;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid $border;
+  }
+}
+
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid $border;
+  background: $surface;
+  color: $text-light;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $bg;
+    border-color: $text-light;
+    color: $text;
+  }
+}
+
+.form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $text;
+}
+
+.input {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid $border;
+  background: $bg;
+  color: $text;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    background: $surface;
+  }
+
+  &::placeholder {
+    color: $text-light;
+    opacity: 0.6;
+  }
+
+  &.textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+  }
+}
+
+// Анимации
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+
+    .title {
+      font-size: 24px;
+    }
+  }
+
+  .productMain {
+    gap: 12px;
+    
+    .productName {
+      width: 100%;
+    }
+  }
+
+  .productActions {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .modal {
+    max-width: 100%;
+    margin: 16px;
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mirea.project.controller.RequestsController" spacing="16" styleClass="page">
+ <HBox alignment="CENTER_LEFT" spacing="12"><VBox spacing="4"><Label text="Все заявки" styleClass="section-title"/><Label text="Создавайте заявки и отслеживайте выдачу оборудования" styleClass="muted"/></VBox><Region HBox.hgrow="ALWAYS"/><Button text="Добавить заявку" onAction="#add" styleClass="primary"/></HBox>
+ <HBox spacing="12" alignment="BOTTOM_LEFT" styleClass="filter-bar">
+  <VBox spacing="6" HBox.hgrow="ALWAYS"><Label text="Поиск по сотруднику или обоснованию"/><TextField fx:id="search" promptText="Например, Иванова или монитор"/></VBox>
+  <VBox spacing="6"><Label text="Статус"/><ComboBox fx:id="statusFilter" prefWidth="165"/></VBox>
+  <VBox spacing="6"><Label text="Оборудование"/><ComboBox fx:id="typeFilter" prefWidth="185"/></VBox>
+  <Button text="Сбросить" onAction="#reset"/>
+ </HBox>
+ <HBox alignment="CENTER_LEFT" spacing="8"><Button fx:id="detailsButton" text="Подробнее" onAction="#details"/><Button fx:id="editButton" text="Изменить" onAction="#edit"/><Button fx:id="statusButton" text="Сменить статус" onAction="#changeStatus"/><Button fx:id="deleteButton" text="Удалить" onAction="#delete" styleClass="danger"/><Region HBox.hgrow="ALWAYS"/><Button text="Экспорт показанных в Excel" onAction="#export"/></HBox>
+ <TableView fx:id="table" VBox.vgrow="ALWAYS" minHeight="90">
+  <columns>
+   <TableColumn fx:id="numberColumn" text="№" prefWidth="55"/>
+   <TableColumn fx:id="employeeColumn" text="Сотрудник" prefWidth="180"/>
+   <TableColumn fx:id="typeColumn" text="Оборудование" prefWidth="135"/>
+   <TableColumn fx:id="quantityColumn" text="Кол-во" prefWidth="75"/>
+   <TableColumn fx:id="statusColumn" text="Статус" prefWidth="115"/>
+   <TableColumn fx:id="reasonColumn" text="Обоснование" prefWidth="295"/>
+   <TableColumn fx:id="dateColumn" text="Создана" prefWidth="165"/>
+  </columns>
+ </TableView>
+ <HBox spacing="12"><Label fx:id="count" text="Показано: 0"/><Region HBox.hgrow="ALWAYS"/><Label text="Сортировка — нажмите заголовок столбца. Двойной щелчок — подробности." styleClass="muted"/></HBox>
+</VBox>

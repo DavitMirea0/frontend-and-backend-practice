@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Семестровая работа</title>
+    <title>Портфолио Давида Хачатряна</title>
     <link rel="stylesheet" href="style/styles.css">
 </head>
 
@@ -12,19 +12,20 @@
     <!-- Изменение: Заменили div на семантические теги -->
     <div class="page-container">
         <header class="header"> <!-- Было: <div class="header"> -->
-            <h1>КР1</h1> <!-- Добавили заголовок для семантики -->
+            <h1>Портфолио</h1> <!-- Добавили заголовок для семантики -->
         </header>
-        
+
         <nav class="nav"> <!-- Было: <div class="nav"> -->
             <ul class="nav-list">
                 <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/projects.html">Проекты</a></li>
                 <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
                 <li class="nav-item"><a class="nav-link" href="pages/practices.html">Практики</a></li>
                 <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
                 <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
             </ul>
         </nav>
-        
+
         <main class="content"> <!-- Было: <div class="content"> -->
             <article class="profile-header"> <!-- Было: <div class="profile-header"> -->
                 <h1 class="profile-title">Информация об авторе</h1>
@@ -35,36 +36,38 @@
 
             <section class="about-me"> <!-- Было: <div class="about-me"> -->
                 <h2>Обо мне</h2> <!-- Добавили заголовок для семантики -->
-                <p>Обо мне: Я родился в Эчмиадзина в 2005 году. Поздно пошел в школу.</p>
+                <p>Я студент РТУ МИРЭА, занимаюсь backend-разработкой и создаю учебные и pet-проекты: API, веб-приложения, настольные программы и интерактивные симуляторы.</p>
             </section>
 
             <section class="skills-container"> <!-- Было: <div class="skills-container"> -->
                 <h2>Мои навыки</h2> <!-- Добавили заголовок для семантики -->
                 <div class="skills-grid"> <!-- Обертка для Grid -->
-                    <div class="skill-tag">Дата и место рождения</div>
-                    <div class="skill-tag">Особенности</div>
-                    <div class="skill-tag">Место учебы</div>
-                    <div class="skill-tag">Работа</div>
+                    <div class="skill-tag">Go · Java · Python</div>
+                    <div class="skill-tag">JavaScript · TypeScript</div>
+                    <div class="skill-tag">PostgreSQL · REST API</div>
+                    <div class="skill-tag">Git · Docker</div>
                 </div>
             </section>
 
-            <section class="experience-section"> <!-- Было: <div class="experience-section"> -->
-                <h2 class="section-title">Мой опыт работы</h2>
+
+<section class="home-projects"><h2>Проекты по языкам</h2><p>47 проектов и учебных подборок с описаниями, стеком и исходниками.</p><div class="language-nav"><a href="pages/projects.html#go">Go <span>1</span></a><a href="pages/projects.html#java">Java <span>3</span></a><a href="pages/projects.html#python">Python <span>12</span></a><a href="pages/projects.html#javascript">JavaScript <span>17</span></a><a href="pages/projects.html#typescript">TypeScript <span>1</span></a><a href="pages/projects.html#csharp">C# <span>7</span></a><a href="pages/projects.html#cpp">C / C++ <span>4</span></a><a href="pages/projects.html#sql">SQL <span>1</span></a><a href="pages/projects.html#devops">Shell / DevOps <span>1</span></a></div><a class="catalog-link" href="pages/projects.html">Открыть все проекты →</a></section>
+<section class="experience-section"> <!-- Было: <div class="experience-section"> -->
+                <h2 class="section-title">Направления работы</h2>
                 <div class="experience-grid"> <!-- Обертка для Grid -->
                     <article class="experience-card"> <!-- Было: <div class="experience-card"> -->
-                        <h3 class="experience-title">Опыт 1</h3>
-                        <p class="experience-desc">Работал в стройке. Сочинял и праздновал.</p>
+                        <h3 class="experience-title">Backend и инфраструктура</h3>
+                        <p class="experience-desc">REST API, реляционные базы данных, аутентификация и контейнеризация приложений.</p>
                     </article>
                     <article class="experience-card">
-                        <h3 class="experience-title">Опыт 2</h3>
-                        <p class="experience-desc">OZON Fresh.</p>
+                        <h3 class="experience-title">Учебные и pet-проекты</h3>
+                        <p class="experience-desc">Разработка на Go, Java, Python, C# и JavaScript. Исходники и описание каждого проекта собраны в каталоге.</p>
                     </article>
                 </div>
             </section>
         </main>
-        
+
         <footer class="footer"> <!-- Было: <div class="footer"> -->
-            <p>Футер</p> <!-- Добавили параграф для семантики -->
+            <p>Давид Хачатрян · Портфолио</p> <!-- Добавили параграф для семантики -->
         </footer>
     </div>
 </body>

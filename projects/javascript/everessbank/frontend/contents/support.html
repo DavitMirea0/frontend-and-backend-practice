@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evervess — Техподдержка</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f0f0f0; --sidebar-bg: #1a1a2e; --sidebar-text: #b0b0c0;
+    --accent: #3a8; --text-primary: #111; --text-secondary: #666;
+    --white: #fff; --border: #d0d0d0; --card-bg: #fff;
+  }
+  body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; display: flex; }
+  .sidebar { width: 200px; min-height: 100vh; background: var(--sidebar-bg); padding: 24px 0; flex-shrink: 0; }
+  .sidebar-logo { padding: 0 20px 20px; }
+  .sidebar-logo h1 { font-size: 18px; font-weight: 800; color: var(--white); }
+  .sidebar-logo span { font-size: 11px; color: var(--sidebar-text); display: block; margin-top: 2px; }
+  .sidebar-nav { list-style: none; margin-top: 8px; }
+  .sidebar-nav li a { display: block; padding: 10px 20px; color: var(--sidebar-text); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+  .sidebar-nav li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+  .sidebar-nav li a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(58,170,136,0.08); }
+  .main { flex: 1; padding: 28px 32px; }
+  .page-header h2 { font-size: 24px; font-weight: 700; }
+  .page-header p { font-size: 14px; color: var(--text-secondary); margin-top: 4px; margin-bottom: 24px; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .contact-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+    transition: border-color 0.2s;
+  }
+  .contact-card:hover { border-color: var(--accent); }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #e0f7ec; display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 14px; color: var(--accent);
+  }
+  .contact-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .contact-card .desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; }
+  .contact-card .value { font-size: 15px; font-weight: 700; color: var(--accent); }
+
+  .faq-section {
+    background: var(--card-bg);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .faq-title {
+    font-size: 18px; font-weight: 700; padding: 22px 24px 0;
+  }
+  .faq-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 24px; border-bottom: 1px solid #eee;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    transition: background 0.1s;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item:hover { background: #fafafa; }
+  .faq-item .arrow { color: #bbb; font-size: 18px; }
+</style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h1>evervess</h1><span>Современный банк</span></div>
+    <ul class="sidebar-nav">
+      <li><a href="main.html">Главная</a></li>
+      <li><a href="cards.html">Карты</a></li>
+      <li><a href="transfers.html">Переводы</a></li>
+      <li><a href="history.html">История</a></li>
+      <li><a href="#">Продукты</a></li>
+      <li><a href="#">Накопления</a></li>
+      <li><a href="#">Платежи</a></li>
+      <li><a href="#" class="active">Поддержка</a></li>
+      <li><a href="admin.html">Админ</a></li>
+    </ul>
+  </aside>
+  <main class="main">
+    <div class="page-header">
+      <h2>Техподдержка</h2>
+      <p>Мы всегда готовы помочь вам</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Позвонить нам</h3>
+        <div class="desc">Круглосуточная поддержка</div>
+        <div class="value">8 (800) 555-35-35</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <h3>Онлайн-чат</h3>
+        <div class="desc">Ответим в течение 5 минут</div>
+        <div class="value">Начать чат →</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">✉</div>
+        <h3>Email</h3>
+        <div class="desc">Ответим в течение 24 часов</div>
+        <div class="value">support@evervess.com</div>
+      </div>
+    </div>
+
+    <div class="faq-section">
+      <div class="faq-title">Часто задаваемые вопросы</div>
+      <div class="faq-item">Как заблокировать карту? <span class="arrow">›</span></div>
+      <div class="faq-item">Как перевести деньги в другой банк? <span class="arrow">›</span></div>
+      <div class="faq-item">Какие комиссии за переводы? <span class="arrow">›</span></div>
+      <div class="faq-item">Как открыть накопительный счёт? <span class="arrow">›</span></div>
+      <div class="faq-item">Как изменить лимиты по карте? <span class="arrow">›</span></div>
+    </div>
+  </main>
+</body>
+</html>

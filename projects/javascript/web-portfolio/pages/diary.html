@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Дневник обучения - записи о прогрессе изучения C#, JavaScript, HTML/CSS, Qt, Figma">
+    <title>Дневник обучения - Портфолио Давида Хачатряна</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header__content">
+                    <div class="header__logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="8" r="6" fill="#FF7262"/>
+                            <circle cx="28" cy="8" r="6" fill="#A259FF"/>
+                            <circle cx="12" cy="20" r="6" fill="#1ABCFE"/>
+                            <circle cx="28" cy="20" r="6" fill="#0ACF83"/>
+                            <circle cx="12" cy="32" r="6" fill="#F24E1E"/>
+                        </svg>
+                        <span class="header__brand">Figma</span>
+                    </div>
+                    <h1 class="header__title">Хачатрян Давид Каренович</h1>
+                </div>
+            </div>
+        </header>
+
+        <!-- Навигация -->
+        <nav aria-label="Основная навигация сайта">
+            <div class="container">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="../index.html" class="nav__link">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="projects.html" class="nav__link">Проекты</a>
+                    </li>
+                    <li class="nav__item nav__item--active">
+                        <a href="diary.html" class="nav__link" aria-current="page">Дневник</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="contacts.html" class="nav__link">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main -->
+        <main class="main" id="main-content">
+            <div class="diary-page-content">
+                <div class="diary-header">
+                    <h2 class="projects-title">Мой учебный прогресс</h2>
+                </div>
+
+                <!-- LIGHTHOUSE: Записи дневника как список статей -->
+                <div role="list" aria-label="Записи дневника обучения">
+                    <!-- Запись 1: C# -->
+                    <article class="project-card" data-category="C#" data-project="1" role="listitem">
+                        <div class="project-image">
+                            <picture>
+                                <source media="(min-width: 768px)" 
+                                        srcset="../images/gallery1.png" 
+                                        type="image/png">
+                                <!-- LIGHTHOUSE: Описательный alt -->
+                                <img src="../images/gallery1.png" 
+                                     alt="Процесс изучения языка программирования C# - скриншот рабочего окружения Visual Studio"
+                                     class="responsive-image"
+                                     width="800"
+                                     height="400"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="project-card-content">
+                            <!-- LIGHTHOUSE: <time> с datetime для машиночитаемости -->
+                            <h3><time datetime="2025-09-01">1 сентября 2025</time></h3>
+                            <p class="project-description">Изучение языка программирования C# - основы синтаксиса, типы данных, ООП.</p>
+                        </div>
+                    </article>
+
+                    <!-- Запись 2: JavaScript -->
+                    <article class="project-card" data-category="JavaScript" data-project="4" role="listitem">
+                        <div class="project-image">
+                            <picture>
+                                <source media="(min-width: 768px)" 
+                                        srcset="../images/gallery2.jpg" 
+                                        type="image/jpeg">
+                                <img src="../images/gallery2.jpg" 
+                                     alt="Платформа Hexlet с курсом по JavaScript - интерфейс обучающей платформы"
+                                     class="responsive-image"
+                                     width="800"
+                                     height="400"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="project-card-content">
+                            <h3><time datetime="2025-09-01">1 сентября 2025</time></h3>
+                            <p class="project-description">Прохождение курса по JavaScript на платформе Hexlet - изучение основ веб-разработки.</p>
+                        </div>
+                    </article>
+
+                    <!-- Запись 3: Figma -->
+                    <article class="project-card" data-category="Figma" data-project="5" role="listitem">
+                        <div class="project-image">
+                            <picture>
+                                <source media="(min-width: 768px)" 
+                                        srcset="../images/logo.png" 
+                                        type="image/png">
+                                <img src="../images/logo.png" 
+                                     alt="Логотип программы Figma для дизайна пользовательских интерфейсов"
+                                     class="responsive-image"
+                                     width="800"
+                                     height="400"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="project-card-content">
+                            <h3><time datetime="2025-08-13">13 августа 2025</time></h3>
+                            <p class="project-description">Прошёл 3-дневный марафон по Figma - освоил базовые инструменты дизайна интерфейсов.</p>
+                        </div>
+                    </article>
+
+                    <!-- Запись 4: HTML/CSS -->
+                    <article class="project-card" data-category="HTML/CSS" data-project="5" role="listitem">
+                        <div class="project-image">
+                            <picture>
+                                <source media="(min-width: 768px)" 
+                                        srcset="../images/gallery4.png" 
+                                        type="image/png">
+                                <img src="../images/gallery4.png" 
+                                     alt="Учебные материалы по HTML и CSS на образовательной платформе Stepik"
+                                     class="responsive-image"
+                                     width="800"
+                                     height="400"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="project-card-content">
+                            <h3><time datetime="2025-07-17">17 июля 2025</time></h3>
+                            <p class="project-description">Начал изучение базовых основ HTML/CSS на платформе Stepik - вёрстка, семантика, флексбоксы.</p>
+                        </div>
+                    </article>
+
+                    <!-- Запись 5: Qt -->
+                    <article class="project-card" data-category="Qt" data-project="5" role="listitem">
+                        <div class="project-image">
+                            <picture>
+                                <source media="(min-width: 768px)" 
+                                        srcset="../images/gallery5.jpg" 
+                                        type="image/jpeg">
+                                <img src="../images/gallery5.jpg" 
+                                     alt="Логотип фреймворка Qt для разработки кроссплатформенных приложений на C++"
+                                     class="responsive-image"
+                                     width="800"
+                                     height="400"
+                                     loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="project-card-content">
+                            <h3><time datetime="2025-02-20">20 февраля 2025</time></h3>
+                            <p class="project-description">Начал изучение Qt во 2 семестре на дисциплине «Технологии индустриального программирования» - разработка десктопных приложений.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Навыки -->
+                <section class="skills-section" aria-labelledby="current-courses-title">
+                    <h2 id="current-courses-title" class="section-title">Текущие курсы</h2>
+                    <div class="skills-container" role="list">
+                        <!-- Навык: C# -->
+                        <div class="skill-item" role="listitem">
+                            <span class="skill-name" id="diary-skill-csharp">C#</span>
+                            <div class="skill-bar-container" 
+                                 role="progressbar" 
+                                 aria-valuenow="20" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="diary-skill-csharp"
+                                 aria-label="Прогресс курса C#: 20 процентов">
+                                <div class="skill-bar" data-width="20" aria-hidden="true"></div>
+                            </div>
+                            <span class="skill-percentage" aria-hidden="true">20%</span>
+                        </div>
+
+                        <!-- Навык: HTML/CSS -->
+                        <div class="skill-item" role="listitem">
+                            <span class="skill-name" id="diary-skill-html">HTML/CSS</span>
+                            <div class="skill-bar-container" 
+                                 role="progressbar" 
+                                 aria-valuenow="30" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="diary-skill-html"
+                                 aria-label="Прогресс курса HTML/CSS: 30 процентов">
+                                <div class="skill-bar" data-width="30" aria-hidden="true"></div>
+                            </div>
+                            <span class="skill-percentage" aria-hidden="true">30%</span>
+                        </div>
+
+                        <!-- Навык: JavaScript -->
+                        <div class="skill-item" role="listitem">
+                            <span class="skill-name" id="diary-skill-js">JavaScript</span>
+                            <div class="skill-bar-container" 
+                                 role="progressbar" 
+                                 aria-valuenow="25" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="diary-skill-js"
+                                 aria-label="Прогресс курса JavaScript: 25 процентов">
+                                <div class="skill-bar" data-width="25" aria-hidden="true"></div>
+                            </div>
+                            <span class="skill-percentage" aria-hidden="true">25%</span>
+                        </div>
+
+                        <!-- Навык: Qt -->
+                        <div class="skill-item" role="listitem">
+                            <span class="skill-name" id="diary-skill-qt">Qt</span>
+                            <div class="skill-bar-container" 
+                                 role="progressbar" 
+                                 aria-valuenow="45" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="diary-skill-qt"
+                                 aria-label="Прогресс курса Qt: 45 процентов">
+                                <div class="skill-bar" data-width="45" aria-hidden="true"></div>
+                            </div>
+                            <span class="skill-percentage" aria-hidden="true">45%</span>
+                        </div>
+
+                        <!-- Навык: Figma -->
+                        <div class="skill-item" role="listitem">
+                            <span class="skill-name" id="diary-skill-figma">Figma</span>
+                            <div class="skill-bar-container" 
+                                 role="progressbar" 
+                                 aria-valuenow="30" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="diary-skill-figma"
+                                 aria-label="Прогресс курса Figma: 30 процентов">
+                                <div class="skill-bar" data-width="30" aria-hidden="true"></div>
+                            </div>
+                            <span class="skill-percentage" aria-hidden="true">30%</span>
+                        </div>
+                    </div>
+
+                    <!-- LIGHTHOUSE: Кнопка с описательным aria-label -->
+                    <button class="my-button" 
+                            aria-label="Добавить новую запись в дневник обучения"
+                            onclick="alert('Функция добавления записи в разработке')">
+                        Добавить запись
+                    </button>
+                </section>
+            </div>
+        </main>
+
+        <script>
+            // Анимация прогресс-баров с prefers-reduced-motion
+            function animateSkillBars() {
+                const skillBars = document.querySelectorAll('.skill-bar');
+                const percentages = document.querySelectorAll('.skill-percentage');
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                
+                percentages.forEach(percent => {
+                    percent.style.opacity = '0';
+                });
+                
+                skillBars.forEach((bar, index) => {
+                    const targetWidth = bar.getAttribute('data-width') + '%';
+                    const progressBar = bar.closest('.skill-bar-container');
+                    
+                    bar.style.width = '0';
+                    
+                    setTimeout(() => {
+                        bar.style.width = targetWidth;
+                        
+                        // Обновляем aria-valuenow
+                        if (progressBar) {
+                            progressBar.setAttribute('aria-valuenow', bar.getAttribute('data-width'));
+                        }
+                        
+                        setTimeout(() => {
+                            percentages[index].style.opacity = '1';
+                        }, prefersReducedMotion ? 0 : 800);
+                    }, prefersReducedMotion ? 0 : index * 300);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(animateSkillBars, 500);
+            });
+
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll('.skill-bar');
+                        if (skillBars.length > 0 && skillBars[0].style.width === '0px') {
+                            setTimeout(animateSkillBars, 300);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            const skillsSection = document.querySelector('.skills-section');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        </script>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <p class="footer__copyright">&copy; 2025 Хачатрян Давид Каренович</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

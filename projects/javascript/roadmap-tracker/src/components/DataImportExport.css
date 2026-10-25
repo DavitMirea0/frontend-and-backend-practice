@@ -1,0 +1,225 @@
+.data-import-export {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.data-import-export h2 {
+  margin: 0 0 20px 0;
+  color: #1a1a2e;
+}
+
+.status-message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.status-message.success {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.status-message.error {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.actions-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-export {
+  background: #27ae60;
+  color: white;
+}
+
+.btn-export:hover:not(:disabled) {
+  background: #219a52;
+}
+
+.btn-import {
+  background: #f39c12;
+  color: white;
+  display: inline-block;
+}
+
+.btn-import:hover {
+  background: #e67e22;
+}
+
+.btn-clear {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-clear:hover:not(:disabled) {
+  background: #c0392b;
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.tech-list h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.empty-message {
+  color: #888;
+  font-style: italic;
+  padding: 40px;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.tech-grid {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.tech-card {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  transition: box-shadow 0.3s;
+}
+
+.tech-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tech-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.tech-card h4 {
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.tech-id {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.tech-card p {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.tech-meta {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.statistics {
+  margin-top: 25px;
+  padding: 20px;
+  background: #e8f4fd;
+  border-radius: 10px;
+}
+
+.statistics h3 {
+  margin: 0 0 15px 0;
+  color: #2980b9;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  color: #555;
+}
+
+.stat strong {
+  color: #1a1a2e;
+}
+
+.import-help {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px dashed #ddd;
+}
+
+.import-help h4 {
+  margin: 0 0 15px 0;
+  color: #666;
+}
+
+.import-help pre {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+
+.roadmap-title {
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.btn-reset {
+  background: #9b59b6;
+  color: white;
+}
+
+.btn-reset:hover:not(:disabled) {
+  background: #8e44ad;
+}
+
+.tech-note {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+  margin: 5px 0;
+}
+
+.tech-deadline {
+  font-size: 0.85rem;
+  color: #e67e22;
+  margin: 5px 0;
+}

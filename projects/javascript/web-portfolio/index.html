@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио студента ИПТИП - веб-разработка, проекты на C#, Qt, JavaScript">
+    <title>Главная - Портфолио Давида Хачатряна | Веб-разработчик</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="page">
+        <!-- LIGHTHOUSE: Семантический header -->
+        <header class="header">
+            <div class="container">
+                <div class="header__content">
+                    <div class="header__logo">
+                        <!-- LIGHTHOUSE: aria-hidden на декоративном SVG -->
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="8" r="6" fill="#FF7262"/>
+                            <circle cx="28" cy="8" r="6" fill="#A259FF"/>
+                            <circle cx="12" cy="20" r="6" fill="#1ABCFE"/>
+                            <circle cx="28" cy="20" r="6" fill="#0ACF83"/>
+                            <circle cx="12" cy="32" r="6" fill="#F24E1E"/>
+                        </svg>
+                        <span class="header__brand">Figma</span>
+                    </div>
+                    <!-- LIGHTHOUSE: Правильная иерархия заголовков (один h1 на странице) -->
+                    <h1 class="header__title">Хачатрян Давид Каренович</h1>
+                </div>
+            </div>
+        </header>
+
+        <!-- LIGHTHOUSE: nav с aria-label для идентификации -->
+        <nav aria-label="Основная навигация сайта">
+            <div class="container">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--active">
+                        <!-- LIGHTHOUSE: aria-current="page" указывает текущую страницу -->
+                        <a href="index.html" class="nav__link" aria-current="page">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/projects.html" class="nav__link">Проекты</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/diary.html" class="nav__link">Дневник</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/contacts.html" class="nav__link">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- LIGHTHOUSE: main для основного контента -->
+        <main class="main" id="main-content">
+            <div class="container">
+                <!-- Hero Section -->
+                <section class="hero-main" aria-labelledby="hero-greeting">
+                    <div class="photo-box-wrapper">
+                        <picture class="photo-box-picture">
+                            <source media="(min-width: 768px)" srcset="images/photo.png" type="image/png">
+                            <!-- LIGHTHOUSE: Описательный alt для изображения -->
+                            <img src="images/photo.png" 
+                                 alt="Фотография студента Давида Хачатряна из группы ЭФБО-18-24" 
+                                 class="photo-box responsive-image"
+                                 width="180"
+                                 height="180"
+                                 loading="eager">
+                        </picture>
+                    </div>
+
+                    <h2 id="hero-greeting" class="hero-main__greeting">Привет! 👋</h2>
+                    <p class="hero-main__description">
+                        Я студент Института перспективных технологий и индустриального программирования, группа ЭФБО-18-24.<br>
+                        Увлекаюсь веб-разработкой и изучением новых технологий.
+                    </p>
+                    
+                    <!-- LIGHTHOUSE: Кнопка с описательным aria-label -->
+                    <button class="button button--primary" 
+                            onclick="openResume()"
+                            aria-label="Скачать резюме в формате изображения (откроется в новой вкладке)">
+                        Скачать резюме
+                    </button>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="skills-main" aria-labelledby="skills-title">
+                    <h2 id="skills-title" class="section-title">Мои навыки</h2>
+                    
+                    <!-- LIGHTHOUSE: role="list" восстанавливает семантику при CSS list-style: none -->
+                    <div class="skills-main__grid" role="list">
+                        <!-- Навык: C# -->
+                        <div class="skill-card" role="listitem">
+                            <div class="skill-card__header">
+                                <span class="skill-card__name" id="skill-csharp">C#</span>
+                                <span class="skill-card__percent" aria-hidden="true">20%</span>
+                            </div>
+                            <!-- LIGHTHOUSE: role="progressbar" с aria-* атрибутами -->
+                            <div class="skill-card__progress" 
+                                 role="progressbar" 
+                                 aria-valuenow="20" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="skill-csharp"
+                                 aria-label="Прогресс изучения C#: 20 процентов">
+                                <div class="skill-card__progress-bar" data-width="20" style="width: 0%" aria-hidden="true"></div>
+                            </div>
+                        </div>
+
+                        <!-- Навык: HTML/CSS -->
+                        <div class="skill-card" role="listitem">
+                            <div class="skill-card__header">
+                                <span class="skill-card__name" id="skill-html">HTML/CSS</span>
+                                <span class="skill-card__percent" aria-hidden="true">30%</span>
+                            </div>
+                            <div class="skill-card__progress" 
+                                 role="progressbar" 
+                                 aria-valuenow="30" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="skill-html"
+                                 aria-label="Прогресс изучения HTML/CSS: 30 процентов">
+                                <div class="skill-card__progress-bar" data-width="30" style="width: 0%" aria-hidden="true"></div>
+                            </div>
+                        </div>
+
+                        <!-- Навык: JavaScript -->
+                        <div class="skill-card" role="listitem">
+                            <div class="skill-card__header">
+                                <span class="skill-card__name" id="skill-js">JavaScript</span>
+                                <span class="skill-card__percent" aria-hidden="true">25%</span>
+                            </div>
+                            <div class="skill-card__progress" 
+                                 role="progressbar" 
+                                 aria-valuenow="25" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="skill-js"
+                                 aria-label="Прогресс изучения JavaScript: 25 процентов">
+                                <div class="skill-card__progress-bar" data-width="25" style="width: 0%" aria-hidden="true"></div>
+                            </div>
+                        </div>
+
+                        <!-- Навык: Qt -->
+                        <div class="skill-card" role="listitem">
+                            <div class="skill-card__header">
+                                <span class="skill-card__name" id="skill-qt">Qt</span>
+                                <span class="skill-card__percent" aria-hidden="true">45%</span>
+                            </div>
+                            <div class="skill-card__progress" 
+                                 role="progressbar" 
+                                 aria-valuenow="45" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="skill-qt"
+                                 aria-label="Прогресс изучения Qt: 45 процентов">
+                                <div class="skill-card__progress-bar" data-width="45" style="width: 0%" aria-hidden="true"></div>
+                            </div>
+                        </div>
+
+                        <!-- Навык: Figma -->
+                        <div class="skill-card" role="listitem">
+                            <div class="skill-card__header">
+                                <span class="skill-card__name" id="skill-figma">Figma</span>
+                                <span class="skill-card__percent" aria-hidden="true">30%</span>
+                            </div>
+                            <div class="skill-card__progress" 
+                                 role="progressbar" 
+                                 aria-valuenow="30" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="100"
+                                 aria-labelledby="skill-figma"
+                                 aria-label="Прогресс изучения Figma: 30 процентов">
+                                <div class="skill-card__progress-bar" data-width="30" style="width: 0%" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Preview -->
+                <section class="projects-main" aria-labelledby="projects-title">
+                    <h2 id="projects-title" class="section-title">Лучшие проекты</h2>
+                    <div class="projects-main__grid" role="list">
+                        <!-- Проект 1: Календарь -->
+                        <article class="project-preview" 
+                                 data-project-id="1"
+                                 tabindex="0"
+                                 role="button"
+                                 aria-label="Проект: Вечный календарь на C#. Технологии: C#, WinForms/WPF. Нажмите Enter для просмотра">
+                            <div class="project-preview__icon" aria-hidden="true">📆</div>
+                            <h3 class="project-preview__title">Вечный календарь на C#</h3>
+                            <p class="project-preview__description">
+                                Десктопное приложение для отображения календаря с дополнительными функциями
+                            </p>
+                            <div class="project-preview__tech">
+                                <span class="sr-only">Используемые технологии:</span>
+                                C#, WinForms/WPF
+                            </div>
+                        </article>
+
+                        <!-- Проект 2: Калькулятор -->
+                        <article class="project-preview" 
+                                 data-project-id="4"
+                                 tabindex="0"
+                                 role="button"
+                                 aria-label="Проект: Матричный калькулятор. Технологии: C#, WinForms/WPF. Нажмите Enter для просмотра">
+                            <div class="project-preview__icon" aria-hidden="true">🧮</div>
+                            <h3 class="project-preview__title">Матричный калькулятор</h3>
+                            <p class="project-preview__description">
+                                Калькулятор, который умеет работать с матрицами
+                            </p>
+                            <div class="project-preview__tech">
+                                <span class="sr-only">Используемые технологии:</span>
+                                C#, WinForms/WPF
+                            </div>
+                        </article>
+
+                        <!-- Проект 3: Погода -->
+                        <article class="project-preview" 
+                                 data-project-id="5"
+                                 tabindex="0"
+                                 role="button"
+                                 aria-label="Проект: Прогноз погоды. Технологии: Qt, C++, OpenMeteoAPI. Нажмите Enter для просмотра">
+                            <div class="project-preview__icon" aria-hidden="true">🌤</div>
+                            <h3 class="project-preview__title">Прогноз погоды</h3>
+                            <p class="project-preview__description">
+                                Десктопное приложение для отображения прогноза погоды
+                            </p>
+                            <div class="project-preview__tech">
+                                <span class="sr-only">Используемые технологии:</span>
+                                Qt, C++, OpenMeteoAPI
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- LIGHTHOUSE: Семантический footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <p class="footer__copyright">&copy; 2025 Хачатрян Давид Каренович</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Функция открытия резюме
+        function openResume() {
+            window.open('./assets/resume_efbo-18-24_khachatryan.docx', '_blank', 'noopener,noreferrer');
+        }
+
+        // LIGHTHOUSE: Анимация с учётом prefers-reduced-motion
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-card__progress-bar');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            skillBars.forEach((bar, index) => {
+                const targetWidth = bar.getAttribute('data-width');
+                const progressBar = bar.closest('.skill-card__progress');
+
+                setTimeout(() => {
+                    bar.style.width = targetWidth + '%';
+                    
+                    // Обновляем aria-valuenow для скринридеров
+                    if (progressBar) {
+                        progressBar.setAttribute('aria-valuenow', targetWidth);
+                    }
+                }, prefersReducedMotion ? 0 : index * 200);
+            });
+        }
+
+        // Запуск при загрузке
+        window.addEventListener('load', () => {
+            setTimeout(animateSkillBars, 300);
+        });
+
+        // Intersection Observer для анимации при скролле
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-card__progress-bar');
+                    if (skillBars[0] && (skillBars[0].style.width === '0%' || skillBars[0].style.width === '')) {
+                        animateSkillBars();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.querySelector('.skills-main');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // LIGHTHOUSE: Обработка кликов и клавиатуры на карточках проектов
+        document.addEventListener('DOMContentLoaded', function () {
+            const projectCards = document.querySelectorAll('.project-preview');
+
+            projectCards.forEach(card => {
+                // Клик мышью
+                card.addEventListener('click', function () {
+                    navigateToProject(this);
+                });
+
+                // Enter и Space с клавиатуры
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        navigateToProject(this);
+                    }
+                });
+            });
+
+            function navigateToProject(card) {
+                const projectId = card.getAttribute('data-project-id');
+                if (projectId) {
+                    window.location.href = `pages/projects.html?project=${projectId}`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

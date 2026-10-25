@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evervess — История</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f0f0f0; --sidebar-bg: #1a1a2e; --sidebar-text: #b0b0c0;
+    --accent: #3a8; --text-primary: #111; --text-secondary: #666;
+    --white: #fff; --border: #d0d0d0; --card-bg: #fff;
+  }
+  body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; display: flex; }
+  .sidebar { width: 200px; min-height: 100vh; background: var(--sidebar-bg); padding: 24px 0; flex-shrink: 0; }
+  .sidebar-logo { padding: 0 20px 20px; }
+  .sidebar-logo h1 { font-size: 18px; font-weight: 800; color: var(--white); }
+  .sidebar-logo span { font-size: 11px; color: var(--sidebar-text); display: block; margin-top: 2px; }
+  .sidebar-nav { list-style: none; margin-top: 8px; }
+  .sidebar-nav li a { display: block; padding: 10px 20px; color: var(--sidebar-text); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+  .sidebar-nav li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+  .sidebar-nav li a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(58,170,136,0.08); }
+  .main { flex: 1; padding: 28px 32px; }
+
+  .page-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .page-header h2 { font-size: 24px; font-weight: 700; }
+  .page-header p { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+  .header-buttons { display: flex; gap: 10px; }
+  .btn-outline-sm {
+    padding: 10px 20px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--white); font-size: 14px; font-weight: 600;
+    font-family: inherit; cursor: pointer; transition: all 0.15s;
+  }
+  .btn-outline-sm:hover { border-color: #999; }
+
+  .tx-list {
+    background: var(--card-bg);
+    border-radius: 14px;
+    margin-top: 24px;
+    overflow: hidden;
+  }
+  .tx-item {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.1s;
+  }
+  .tx-item:last-child { border-bottom: none; }
+  .tx-item:hover { background: #fafafa; }
+
+  .tx-icon {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-right: 16px; font-size: 18px; flex-shrink: 0;
+  }
+  .tx-icon.income { background: #e0f7ec; color: var(--accent); }
+  .tx-icon.expense { background: #f0f0f0; color: #888; }
+
+  .tx-info { flex: 1; }
+  .tx-info .tx-name { font-size: 15px; font-weight: 600; }
+  .tx-info .tx-meta { font-size: 12px; color: var(--text-secondary); margin-top: 3px; }
+
+  .tx-right { text-align: right; }
+  .tx-right .tx-amount { font-size: 16px; font-weight: 700; }
+  .tx-right .tx-amount.positive { color: var(--accent); }
+  .tx-right .tx-amount.negative { color: var(--text-primary); }
+  .tx-right .tx-status { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+
+  .load-more {
+    text-align: center; padding: 20px;
+    color: var(--accent); font-weight: 600; font-size: 14px;
+    cursor: pointer;
+  }
+  .load-more:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h1>evervess</h1><span>Современный банк</span></div>
+    <ul class="sidebar-nav">
+      <li><a href="main.html">Главная</a></li>
+      <li><a href="cards.html">Карты</a></li>
+      <li><a href="transfers.html">Переводы</a></li>
+      <li><a href="#" class="active">История</a></li>
+      <li><a href="#">Продукты</a></li>
+      <li><a href="#">Накопления</a></li>
+      <li><a href="#">Платежи</a></li>
+      <li><a href="support.html">Поддержка</a></li>
+      <li><a href="admin.html">Админ</a></li>
+    </ul>
+  </aside>
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <h2>История операций</h2>
+        <p>Все ваши транзакции за последнее время</p>
+      </div>
+      <div class="header-buttons">
+        <button class="btn-outline-sm">Фильтры</button>
+        <button class="btn-outline-sm">Экспорт</button>
+      </div>
+    </div>
+
+    <div class="tx-list">
+      <div class="tx-item">
+        <div class="tx-icon income">↗</div>
+        <div class="tx-info">
+          <div class="tx-name">Перевод от Ивана С.</div>
+          <div class="tx-meta">8 апреля 2026, 14:32 · •••• 4532</div>
+        </div>
+        <div class="tx-right">
+          <div class="tx-amount positive">+5 000 ₽</div>
+          <div class="tx-status">Завершено</div>
+        </div>
+      </div>
+      <div class="tx-item">
+        <div class="tx-icon expense">↙</div>
+        <div class="tx-info">
+          <div class="tx-name">Оплата ЖКХ</div>
+          <div class="tx-meta">7 апреля 2026, 10:15 · •••• 4532</div>
+        </div>
+        <div class="tx-right">
+          <div class="tx-amount negative">-3 200 ₽</div>
+          <div class="tx-status">Завершено</div>
+        </div>
+      </div>
+      <div class="tx-item">
+        <div class="tx-icon expense">↙</div>
+        <div class="tx-info">
+          <div class="tx-name">Покупка в магазине</div>
+          <div class="tx-meta">6 апреля 2026, 18:45 · •••• 4532</div>
+        </div>
+        <div class="tx-right">
+          <div class="tx-amount negative">-1 250,50 ₽</div>
+          <div class="tx-status">Завершено</div>
+        </div>
+      </div>
+      <div class="tx-item">
+        <div class="tx-icon income">↗</div>
+        <div class="tx-info">
+          <div class="tx-name">Зарплата</div>
+          <div class="tx-meta">5 апреля 2026, 09:00 · •••• 4532</div>
+        </div>
+        <div class="tx-right">
+          <div class="tx-amount positive">+85 000 ₽</div>
+          <div class="tx-status">Завершено</div>
+        </div>
+      </div>
+      <div class="tx-item">
+        <div class="tx-icon expense">↙</div>
+        <div class="tx-info">
+          <div class="tx-name">Подписка Netflix</div>
+          <div class="tx-meta">4 апреля 2026, 11:20 · •••• 4532</div>
+        </div>
+        <div class="tx-right">
+          <div class="tx-amount negative">-990 ₽</div>
+          <div class="tx-status">Завершено</div>
+        </div>
+      </div>
+    </div>
+    <div class="load-more">Загрузить больше</div>
+  </main>
+</body>
+</html>

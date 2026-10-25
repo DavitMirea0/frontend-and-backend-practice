@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS zones (id INTEGER PRIMARY KEY, name TEXT NOT NULL, capacity INTEGER NOT NULL CHECK(capacity >= 0), zone_type TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS deliveries (id INTEGER PRIMARY KEY, title TEXT NOT NULL, slug TEXT NOT NULL UNIQUE, goods_type TEXT NOT NULL, delivery_date TEXT NOT NULL, duration INTEGER NOT NULL CHECK(duration >= 0), boxes INTEGER NOT NULL CHECK(boxes >= 0), status TEXT NOT NULL CHECK(status IN ('принят','в пути','доставлен')), zone_id INTEGER REFERENCES zones(id));

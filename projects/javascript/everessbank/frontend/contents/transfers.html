@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evervess — Переводы</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #f0f0f0; --sidebar-bg: #1a1a2e; --sidebar-text: #b0b0c0;
+    --accent: #3a8; --text-primary: #111; --text-secondary: #666;
+    --white: #fff; --border: #d0d0d0; --card-bg: #fff;
+    --input-border: #d0d0d0; --input-bg: #fff;
+  }
+  body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; display: flex; }
+  .sidebar { width: 200px; min-height: 100vh; background: var(--sidebar-bg); padding: 24px 0; flex-shrink: 0; }
+  .sidebar-logo { padding: 0 20px 20px; }
+  .sidebar-logo h1 { font-size: 18px; font-weight: 800; color: var(--white); }
+  .sidebar-logo span { font-size: 11px; color: var(--sidebar-text); display: block; margin-top: 2px; }
+  .sidebar-nav { list-style: none; margin-top: 8px; }
+  .sidebar-nav li a { display: block; padding: 10px 20px; color: var(--sidebar-text); text-decoration: none; font-size: 14px; font-weight: 500; border-left: 3px solid transparent; transition: all 0.2s; }
+  .sidebar-nav li a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+  .sidebar-nav li a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(58,170,136,0.08); }
+  .main { flex: 1; padding: 28px 32px; }
+  .page-header h2 { font-size: 24px; font-weight: 700; }
+  .page-header p { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+
+  .transfer-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .tab-item {
+    background: var(--card-bg);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .tab-item:hover { border-color: #ccc; }
+  .tab-item.active { border-color: var(--accent); color: var(--accent); }
+  .tab-item .icon { font-size: 28px; margin-bottom: 8px; display: block; }
+
+  .transfer-form {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 28px;
+    max-width: 600px;
+  }
+  .transfer-form h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+  .form-field { margin-bottom: 18px; }
+  .form-field label { display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+  .form-field input {
+    width: 100%; padding: 12px 14px; border: 1px solid var(--input-border);
+    border-radius: 8px; font-size: 14px; font-family: inherit; outline: none;
+    background: var(--input-bg); transition: border-color 0.2s;
+  }
+  .form-field input:focus { border-color: var(--accent); }
+  .form-field input::placeholder { color: #aaa; }
+
+  .source-card {
+    display: flex; align-items: center; gap: 12px;
+    background: #f5f5f5; border-radius: 10px; padding: 14px 16px;
+    margin-bottom: 18px; cursor: pointer;
+  }
+  .source-card .dot { width: 36px; height: 36px; background: #1e1e3a; border-radius: 8px; }
+  .source-card .info { flex: 1; }
+  .source-card .info .num { font-weight: 700; font-size: 14px; }
+  .source-card .info .bal { font-size: 12px; color: var(--text-secondary); }
+  .source-card .arrow { color: #bbb; font-size: 20px; }
+
+  .btn-transfer {
+    width: 100%; padding: 16px; background: var(--accent); color: var(--white);
+    border: none; border-radius: 12px; font-size: 16px; font-weight: 700;
+    font-family: inherit; cursor: pointer; margin-top: 6px;
+  }
+  .btn-transfer:hover { opacity: 0.9; }
+  .commission { text-align: center; font-size: 12px; color: var(--text-secondary); margin-top: 10px; }
+</style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo"><h1>evervess</h1><span>Современный банк</span></div>
+    <ul class="sidebar-nav">
+      <li><a href="main.html">Главная</a></li>
+      <li><a href="cards.html">Карты</a></li>
+      <li><a href="#" class="active">Переводы</a></li>
+      <li><a href="history.html">История</a></li>
+      <li><a href="#">Продукты</a></li>
+      <li><a href="#">Накопления</a></li>
+      <li><a href="#">Платежи</a></li>
+      <li><a href="support.html">Поддержка</a></li>
+      <li><a href="admin.html">Админ</a></li>
+    </ul>
+  </aside>
+  <main class="main">
+    <div class="page-header">
+      <h2>Переводы</h2>
+      <p>Отправляйте деньги быстро и безопасно</p>
+    </div>
+
+    <div class="transfer-tabs">
+      <div class="tab-item active"><span class="icon">👥</span>Клиентам evervess</div>
+      <div class="tab-item"><span class="icon">🏦</span>На карту другого банка</div>
+      <div class="tab-item"><span class="icon">↗</span>Между своими счетами</div>
+    </div>
+
+    <div class="transfer-form">
+      <h3>Новый перевод</h3>
+      <label style="font-size:13px;font-weight:600;color:#666;margin-bottom:6px;display:block;">С какой карты</label>
+      <div class="source-card">
+        <div class="dot"></div>
+        <div class="info">
+          <div class="num">•••• 4532</div>
+          <div class="bal">145 678,90 ₽</div>
+        </div>
+        <span class="arrow">›</span>
+      </div>
+      <div class="form-field">
+        <label>Номер карты получателя</label>
+        <input type="text" placeholder="0000 0000 0000 0000">
+      </div>
+      <div class="form-field">
+        <label>Сумма перевода</label>
+        <input type="text" placeholder="0 ₽">
+      </div>
+      <div class="form-field">
+        <label>Комментарий (необязательно)</label>
+        <input type="text" placeholder="За обед">
+      </div>
+      <button class="btn-transfer">Перевести</button>
+      <div class="commission">Комиссия за перевод не взимается</div>
+    </div>
+  </main>
+</body>
+</html>

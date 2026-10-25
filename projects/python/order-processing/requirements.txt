@@ -1,0 +1,6 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+asyncpg==0.29.0
+aio-pika==9.4.3
+redis==5.0.8
+pydantic==2.9.2

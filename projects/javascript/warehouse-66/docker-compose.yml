@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: wh66-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: warehouse66
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      # русский UTF-8 в RAISE NOTICE и сообщениях ошибок
+      LANG: C.UTF-8
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      # Postgres сам прогонит все .sql из /docker-entrypoint-initdb.d
+      # ПРИ ПЕРВОМ запуске (когда db_data пустой). Файлы выполняются по алфавиту,
+      # имена 01_..04_ дают нужный порядок.
+      - ./db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d warehouse66"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: wh66-backend
+    restart: unless-stopped
+    environment:
+      PORT: 4000
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: warehouse66
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      JWT_SECRET: warehouse66-secret-key
+    ports:
+      - "4000:4000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: wh66-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
