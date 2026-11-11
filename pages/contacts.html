@@ -1,377 +1,139 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Контакты — Портфолио Давида Хачатряна</title>
-        <link rel="stylesheet" href="../style/styles.css">
-        <style>
-            /* Стили для модального окна */
-            dialog::backdrop {
-                background: rgba(0, 0, 0, 0.6);
-                animation: fadeIn 0.3s ease;
-            }
-            dialog {
-                border: none;
-                border-radius: 12px;
-                padding: 0;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-                animation: slideIn 0.3s ease;
-                max-width: 500px;
-                width: 90vw;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — Портфолио Давида Хачатряна</title>
+<meta name="description" content="Контакты Давида Хачатряна: почта, телефон, Telegram, GitHub и форма обратной связи.">
+<meta name="theme-color" content="#0B0D10">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../style/home.css">
+<link rel="stylesheet" href="../style/pages.css">
+<script src="../scripts/home.js" defer></script>
+<script src="../scripts/contacts.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">К содержимому</a>
 
-            .modal-header {
-                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-                color: white;
-                padding: 1.5rem;
-                border-radius: 12px 12px 0 0;
-                margin: 0;
-            }
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="../index.html">Давид Хачатрян</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню"></button>
+    <nav class="nav" id="site-nav" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a>
+      <a href="projects.html">Проекты</a>
+      <a href="contacts.html" aria-current="page">Контакты</a>
+    </nav>
+  </div>
+</header>
 
-            .modal-header h2 {
-                margin: 0;
-                color: white;
-                font-size: 1.5rem;
-            }
+<main id="main">
+  <div class="container">
 
-            .modal-content {
-                padding: 2rem;
-            }
+    <div class="page-intro">
+      <h1>Контакты</h1>
+    </div>
 
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
+    <div class="contacts-layout">
 
-            .form-group label {
-                display: block;
-                margin-bottom: 0.5rem;
-                font-weight: 600;
-                color: #2c3e50;
-            }
+      <p class="form-status" id="form-status" role="status" hidden></p>
 
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                width: 100%;
-                padding: 0.75rem;
-                border: 2px solid #e9ecef;
-                border-radius: 6px;
-                font-size: 1rem;
-                transition: border-color 0.3s ease;
-                box-sizing: border-box;
-            }
+      <section class="panel panel--info" aria-labelledby="info-title">
+        <h2 id="info-title">Контактная информация</h2>
+        <dl class="facts">
+          <div><dt>Имя</dt><dd>Хачатрян Давид Каренович</dd></div>
+          <div><dt>Группа</dt><dd>ЭФБО-18-24</dd></div>
+        </dl>
+      </section>
 
-            .form-group input:focus,
-            .form-group select:focus,
-            .form-group textarea:focus {
-                outline: none;
-                border-color: #667eea;
-            }
+      <section class="panel panel--cta" aria-labelledby="cta-title">
+        <h2 id="cta-title">Написать мне</h2>
+        <p>Оставьте сообщение через форму или напишите на почту.</p>
+        <button class="btn btn--primary" type="button" id="open-contact" hidden>Связаться со мной</button>
+      </section>
 
-            .form-group textarea {
-                min-height: 100px;
-                resize: vertical;
-            }
+      <section class="panel panel--third" aria-labelledby="phone-title">
+        <h3 id="phone-title">Телефон</h3>
+        <a class="link link--plain" href="tel:+74993213211">+7 (499) 321-32-11</a>
+      </section>
 
-            .modal-actions {
-                display: flex;
-                gap: 1rem;
-                justify-content: flex-end;
-                margin-top: 2rem;
-            }
+      <section class="panel panel--third" aria-labelledby="mail-title">
+        <h3 id="mail-title">Электронная почта</h3>
+        <a class="link link--plain" href="mailto:davit.khachakryan.05@mail.ru">davit.khachakryan.05@mail.ru</a>
+      </section>
 
-            .btn {
-                padding: 0.75rem 1.5rem;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 1rem;
-                transition: all 0.3s ease;
-                font-weight: 600;
-            }
+      <section class="panel panel--third" aria-labelledby="social-title">
+        <h3 id="social-title">Социальные сети</h3>
+        <ul class="social-list">
+          <li><a class="link link--plain" href="https://t.me/ejmiadsinci77" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a class="link link--plain" href="https://github.com/DavitMirea0" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </section>
 
-            .btn-primary {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-            }
+    </div>
+  </div>
+</main>
 
-            .btn-primary:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            }
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p>© 2026 Давид Хачатрян</p>
+    <a class="link" href="https://github.com/DavitMirea0" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
 
-            .btn-secondary {
-                background: #f8f9fa;
-                color: #2c3e50;
-                border: 2px solid #e9ecef;
-            }
+<dialog class="modal" id="contactModal" aria-labelledby="modal-title">
+  <div class="modal__head">
+    <h2 id="modal-title">Форма обратной связи</h2>
+  </div>
 
-            .btn-secondary:hover {
-                background: #e9ecef;
-            }
+  <form class="modal__body" id="feedbackForm" method="dialog" novalidate>
+    <!-- Ключ из web3forms.com: письма приходят на почту, указанную при его получении -->
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+    <!-- Скрытое поле-ловушка для ботов -->
+    <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-            .required {
-                color: #e74c3c;
-            }
+    <div class="field">
+      <label for="name">Имя <span class="required" aria-hidden="true">*</span></label>
+      <input class="control" type="text" id="name" name="name" required placeholder="Введите ваше имя" autocomplete="name">
+    </div>
 
-            .contact-button {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 1rem;
-                font-weight: 600;
-                transition: all 0.3s ease;
-                margin-top: 2rem;
-            }
+    <div class="field">
+      <label for="phone">Телефон <span class="required" aria-hidden="true">*</span></label>
+      <input class="control" type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX" autocomplete="tel">
+    </div>
 
-            .contact-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            }
+    <div class="field">
+      <label for="email">Электронная почта <span class="required" aria-hidden="true">*</span></label>
+      <input class="control" type="email" id="email" name="email" required placeholder="example@mail.ru" autocomplete="email">
+    </div>
 
-            .contacts-container {
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 2rem;
-            }
+    <div class="field">
+      <label for="category">Категория обращения <span class="required" aria-hidden="true">*</span></label>
+      <select class="control" id="category" name="category" required>
+        <option value="">Выберите категорию</option>
+        <option value="technical">Техническая поддержка</option>
+        <option value="commercial">Коммерческое предложение</option>
+        <option value="cooperation">Сотрудничество</option>
+        <option value="consultation">Консультация</option>
+        <option value="other">Другое</option>
+      </select>
+    </div>
 
-            .section-title {
-                text-align: center;
-                margin-bottom: 2rem;
-                color: #2c3e50;
-            }
+    <div class="field">
+      <label for="message">Текст обращения <span class="required" aria-hidden="true">*</span></label>
+      <textarea class="control" id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
+    </div>
 
-            .contact-info {
-                background: #f8f9fa;
-                padding: 1.5rem;
-                border-radius: 8px;
-                margin-bottom: 1.5rem;
-                border-left: 4px solid #667eea;
-            }
+    <p class="form-error" id="form-error" role="alert" hidden></p>
 
-            .contact-info h3 {
-                color: #2c3e50;
-                margin-bottom: 0.5rem;
-            }
+    <div class="modal__actions">
+      <!-- Кнопка отмены закрывает окно через form method="dialog" -->
+      <button class="btn btn--outline" type="submit" formnovalidate>Отмена</button>
+      <button class="btn btn--primary" type="button" id="send-feedback">Отправить</button>
+    </div>
+  </form>
+</dialog>
 
-            .contact-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-                margin: 2rem 0;
-            }
-
-            .contact-item {
-                background: white;
-                padding: 1.5rem;
-                border-radius: 8px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }
-
-            .contact-item h3 {
-                color: #2c3e50;
-                margin-bottom: 0.5rem;
-            }
-
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-
-            @keyframes slideIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(-50px) scale(0.9);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-            }
-
-            /* Адаптивность */
-            @media (max-width: 600px) {
-                dialog {
-                    margin: 1rem;
-                    width: calc(100vw - 2rem);
-                }
-
-                .modal-actions {
-                    flex-direction: column;
-                }
-
-                .btn {
-                    width: 100%;
-                }
-
-                .contact-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .contacts-container {
-                    padding: 1rem;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="page-container">
-            <header class="header">
-                <h1>Портфолио</h1>
-            </header>
-            <nav class="nav">
-                <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="../pages/projects.html">Проекты</a></li>
-                <li class="nav-item"><a class="nav-link" href="../pages/contacts.html" aria-current="page">Контакты</a></li>
-            </ul>
-            </nav>
-
-            <main class="content">
-                <section class="contacts-container">
-                    <h2 class="section-title">Мои контакты</h2>
-
-                    <article class="contact-info">
-                        <h3>Контактная информация</h3>
-                        <p><strong>Имя:</strong> Хачатрян Давид Каренович</p>
-                        <p><strong>Группа:</strong> ЭФБО-18-24</p>
-                    </article>
-                    <article class="contact-info">
-                        <h3>Адрес</h3>
-                        <p>г. Москва, пр. Вернадского, 82А</p>
-                    </article>
-
-                    <div class="contact-grid">
-                        <div class="contact-item">
-                            <h3>Телефон</h3>
-                            <p>+7 (499) 321-32-11</p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Электронная почта</h3>
-                            <p>davitxch2005@gmail.com</p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Социальные сети</h3>
-                            <p>Instagran, Telegram</p>
-                        </div>
-                    </div>
-
-                    <!-- Кнопка для открытия модального окна -->
-                    <div style="text-align: center;">
-                        <button class="contact-button" onclick="contactModal.showModal()">Связаться со мной</button>
-                    </div>
-                </section>
-            </main>
-
-            <footer class="footer">
-                <p>© 2024 Все права защищены. Контактная информация</p>
-            </footer>
-
-            <!-- Модальное окно для формы обратной связи -->
-            <dialog id="contactModal">
-                <div class="modal-header">
-                    <h2>Форма обратной связи</h2>
-                </div>
-
-                <div class="modal-content">
-                    <form id="feedbackForm" method="dialog">
-                        <div class="form-group">
-                            <label for="name">Имя <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Телефон <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Электронная почта <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="example@mail.ru">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="category">Категория обращения <span class="required">*</span></label>
-                            <select id="category" name="category" required>
-                                <option value="">Выберите категорию</option>
-                                <option value="technical">Техническая поддержка</option>
-                                <option value="commercial">Коммерческое предложение</option>
-                                <option value="cooperation">Сотрудничество</option>
-                                <option value="consultation">Консультация</option>
-                                <option value="other">Другое</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Текст обращения <span class="required">*</span></label>
-                            <textarea id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
-                        </div>
-
-                        <div class="modal-actions">
-                            <!-- Кнопка отмены с автоматическим закрытием через form method="dialog" -->
-                            <button type="submit" class="btn btn-secondary">Отмена</button>
-                            <!-- Кнопка отправки с обработкой через JavaScript -->
-                            <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
-                        </div>
-                    </form>
-                </div>
-            </dialog>
-
-            <script>
-                // Функция для отправки формы
-                function submitForm() {
-                    const form = document.getElementById('feedbackForm');
-                    const formData = new FormData(form);
-
-                    // Простая валидация
-                    if (!form.checkValidity()) {
-                        form.reportValidity();
-                        return;
-                    }
-
-                    // Собираем данные формы
-                    const data = {
-                        name: formData.get('name'),
-                        phone: formData.get('phone'),
-                        email: formData.get('email'),
-                        category: formData.get('category'),
-                        message: formData.get('message')
-                    };
-
-                    // В реальном приложении здесь был бы AJAX-запрос
-                    console.log('Данные формы:', data);
-
-                    // Показываем уведомление об успешной отправке
-                    alert('Спасибо! Ваше обращение отправлено. Я свяжусь с вами в ближайшее время.');
-
-                    // Закрываем модальное окно
-                    contactModal.close();
-
-                    // Очищаем форму
-                    form.reset();
-                }
-
-                // Закрытие модального окна по клику на фон
-                document.getElementById('contactModal').addEventListener('click', function(event) {
-                    if (event.target === this) {
-                        this.close();
-                    }
-                });
-
-                // Обработка отправки формы через Enter (предотвращаем стандартное поведение)
-                document.getElementById('feedbackForm').addEventListener('keypress', function(event) {
-                    if (event.key === 'Enter' && event.target.type !== 'textarea') {
-                        event.preventDefault();
-                    }
-                });
-            </script>
-        </div>
-    </body>
+</body>
 </html>

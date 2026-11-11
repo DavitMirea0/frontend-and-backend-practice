@@ -1,230 +1,304 @@
-<!doctype html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Проекты — Портфолио Давида Хачатряна</title>
 <meta name="description" content="Проекты Давида Хачатряна на Go, Java, Python, JavaScript, TypeScript, C#, C++ и SQL. Исходники, стек и описание.">
-<title>Проекты — Портфолио Давида Хачатряна</title><link rel="stylesheet" href="../style/styles.css"><script src="../scripts/projects.js" defer></script></head>
-<body><a class="skip-link" href="#main">К содержимому</a><div class="page-container">
-<header class="header"><a class="brand-link" href="../index.html">Портфолио</a></header><nav class="nav" aria-label="Основная навигация"><ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="../pages/projects.html" aria-current="page">Проекты</a></li>
-                <li class="nav-item"><a class="nav-link" href="../pages/contacts.html">Контакты</a></li>
-            </ul></nav>
-<main class="content portfolio-content" id="main">
-<div class="projects-intro"><p class="eyebrow">Давид Хачатрян / Fullstack-разработка</p><h1>Мои проекты</h1>
-<p>Проекты по fullstack-разработке: интерфейсы, серверные API и базы данных. Здесь также собраны настольные приложения и математические симуляторы. Проекты сгруппированы по основному языку, полный стек указан в описании.</p>
-<p class="catalog-summary">47 проектов и учебных подборок · 9 направлений · исходники в репозитории</p></div>
-<nav class="language-nav" aria-label="Языки проектов"><a href="#go">Go <span>1</span></a><a href="#java">Java <span>3</span></a><a href="#python">Python <span>12</span></a><a href="#javascript">JavaScript <span>17</span></a><a href="#typescript">TypeScript <span>1</span></a><a href="#csharp">C# <span>7</span></a><a href="#cpp">C / C++ <span>4</span></a><a href="#sql">SQL <span>1</span></a><a href="#devops">Shell / DevOps <span>1</span></a></nav>
-<form class="project-filters" id="project-filters" role="search" hidden>
-<div><label for="project-search">Поиск по названию или технологии</label><input type="search" id="project-search" placeholder="Например, PostgreSQL или календарь" autocomplete="off"></div>
-<div><label for="language-filter">Основной язык</label><select id="language-filter"><option value="all">Все языки</option><option value="Go">Go</option><option value="Java">Java</option><option value="Python">Python</option><option value="JavaScript">JavaScript</option><option value="TypeScript">TypeScript</option><option value="C#">C#</option><option value="C / C++">C / C++</option><option value="SQL">SQL</option><option value="Shell / DevOps">Shell / DevOps</option></select></div>
-<button type="reset">Сбросить</button></form>
-<p class="results-count" id="results-count" role="status" aria-live="polite">Показано: 47 из 47</p>
-<div class="empty-results" id="empty-results" hidden><h2>По этому запросу проектов нет</h2><p>Попробуйте другой язык, название или технологию.</p><button type="button" id="reset-empty">Сбросить фильтры</button></div>
-<section class="language-section" id="go" data-language="Go" aria-labelledby="heading-go">
-        <div class="language-heading"><h2 id="heading-go">Go</h2><span>1 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>Task API</h3><p>REST API личного списка задач: регистрация, JWT-аутентификация и CRUD с проверкой владельца. Слои handler, service и repository, graceful shutdown и тесты бизнес-логики.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Go</li><li>chi</li><li>pgx</li><li>PostgreSQL</li><li>JWT</li><li>Docker Compose</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/go/taskapi" aria-label="Исходники: Task API">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/taskapi-golang">Отдельный репозиторий</a></div>
+<meta name="theme-color" content="#0B0D10">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../style/home.css">
+<link rel="stylesheet" href="../style/pages.css">
+<script src="../scripts/home.js" defer></script>
+<script src="../scripts/projects.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">К содержимому</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="../index.html">Давид Хачатрян</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню"></button>
+    <nav class="nav" id="site-nav" aria-label="Основная навигация">
+      <a href="../index.html">Главная</a>
+      <a href="projects.html" aria-current="page">Проекты</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+
+    <div class="page-intro">
+      <h1>Мои проекты</h1>
+      <p class="page-intro__lead">Проекты по fullstack-разработке: интерфейсы, серверные API и базы данных. Здесь также собраны настольные приложения и математические симуляторы. Проекты сгруппированы по основному языку, полный стек указан в описании.</p>
+      <p class="page-intro__meta">47 проектов и учебных подборок в 9 направлениях. Исходники лежат в репозитории.</p>
+    </div>
+
+    <nav class="language-nav" aria-label="Языки проектов">
+      <a class="chip" href="#go">Go <span>1</span></a>
+      <a class="chip" href="#java">Java <span>3</span></a>
+      <a class="chip" href="#python">Python <span>12</span></a>
+      <a class="chip" href="#javascript">JavaScript <span>17</span></a>
+      <a class="chip" href="#typescript">TypeScript <span>1</span></a>
+      <a class="chip" href="#csharp">C# <span>7</span></a>
+      <a class="chip" href="#cpp">C / C++ <span>4</span></a>
+      <a class="chip" href="#sql">SQL <span>1</span></a>
+      <a class="chip" href="#devops">Shell / DevOps <span>1</span></a>
+    </nav>
+
+    <form class="project-filters" id="project-filters" role="search" hidden>
+      <div class="field">
+        <label for="project-search">Поиск по названию или технологии</label>
+        <input class="control" type="search" id="project-search" placeholder="Например, PostgreSQL или календарь" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="language-filter">Основной язык</label>
+        <select class="control" id="language-filter">
+          <option value="all">Все языки</option>
+          <option value="Go">Go</option>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="TypeScript">TypeScript</option>
+          <option value="C#">C#</option>
+          <option value="C / C++">C / C++</option>
+          <option value="SQL">SQL</option>
+          <option value="Shell / DevOps">Shell / DevOps</option>
+        </select>
+      </div>
+      <button class="btn btn--outline" type="reset">Сбросить</button>
+    </form>
+
+    <p class="results-count" id="results-count" role="status" aria-live="polite">Показано: 47 из 47</p>
+
+    <div class="empty-results" id="empty-results" hidden>
+      <h2>По этому запросу проектов нет</h2>
+      <p>Попробуйте другой язык, название или технологию.</p>
+      <button class="btn btn--outline" type="button" id="reset-empty">Сбросить фильтры</button>
+    </div>
+
+    <section class="language-section" id="go" data-language="Go" aria-labelledby="heading-go">
+        <div class="language-heading"><h2 id="heading-go">Go</h2><span>1 проект</span></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">Task API</h3><p class="card__desc">REST API личного списка задач: регистрация, JWT-аутентификация и CRUD с проверкой владельца. Слои handler, service и repository, graceful shutdown и тесты бизнес-логики.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Go</li><li class="tag">chi</li><li class="tag">pgx</li><li class="tag">PostgreSQL</li><li class="tag">JWT</li><li class="tag">Docker Compose</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/go/taskapi" target="_blank" rel="noopener" aria-label="Исходники: Task API">Исходники</a><a class="link" href="https://github.com/DavitMirea0/taskapi-golang" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
         </article></div></section><section class="language-section" id="java" data-language="Java" aria-labelledby="heading-java">
-        <div class="language-heading"><h2 id="heading-java">Java</h2><span>3 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>Student Hub</h3><p>Система управления данными студентов с веб-интерфейсом и JavaFX-клиентом. REST backend, аутентификация и миграции базы данных.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Java</li><li>Spring Boot</li><li>Spring Security</li><li>Spring Data JPA</li><li>PostgreSQL</li><li>JavaFX</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/java/student-hub" aria-label="Исходники: Student Hub">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>IT-оборудование — консоль</h3><p>Учёт заявок на выдачу оборудования: сотрудники, статусы и бизнес-правила. Сохранение в PostgreSQL через JDBC и экспорт в Excel.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Java</li><li>JDBC</li><li>PostgreSQL</li><li>Maven</li><li>Apache POI</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/java/it-equipment-console" aria-label="Исходники: IT-оборудование — консоль">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>IT-оборудование — JavaFX</h3><p>Настольное приложение для заявок и сотрудников: поиск, фильтры, статистика, проверка переходов статусов и экспорт показанных данных в Excel.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Java</li><li>JavaFX</li><li>JDBC</li><li>PostgreSQL</li><li>Apache POI</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/java/it-equipment-fx" aria-label="Исходники: IT-оборудование — JavaFX">Исходники <span aria-hidden="true">↗</span></a></div>
+        <div class="language-heading"><h2 id="heading-java">Java</h2><span>3 проекта</span></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">Student Hub</h3><p class="card__desc">Система управления данными студентов с веб-интерфейсом и JavaFX-клиентом. REST backend, аутентификация и миграции базы данных.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Java</li><li class="tag">Spring Boot</li><li class="tag">Spring Security</li><li class="tag">Spring Data JPA</li><li class="tag">PostgreSQL</li><li class="tag">JavaFX</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/java/student-hub" target="_blank" rel="noopener" aria-label="Исходники: Student Hub">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">IT-оборудование — консоль</h3><p class="card__desc">Учёт заявок на выдачу оборудования: сотрудники, статусы и бизнес-правила. Сохранение в PostgreSQL через JDBC и экспорт в Excel.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Java</li><li class="tag">JDBC</li><li class="tag">PostgreSQL</li><li class="tag">Maven</li><li class="tag">Apache POI</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/java/it-equipment-console" target="_blank" rel="noopener" aria-label="Исходники: IT-оборудование — консоль">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">IT-оборудование — JavaFX</h3><p class="card__desc">Настольное приложение для заявок и сотрудников: поиск, фильтры, статистика, проверка переходов статусов и экспорт показанных данных в Excel.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Java</li><li class="tag">JavaFX</li><li class="tag">JDBC</li><li class="tag">PostgreSQL</li><li class="tag">Apache POI</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/java/it-equipment-fx" target="_blank" rel="noopener" aria-label="Исходники: IT-оборудование — JavaFX">Исходники</a></div>
         </article></div></section><section class="language-section" id="python" data-language="Python" aria-labelledby="heading-python">
         <div class="language-heading"><h2 id="heading-python">Python</h2><span>12 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>Order Processing Service</h3><p>Сервис обработки заказов с transactional outbox. Идемпотентность API и consumer, очереди повторных попыток с задержкой и DLQ.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>RabbitMQ</li><li>Redis</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/order-processing" aria-label="Исходники: Order Processing Service">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Community Manager</h3><p>Telegram-бот и admin API для сообществ, публикаций и событий. Роли участников, RSVP, FSM в Redis и миграции Alembic.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>aiogram</li><li>FastAPI</li><li>SQLAlchemy</li><li>PostgreSQL</li><li>Redis</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/community-manager" aria-label="Исходники: Community Manager">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/community-manager">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Парковка университета</h3><p>Веб-приложение с ролями пользователя, охраны и администратора. Регистрация автомобилей, въезд и выезд, бронирование и прогноз загрузки по часам.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>HTML</li><li>JavaScript</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/parking" aria-label="Исходники: Парковка университета">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Служба доставки</h3><p>Учебное приложение для зон и доставок: фильтрация, сортировка, статистика SQL и изменение статуса заказа через POST с CSRF-защитой.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>Django</li><li>SQLite</li><li>SQL</li><li>HTML</li><li>CSS</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/delivery-service" aria-label="Исходники: Служба доставки">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>API вакансий Selectel</h3><p>Доработка тестового проекта: парсинг публичных вакансий, хранение в PostgreSQL и CRUD API. Периодический запуск парсинга через APScheduler.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>APScheduler</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/selectel-vacancies" aria-label="Исходники: API вакансий Selectel">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/selectest-api-fix">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>FastAPI — КР 1</h3><p>Первые HTTP-маршруты FastAPI и шаблон HTML. Учебная работа по разработке серверных приложений.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>HTML</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr1" aria-label="Исходники: FastAPI — КР 1">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>FastAPI — КР 2</h3><p>Модели запросов и валидация пользовательских данных с Pydantic.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>Pydantic</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr2" aria-label="Исходники: FastAPI — КР 2">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/--2-TRSP">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>FastAPI — КР 3</h3><p>Аутентификация, авторизация и RBAC с хранением данных в SQLite.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>RBAC</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr3" aria-label="Исходники: FastAPI — КР 3">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/KR3-TRSP">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>FastAPI — КР 4</h3><p>Миграции Alembic, обработка исключений, валидация и синхронные и асинхронные тесты API.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>Alembic</li><li>pytest</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr4" aria-label="Исходники: FastAPI — КР 4">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/-R4_TRSP">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>FastAPI — КР 5</h3><p>API задач, фильтрация, интеграционные тесты и упражнения с WebSockets.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>FastAPI</li><li>Pydantic</li><li>pytest</li><li>WebSockets</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr5" aria-label="Исходники: FastAPI — КР 5">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/KR5-trsp">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Алгоритмы и анализ данных</h3><p>Учебные ноутбуки Jupyter по алгоритмам и анализу данных. Выводы ячеек и метаданные очищены в опубликованной копии.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>Jupyter</li><li>Алгоритмы</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/algorithms" aria-label="Исходники: Алгоритмы и анализ данных">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Счётчик Flask + Redis</h3><p>Учебный сервис-счётчик на Flask с Redis и конфигурацией Docker Compose.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Python</li><li>Flask</li><li>Redis</li><li>Docker Compose</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/flask-redis" aria-label="Исходники: Счётчик Flask + Redis">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/devops-kr2">Отдельный репозиторий</a></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">Order Processing Service</h3><p class="card__desc">Сервис обработки заказов с transactional outbox. Идемпотентность API и consumer, очереди повторных попыток с задержкой и DLQ.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">PostgreSQL</li><li class="tag">RabbitMQ</li><li class="tag">Redis</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/order-processing" target="_blank" rel="noopener" aria-label="Исходники: Order Processing Service">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Community Manager</h3><p class="card__desc">Telegram-бот и admin API для сообществ, публикаций и событий. Роли участников, RSVP, FSM в Redis и миграции Alembic.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">aiogram</li><li class="tag">FastAPI</li><li class="tag">SQLAlchemy</li><li class="tag">PostgreSQL</li><li class="tag">Redis</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/community-manager" target="_blank" rel="noopener" aria-label="Исходники: Community Manager">Исходники</a><a class="link" href="https://github.com/DavitMirea0/community-manager" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Парковка университета</h3><p class="card__desc">Веб-приложение с ролями пользователя, охраны и администратора. Регистрация автомобилей, въезд и выезд, бронирование и прогноз загрузки по часам.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">SQLite</li><li class="tag">HTML</li><li class="tag">JavaScript</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/parking" target="_blank" rel="noopener" aria-label="Исходники: Парковка университета">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Служба доставки</h3><p class="card__desc">Учебное приложение для зон и доставок: фильтрация, сортировка, статистика SQL и изменение статуса заказа через POST с CSRF-защитой.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">Django</li><li class="tag">SQLite</li><li class="tag">SQL</li><li class="tag">HTML</li><li class="tag">CSS</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/delivery-service" target="_blank" rel="noopener" aria-label="Исходники: Служба доставки">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">API вакансий Selectel</h3><p class="card__desc">Доработка тестового проекта: парсинг публичных вакансий, хранение в PostgreSQL и CRUD API. Периодический запуск парсинга через APScheduler.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">PostgreSQL</li><li class="tag">APScheduler</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/selectel-vacancies" target="_blank" rel="noopener" aria-label="Исходники: API вакансий Selectel">Исходники</a><a class="link" href="https://github.com/DavitMirea0/selectest-api-fix" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">FastAPI — КР 1</h3><p class="card__desc">Первые HTTP-маршруты FastAPI и шаблон HTML. Учебная работа по разработке серверных приложений.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">HTML</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr1" target="_blank" rel="noopener" aria-label="Исходники: FastAPI — КР 1">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">FastAPI — КР 2</h3><p class="card__desc">Модели запросов и валидация пользовательских данных с Pydantic.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">Pydantic</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr2" target="_blank" rel="noopener" aria-label="Исходники: FastAPI — КР 2">Исходники</a><a class="link" href="https://github.com/DavitMirea0/--2-TRSP" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">FastAPI — КР 3</h3><p class="card__desc">Аутентификация, авторизация и RBAC с хранением данных в SQLite.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">SQLite</li><li class="tag">RBAC</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr3" target="_blank" rel="noopener" aria-label="Исходники: FastAPI — КР 3">Исходники</a><a class="link" href="https://github.com/DavitMirea0/KR3-TRSP" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">FastAPI — КР 4</h3><p class="card__desc">Миграции Alembic, обработка исключений, валидация и синхронные и асинхронные тесты API.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">SQLAlchemy</li><li class="tag">Alembic</li><li class="tag">pytest</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr4" target="_blank" rel="noopener" aria-label="Исходники: FastAPI — КР 4">Исходники</a><a class="link" href="https://github.com/DavitMirea0/-R4_TRSP" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">FastAPI — КР 5</h3><p class="card__desc">API задач, фильтрация, интеграционные тесты и упражнения с WebSockets.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">FastAPI</li><li class="tag">Pydantic</li><li class="tag">pytest</li><li class="tag">WebSockets</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/fastapi-kr5" target="_blank" rel="noopener" aria-label="Исходники: FastAPI — КР 5">Исходники</a><a class="link" href="https://github.com/DavitMirea0/KR5-trsp" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Алгоритмы и анализ данных</h3><p class="card__desc">Учебные ноутбуки Jupyter по алгоритмам и анализу данных. Выводы ячеек и метаданные очищены в опубликованной копии.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">Jupyter</li><li class="tag">Алгоритмы</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/algorithms" target="_blank" rel="noopener" aria-label="Исходники: Алгоритмы и анализ данных">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Счётчик Flask + Redis</h3><p class="card__desc">Учебный сервис-счётчик на Flask с Redis и конфигурацией Docker Compose.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Python</li><li class="tag">Flask</li><li class="tag">Redis</li><li class="tag">Docker Compose</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/python/flask-redis" target="_blank" rel="noopener" aria-label="Исходники: Счётчик Flask + Redis">Исходники</a><a class="link" href="https://github.com/DavitMirea0/devops-kr2" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
         </article></div></section><section class="language-section" id="javascript" data-language="JavaScript" aria-labelledby="heading-javascript">
         <div class="language-heading"><h2 id="heading-javascript">JavaScript</h2><span>17 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>Warehouse-66</h3><p>Складская система: поступления, перемещение между складами, инвентаризация и аналитика поставщиков. JWT и три роли; бизнес-логика на PL/pgSQL.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/warehouse-66" aria-label="Исходники: Warehouse-66">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/warehouse-66">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Evervess</h3><p>Учебное банковское приложение: карты, переводы, накопительные счета, оплата услуг и панель администратора.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Express</li><li>PostgreSQL</li><li>JWT</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/evervess" aria-label="Исходники: Evervess">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/evervess">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Everessbank — прототип</h3><p>Ранний учебный прототип банковского веб-приложения: сервер Express, HTML-шаблоны и SQL-схема базы.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>Express</li><li>HTML</li><li>SQL</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/everessbank" aria-label="Исходники: Everessbank — прототип">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Roadmap Tracker</h3><p>Трекер изучения технологий: статусы тем, общий прогресс, поиск, редактирование дорожной карты, импорт и экспорт данных.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Material UI</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/roadmap-tracker" aria-label="Исходники: Roadmap Tracker">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/roadmap-tracker0">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Учебное веб-портфолио</h3><p>Многостраничное портфолио с семантической HTML-разметкой и адаптивными стилями.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/web-portfolio" aria-label="Исходники: Учебное веб-портфолио">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/Project-1">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>React + REST API</h3><p>Учебная серия: карточка товара, CRUD на Express, REST API, React-клиент и авторизация.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Express</li><li>REST API</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/react-rest" aria-label="Исходники: React + REST API">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/kr1_2sem">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Клиент и сервер — практикум</h3><p>Сборник исходников практик клиент-серверной веб-разработки за второй семестр.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Node.js</li><li>HTML</li><li>CSS</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/web-practice-2" aria-label="Исходники: Клиент и сервер — практикум">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>SoftShop — заметки PWA</h3><p>Офлайн-приложение заметок: Service Worker, манифест PWA, напоминания, Socket.IO и Web Push.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>PWA</li><li>Service Worker</li><li>Express</li><li>Socket.IO</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/softshop-notes" aria-label="Исходники: SoftShop — заметки PWA">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/kr3_2sem">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Базы данных и инфраструктура</h3><p>CRUD с PostgreSQL и MongoDB, кеширование Redis, балансировка нагрузки и контейнеризация.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/database-infra" aria-label="Исходники: Базы данных и инфраструктура">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/kr4_2sem">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>GraphQL и очереди задач</h3><p>React-клиент и GraphQL API для книг и задач; RabbitMQ consumer с повторными попытками и DLQ.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>GraphQL</li><li>RabbitMQ</li><li>Docker</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/graphql-queues" aria-label="Исходники: GraphQL и очереди задач">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/kr5_2sem">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Практики веб-разработки</h3><p>Подборка учебных приложений по frontend и backend: React-клиенты и серверная часть.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Node.js</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/web-practices" aria-label="Исходники: Практики веб-разработки">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>React + Express — демо</h3><p>Учебный пример с раздельными frontend и backend для практики HTTP API.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Express</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/frontend-backend-demo" aria-label="Исходники: React + Express — демо">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Формула / Матрица</h3><p>Квиз по физике с анализом ошибок по темам через матрицу принадлежности вопросов. Рекомендации по повторению и демонстрационный сценарий.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Node.js</li><li>Матрицы</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/physics-quiz" aria-label="Исходники: Формула / Матрица">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Лаборатория Монте-Карло</h3><p>Симуляция задачи случайной встречи. Настройка времени ожидания, сравнение эмпирической вероятности с теорией и воспроизводимые опыты с seed.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Node.js</li><li>Вероятность</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/monte-carlo" aria-label="Исходники: Лаборатория Монте-Карло">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Бильярд: математика движения</h3><p>Интерактивное исследование движения и отражений в прямоугольном бильярде: траектории, период и метод развёртки.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Node.js</li><li>Математика</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/billiard" aria-label="Исходники: Бильярд: математика движения">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Множества Жюлиа</h3><p>Визуализация комплексных итераций на Canvas. Изменение параметров, палитры и лимита итераций; исследование орбиты точки.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>Node.js</li><li>Canvas</li><li>Комплексные числа</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/julia-sets" aria-label="Исходники: Множества Жюлиа">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Погодное приложение</h3><p>React-интерфейс выбора города и отображения погоды с состояниями загрузки, ошибки и демонстрационными данными.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>JavaScript</li><li>React</li><li>Vite</li><li>CSS</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/weather-app" aria-label="Исходники: Погодное приложение">Исходники <span aria-hidden="true">↗</span></a></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">Warehouse-66</h3><p class="card__desc">Складская система: поступления, перемещение между складами, инвентаризация и аналитика поставщиков. JWT и три роли; бизнес-логика на PL/pgSQL.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Node.js</li><li class="tag">Express</li><li class="tag">PostgreSQL</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/warehouse-66" target="_blank" rel="noopener" aria-label="Исходники: Warehouse-66">Исходники</a><a class="link" href="https://github.com/DavitMirea0/warehouse-66" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Evervess</h3><p class="card__desc">Учебное банковское приложение: карты, переводы, накопительные счета, оплата услуг и панель администратора.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Express</li><li class="tag">PostgreSQL</li><li class="tag">JWT</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/evervess" target="_blank" rel="noopener" aria-label="Исходники: Evervess">Исходники</a><a class="link" href="https://github.com/DavitMirea0/evervess" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Everessbank — прототип</h3><p class="card__desc">Ранний учебный прототип банковского веб-приложения: сервер Express, HTML-шаблоны и SQL-схема базы.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">Express</li><li class="tag">HTML</li><li class="tag">SQL</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/everessbank" target="_blank" rel="noopener" aria-label="Исходники: Everessbank — прототип">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Roadmap Tracker</h3><p class="card__desc">Трекер изучения технологий: статусы тем, общий прогресс, поиск, редактирование дорожной карты, импорт и экспорт данных.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Material UI</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/roadmap-tracker" target="_blank" rel="noopener" aria-label="Исходники: Roadmap Tracker">Исходники</a><a class="link" href="https://github.com/DavitMirea0/roadmap-tracker0" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Учебное веб-портфолио</h3><p class="card__desc">Многостраничное портфолио с семантической HTML-разметкой и адаптивными стилями.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/web-portfolio" target="_blank" rel="noopener" aria-label="Исходники: Учебное веб-портфолио">Исходники</a><a class="link" href="https://github.com/DavitMirea0/Project-1" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">React + REST API</h3><p class="card__desc">Учебная серия: карточка товара, CRUD на Express, REST API, React-клиент и авторизация.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Express</li><li class="tag">REST API</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/react-rest" target="_blank" rel="noopener" aria-label="Исходники: React + REST API">Исходники</a><a class="link" href="https://github.com/DavitMirea0/kr1_2sem" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Клиент и сервер — практикум</h3><p class="card__desc">Сборник исходников практик клиент-серверной веб-разработки за второй семестр.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Node.js</li><li class="tag">HTML</li><li class="tag">CSS</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/web-practice-2" target="_blank" rel="noopener" aria-label="Исходники: Клиент и сервер — практикум">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">SoftShop — заметки PWA</h3><p class="card__desc">Офлайн-приложение заметок: Service Worker, манифест PWA, напоминания, Socket.IO и Web Push.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">PWA</li><li class="tag">Service Worker</li><li class="tag">Express</li><li class="tag">Socket.IO</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/softshop-notes" target="_blank" rel="noopener" aria-label="Исходники: SoftShop — заметки PWA">Исходники</a><a class="link" href="https://github.com/DavitMirea0/kr3_2sem" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Базы данных и инфраструктура</h3><p class="card__desc">CRUD с PostgreSQL и MongoDB, кеширование Redis, балансировка нагрузки и контейнеризация.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">PostgreSQL</li><li class="tag">MongoDB</li><li class="tag">Redis</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/database-infra" target="_blank" rel="noopener" aria-label="Исходники: Базы данных и инфраструктура">Исходники</a><a class="link" href="https://github.com/DavitMirea0/kr4_2sem" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">GraphQL и очереди задач</h3><p class="card__desc">React-клиент и GraphQL API для книг и задач; RabbitMQ consumer с повторными попытками и DLQ.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">GraphQL</li><li class="tag">RabbitMQ</li><li class="tag">Docker</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/graphql-queues" target="_blank" rel="noopener" aria-label="Исходники: GraphQL и очереди задач">Исходники</a><a class="link" href="https://github.com/DavitMirea0/kr5_2sem" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Практики веб-разработки</h3><p class="card__desc">Подборка учебных приложений по frontend и backend: React-клиенты и серверная часть.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Node.js</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/web-practices" target="_blank" rel="noopener" aria-label="Исходники: Практики веб-разработки">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">React + Express — демо</h3><p class="card__desc">Учебный пример с раздельными frontend и backend для практики HTTP API.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Express</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/frontend-backend-demo" target="_blank" rel="noopener" aria-label="Исходники: React + Express — демо">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Формула / Матрица</h3><p class="card__desc">Квиз по физике с анализом ошибок по темам через матрицу принадлежности вопросов. Рекомендации по повторению и демонстрационный сценарий.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Node.js</li><li class="tag">Матрицы</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/physics-quiz" target="_blank" rel="noopener" aria-label="Исходники: Формула / Матрица">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Лаборатория Монте-Карло</h3><p class="card__desc">Симуляция задачи случайной встречи. Настройка времени ожидания, сравнение эмпирической вероятности с теорией и воспроизводимые опыты с seed.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Node.js</li><li class="tag">Вероятность</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/monte-carlo" target="_blank" rel="noopener" aria-label="Исходники: Лаборатория Монте-Карло">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Бильярд: математика движения</h3><p class="card__desc">Интерактивное исследование движения и отражений в прямоугольном бильярде: траектории, период и метод развёртки.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Node.js</li><li class="tag">Математика</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/billiard" target="_blank" rel="noopener" aria-label="Исходники: Бильярд: математика движения">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Множества Жюлиа</h3><p class="card__desc">Визуализация комплексных итераций на Canvas. Изменение параметров, палитры и лимита итераций; исследование орбиты точки.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">Node.js</li><li class="tag">Canvas</li><li class="tag">Комплексные числа</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/julia-sets" target="_blank" rel="noopener" aria-label="Исходники: Множества Жюлиа">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Погодное приложение</h3><p class="card__desc">React-интерфейс выбора города и отображения погоды с состояниями загрузки, ошибки и демонстрационными данными.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">JavaScript</li><li class="tag">React</li><li class="tag">Vite</li><li class="tag">CSS</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/javascript/weather-app" target="_blank" rel="noopener" aria-label="Исходники: Погодное приложение">Исходники</a></div>
         </article></div></section><section class="language-section" id="typescript" data-language="TypeScript" aria-labelledby="heading-typescript">
-        <div class="language-heading"><h2 id="heading-typescript">TypeScript</h2><span>1 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>Экспериментальный календарь</h3><p>Эксперимент с интерфейсом календаря: сетка месяца, список встреч, локальное хранение и панель метрик взаимодействия.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>TypeScript</li><li>Next.js</li><li>React</li><li>CSS</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/typescript/calendar-experiment" aria-label="Исходники: Экспериментальный календарь">Исходники <span aria-hidden="true">↗</span></a></div>
+        <div class="language-heading"><h2 id="heading-typescript">TypeScript</h2><span>1 проект</span></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">Экспериментальный календарь</h3><p class="card__desc">Эксперимент с интерфейсом календаря: сетка месяца, список встреч, локальное хранение и панель метрик взаимодействия.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">TypeScript</li><li class="tag">Next.js</li><li class="tag">React</li><li class="tag">CSS</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/typescript/calendar-experiment" target="_blank" rel="noopener" aria-label="Исходники: Экспериментальный календарь">Исходники</a></div>
         </article></div></section><section class="language-section" id="csharp" data-language="C#" aria-labelledby="heading-csharp">
         <div class="language-heading"><h2 id="heading-csharp">C#</h2><span>7 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>Вечный календарь</h3><p>Настольный календарь с событиями, категориями, недельным представлением, поиском, напоминаниями и статистикой.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C#</li><li>.NET</li><li>Windows Forms</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/calendar" aria-label="Исходники: Вечный календарь">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Library Manager</h3><p>Управление книгами, авторами и жанрами: CRUD, поиск, фильтрация и связи сущностей.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C#</li><li>WPF</li><li>Entity Framework Core</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/library-manager" aria-label="Исходники: Library Manager">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/LibraryManager">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>HTTP Monitor</h3><p>Встроенные HTTP-сервер и клиент, журнал запросов, фильтрация, статистика и график нагрузки по минутам.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C#</li><li>WPF</li><li>HttpListener</li><li>HttpClient</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/http-monitor" aria-label="Исходники: HTTP Monitor">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/HttpMonitor">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Network Analyzer</h3><p>Учебное WPF-приложение для анализа сети. Исходники разделены на модели и сервисы.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C#</li><li>WPF</li><li>.NET</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/network-analyzer" aria-label="Исходники: Network Analyzer">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/NetworkAnalyzer">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Путеводитель и производство</h3><p>Два учебных приложения: города и достопримечательности; материалы, производственные линии и расчёт времени изготовления.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C#</li><li>ASP.NET Core</li><li>MVC</li><li>Entity Framework Core</li><li>SQLite</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/tourist-production" aria-label="Исходники: Путеводитель и производство">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/kr4-pcs">Отдельный репозиторий</a></div>
-        </article><article class="project-card" data-project>
-            <h3>Blazor Shop</h3><p>Управление товарами магазина: API, браузерный клиент на C#, поиск, фильтры и формы с валидацией.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C#</li><li>Blazor WebAssembly</li><li>ASP.NET Core</li><li>SQLite</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/blazor-shop" aria-label="Исходники: Blazor Shop">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Заказы ресторана</h3><p>Консольная система заказов ресторана: блюда, категории и работа с коллекциями объектов.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C#</li><li>.NET</li><li>ООП</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/restaurant-orders" aria-label="Исходники: Заказы ресторана">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/Programming-Corporation-System">Отдельный репозиторий</a></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">Вечный календарь</h3><p class="card__desc">Настольный календарь с событиями, категориями, недельным представлением, поиском, напоминаниями и статистикой.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C#</li><li class="tag">.NET</li><li class="tag">Windows Forms</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/calendar" target="_blank" rel="noopener" aria-label="Исходники: Вечный календарь">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Library Manager</h3><p class="card__desc">Управление книгами, авторами и жанрами: CRUD, поиск, фильтрация и связи сущностей.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C#</li><li class="tag">WPF</li><li class="tag">Entity Framework Core</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/library-manager" target="_blank" rel="noopener" aria-label="Исходники: Library Manager">Исходники</a><a class="link" href="https://github.com/DavitMirea0/LibraryManager" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">HTTP Monitor</h3><p class="card__desc">Встроенные HTTP-сервер и клиент, журнал запросов, фильтрация, статистика и график нагрузки по минутам.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C#</li><li class="tag">WPF</li><li class="tag">HttpListener</li><li class="tag">HttpClient</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/http-monitor" target="_blank" rel="noopener" aria-label="Исходники: HTTP Monitor">Исходники</a><a class="link" href="https://github.com/DavitMirea0/HttpMonitor" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Network Analyzer</h3><p class="card__desc">Учебное WPF-приложение для анализа сети. Исходники разделены на модели и сервисы.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C#</li><li class="tag">WPF</li><li class="tag">.NET</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/network-analyzer" target="_blank" rel="noopener" aria-label="Исходники: Network Analyzer">Исходники</a><a class="link" href="https://github.com/DavitMirea0/NetworkAnalyzer" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Путеводитель и производство</h3><p class="card__desc">Два учебных приложения: города и достопримечательности; материалы, производственные линии и расчёт времени изготовления.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C#</li><li class="tag">ASP.NET Core</li><li class="tag">MVC</li><li class="tag">Entity Framework Core</li><li class="tag">SQLite</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/tourist-production" target="_blank" rel="noopener" aria-label="Исходники: Путеводитель и производство">Исходники</a><a class="link" href="https://github.com/DavitMirea0/kr4-pcs" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Blazor Shop</h3><p class="card__desc">Управление товарами магазина: API, браузерный клиент на C#, поиск, фильтры и формы с валидацией.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C#</li><li class="tag">Blazor WebAssembly</li><li class="tag">ASP.NET Core</li><li class="tag">SQLite</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/blazor-shop" target="_blank" rel="noopener" aria-label="Исходники: Blazor Shop">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Заказы ресторана</h3><p class="card__desc">Консольная система заказов ресторана: блюда, категории и работа с коллекциями объектов.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C#</li><li class="tag">.NET</li><li class="tag">ООП</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/csharp/restaurant-orders" target="_blank" rel="noopener" aria-label="Исходники: Заказы ресторана">Исходники</a><a class="link" href="https://github.com/DavitMirea0/Programming-Corporation-System" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
         </article></div></section><section class="language-section" id="cpp" data-language="C / C++" aria-labelledby="heading-cpp">
-        <div class="language-heading"><h2 id="heading-cpp">C / C++</h2><span>4 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>STM32 — управление светодиодами</h3><p>Учебные прошивки STM32 для работы с GPIO и последовательностями светодиодов.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C</li><li>STM32</li><li>GPIO</li><li>CMSIS</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/stm32-led" aria-label="Исходники: STM32 — управление светодиодами">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>STM32 — семисегментный индикатор</h3><p>Управление четырёхразрядным индикатором через CMSIS: статическая и динамическая индикация, кнопка и счётчик секунд.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C</li><li>STM32</li><li>CMSIS</li><li>PlatformIO</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/stm32-display" aria-label="Исходники: STM32 — семисегментный индикатор">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Практикум C++</h3><p>Подборка исходников учебных программ на C++ по технологиям индустриального программирования.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C++</li><li>Стандартная библиотека</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/cpp-practice" aria-label="Исходники: Практикум C++">Исходники <span aria-hidden="true">↗</span></a></div>
-        </article><article class="project-card" data-project>
-            <h3>Qt — учебная заготовка</h3><p>Заготовка настольного приложения: главное окно Qt, UI-файл и конфигурация CMake. Сохранена как учебный исходник.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>C++</li><li>Qt</li><li>CMake</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/qt-project" aria-label="Исходники: Qt — учебная заготовка">Исходники <span aria-hidden="true">↗</span></a></div>
+        <div class="language-heading"><h2 id="heading-cpp">C / C++</h2><span>4 проекта</span></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">STM32 — управление светодиодами</h3><p class="card__desc">Учебные прошивки STM32 для работы с GPIO и последовательностями светодиодов.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C</li><li class="tag">STM32</li><li class="tag">GPIO</li><li class="tag">CMSIS</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/stm32-led" target="_blank" rel="noopener" aria-label="Исходники: STM32 — управление светодиодами">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">STM32 — семисегментный индикатор</h3><p class="card__desc">Управление четырёхразрядным индикатором через CMSIS: статическая и динамическая индикация, кнопка и счётчик секунд.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C</li><li class="tag">STM32</li><li class="tag">CMSIS</li><li class="tag">PlatformIO</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/stm32-display" target="_blank" rel="noopener" aria-label="Исходники: STM32 — семисегментный индикатор">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Практикум C++</h3><p class="card__desc">Подборка исходников учебных программ на C++ по технологиям индустриального программирования.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C++</li><li class="tag">Стандартная библиотека</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/cpp-practice" target="_blank" rel="noopener" aria-label="Исходники: Практикум C++">Исходники</a></div>
+        </article><article class="card" data-project>
+            <h3 class="card__title">Qt — учебная заготовка</h3><p class="card__desc">Заготовка настольного приложения: главное окно Qt, UI-файл и конфигурация CMake. Сохранена как учебный исходник.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">C++</li><li class="tag">Qt</li><li class="tag">CMake</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/cpp/qt-project" target="_blank" rel="noopener" aria-label="Исходники: Qt — учебная заготовка">Исходники</a></div>
         </article></div></section><section class="language-section" id="sql" data-language="SQL" aria-labelledby="heading-sql">
-        <div class="language-heading"><h2 id="heading-sql">SQL</h2><span>1 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>SQL-практикум</h3><p>SQL-исходники учебной работы по базам данных для индустриальных задач.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>SQL</li><li>Базы данных</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/sql/sql-practice" aria-label="Исходники: SQL-практикум">Исходники <span aria-hidden="true">↗</span></a></div>
+        <div class="language-heading"><h2 id="heading-sql">SQL</h2><span>1 проект</span></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">SQL-практикум</h3><p class="card__desc">SQL-исходники учебной работы по базам данных для индустриальных задач.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">SQL</li><li class="tag">Базы данных</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/sql/sql-practice" target="_blank" rel="noopener" aria-label="Исходники: SQL-практикум">Исходники</a></div>
         </article></div></section><section class="language-section" id="devops" data-language="Shell / DevOps" aria-labelledby="heading-devops">
-        <div class="language-heading"><h2 id="heading-devops">Shell / DevOps</h2><span>1 проектов</span></div>
-        <div class="projects-grid"><article class="project-card" data-project>
-            <h3>DevOps — учебный репозиторий</h3><p>Учебные скрипты, документация и статический сайт для практики инструментов DevOps.</p>
-            <ul class="project-tags" aria-label="Технологии"><li>Shell</li><li>Git</li><li>HTML</li><li>DevOps</li></ul>
-            <div class="project-links"><a href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/devops/devops-course" aria-label="Исходники: DevOps — учебный репозиторий">Исходники <span aria-hidden="true">↗</span></a><a href="https://github.com/DavitMirea0/devops-course-2026">Отдельный репозиторий</a></div>
+        <div class="language-heading"><h2 id="heading-devops">Shell / DevOps</h2><span>1 проект</span></div>
+        <div class="projects-grid"><article class="card" data-project>
+            <h3 class="card__title">DevOps — учебный репозиторий</h3><p class="card__desc">Учебные скрипты, документация и статический сайт для практики инструментов DevOps.</p>
+            <ul class="tags" aria-label="Технологии"><li class="tag">Shell</li><li class="tag">Git</li><li class="tag">HTML</li><li class="tag">DevOps</li></ul>
+            <div class="card__links"><a class="link" href="https://github.com/DavitMirea0/frontend-and-backend-practice/tree/master/projects/devops/devops-course" target="_blank" rel="noopener" aria-label="Исходники: DevOps — учебный репозиторий">Исходники</a><a class="link" href="https://github.com/DavitMirea0/devops-course-2026" target="_blank" rel="noopener">Отдельный репозиторий</a></div>
         </article></div></section>
-<p class="source-note">Backend и настольные приложения запускаются отдельно по инструкциям в исходниках. Ссылки «Исходники» ведут к коду проекта, а не к работающей демонстрации.</p>
-</main><footer class="footer"><p>Давид Хачатрян · Портфолио</p><a href="https://github.com/DavitMirea0">GitHub</a></footer></div></body></html>
+
+    <p class="source-note">Backend и настольные приложения запускаются отдельно по инструкциям в исходниках. Ссылки «Исходники» ведут к коду проекта, а не к работающей демонстрации.</p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p>© 2026 Давид Хачатрян</p>
+    <a class="link" href="https://github.com/DavitMirea0" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
